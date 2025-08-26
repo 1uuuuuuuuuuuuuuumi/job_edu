@@ -1,0 +1,43 @@
+package sample.web;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.commons.collections.map.HashedMap;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.uiadapter17.spring.core.annotation.ParamDataSet;
+import com.nexacro.uiadapter17.spring.core.data.NexacroResult;
+
+import sample.service.MainService;
+
+@Controller
+public class MainController {
+	
+	@Autowired 
+	private MainService mainService;
+
+	@RequestMapping(value="/selectUser.do")
+	public NexacroResult selectUser(@ParamDataSet(name="ds_user", required = false) Map<String, Object> dsUser) {
+		NexacroResult result = new NexacroResult();
+		
+		System.out.println("요청 사용자 정보 : " + dsUser);
+		
+		try {
+			Map<String, Object> user = mainService.selectUser(dsUser);
+			if(user != null && !user.isEmpty()) {
+				result.addDataSet("ds_login", user);
+			} else {
+				result.addDataSet("ds_login", new HashMap<>());
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			result.addDataSet("ds_login", new HashMap<>());
+		}
+		
+		return result;
+	}
+	
+}

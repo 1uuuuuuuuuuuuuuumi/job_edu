@@ -1,0 +1,45 @@
+package sample.service.impl;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import sample.mapper.MainMapper;
+import sample.service.MainService;
+import sample.util.ShaUtil;
+
+@Service
+public class MainServiceImpl implements MainService {
+	
+	@Autowired
+	private MainMapper mainMapper;
+	
+	@Override
+	public Map<String, Object> selectUser(Map<String, Object> dsUser){
+		
+		String uwerId = (String) dsUser.get("user_id");
+		String inputPw = (String) dsUser.get("pass");
+		
+		Map<String, Object> user = mainMapper.selectUserForLogin(dsUser);
+		
+		if(user == null) {
+			return null;
+		}
+		
+		String dbPw = (String) user.get("PASS");
+		String salt = (String) user.get("SALT");
+		
+		try {
+			String encryptedInputPw = ShaUtil.sha256Encode(inputPw, salt);
+			
+			if(dbPw != null && dbPw.equals(encryptedInputPw)) {
+				return user;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+}

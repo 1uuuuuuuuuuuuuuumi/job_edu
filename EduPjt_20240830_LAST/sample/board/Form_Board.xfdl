@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_Board" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Static id="Static00" taborder="0" text="게시판입니다." left="32" top="18" width="780" height="316" font="normal 18pt/normal &quot;Arial&quot;"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

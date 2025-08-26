@@ -1,0 +1,12 @@
+package sample.service;
+
+import java.util.Map;
+
+public interface service {
+
+	Map<String, Object> selectUser(Map<String, Object> dsUser) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
