@@ -1,0 +1,74 @@
+package sample.web;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.uiadapter17.spring.core.annotation.ParamDataSet;
+import com.nexacro.uiadapter17.spring.core.data.NexacroResult;
+
+import sample.service.MainService;
+
+@Controller
+public class MainController {
+	
+	@Autowired 
+	private MainService mainService;
+
+	@RequestMapping(value="/selectUser.do")
+	public NexacroResult selectUser(@ParamDataSet(name="ds_user", required = false) Map<String, Object> dsUser) {
+		NexacroResult result = new NexacroResult();
+		
+		System.out.println("요청 사용자 정보 : " + dsUser);
+		
+		try {
+			Map<String, Object> user = mainService.selectUser(dsUser);
+			if(user != null && !user.isEmpty()) {
+				
+				result.addDataSet("ds_login", user);
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+			result.addDataSet("ds_login", new HashMap<>());
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/idChk.do")
+	public NexacroResult joinUser(@ParamDataSet(name="join_user", required=false) Map<String, Object> param) {
+		
+		NexacroResult result = new NexacroResult();
+		
+		System.out.println(param);
+		
+		HashMap<String, Object> userChk = mainService.joinUser(param);
+		
+		HashMap<String, Object> resultData = new HashMap<String, Object>();
+		
+		
+		if(userChk != null) {
+			System.out.println("중복된 회원이 존재합니다.");
+			
+			resultData.put("message", "이미 존재하는 아이디입니다.");
+			resultData.put("result_value", 0);
+			
+			result.addDataSet("join_result", resultData);
+			
+		} else {
+			System.out.println("사용가능한 아이디입니다.");
+			
+			resultData.put("message", "사용가능한 아이디입니다.");
+			resultData.put("result_value", 1);
+			
+			result.addDataSet("join_result", resultData);
+			
+		}
+		
+		return result;
+	}
+	
+}

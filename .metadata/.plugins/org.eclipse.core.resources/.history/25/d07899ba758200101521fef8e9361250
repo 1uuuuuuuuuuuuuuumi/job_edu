@@ -1,0 +1,14 @@
+package sample.service;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public interface MainService {
+
+	Map<String, Object> selectUser(Map<String, Object> dsUser);
+
+	HashMap<String, Object> idChk(Map<String, Object> param);
+
+	HashMap<String, Object> joinUser(Map<String, Object> param);
+
+}

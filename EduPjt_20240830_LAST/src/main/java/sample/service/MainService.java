@@ -7,6 +7,8 @@ public interface MainService {
 
 	Map<String, Object> selectUser(Map<String, Object> dsUser);
 
-	HashMap<String, Object> joinUser(HashMap<String, Object> param);
+	HashMap<String, Object> idChk(Map<String, Object> param);
+
+	int joinUser(Map<String, Object> param);
 
 }

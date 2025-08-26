@@ -1,5 +1,6 @@
 package sample.service.impl;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -50,23 +51,25 @@ public class MainServiceImpl implements MainService {
 	}
 
 	@Override
-	public HashMap<String, Object> joinUser(HashMap<String, Object> param) {
+	public HashMap<String, Object> idChk(Map<String, Object> param) {
+	
+		return mainMapper.idChk(param);
+	}
+
+	@Override
+	public int joinUser(Map<String, Object> param) throws NoSuchAlgorithmException {
 		
-		try {
-			
+		String inputPw = (String) param.get("user_pw");
+		String salt = ShaUtil.getSalt();
 		
-		//기능 : 아이디 중복체크. 데이터베이스에 입력받은 param 내의 user_id가 현재 존재하는지.
-		HashMap<String, Object> userChk = mainMapper.joinUser(param);
+		String user_pw = ShaUtil.sha256Encode(inputPw, salt);
 		
-		if(userChk.get("USER_ID") != null) {
-			return userChk;
-		} else {
-			return new HashMap<>();
-		}
-		} catch (Exception e) {
-			System.out.println("오류발생!");
-		}
+		param.put("salt", salt);
+		param.replace("user_pw", user_pw);
 		
-		return new HashMap<>();
+		System.out.println("튜닝된 PARAM : " + param);
+		
+		
+		return mainMapper.joinUser(param);
 	}
 }
