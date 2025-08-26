@@ -39,7 +39,7 @@ public class MainController {
 	}
 	
 	@RequestMapping(value="/joinUser.do")
-	public NexacroResult joinUser(@ParamDataSet(name="join_user", required=false) HashMap<String, Object> param) {
+	public NexacroResult joinUser(@ParamDataSet(name="join_user", required=false) Map<String, Object> param) {
 		
 		System.out.println(param);
 		

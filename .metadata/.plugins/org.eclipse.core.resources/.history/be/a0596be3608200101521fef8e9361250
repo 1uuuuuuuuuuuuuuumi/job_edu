@@ -52,9 +52,6 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public HashMap<String, Object> joinUser(HashMap<String, Object> param) {
 		
-		try {
-			
-		
 		//기능 : 아이디 중복체크. 데이터베이스에 입력받은 param 내의 user_id가 현재 존재하는지.
 		HashMap<String, Object> userChk = mainMapper.joinUser(param);
 		
@@ -62,9 +59,6 @@ public class MainServiceImpl implements MainService {
 			return userChk;
 		} else {
 			return new HashMap<>();
-		}
-		} catch (Exception e) {
-			System.out.println("오류발생!");
 		}
 		
 		return new HashMap<>();
