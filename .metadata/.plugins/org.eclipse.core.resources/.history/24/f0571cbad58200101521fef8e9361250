@@ -1,6 +1,5 @@
 package sample.web;
 
-import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -74,31 +73,13 @@ public class MainController {
 	
 	
 	@RequestMapping(value="/joinUser.do")
-	public NexacroResult joinUser(@ParamDataSet(name="join_user", required = false) Map<String, Object> param) throws NoSuchAlgorithmException {
+	public NexacroResult joinUser(@ParamDataSet(name="join_user", required = false) Map<String, Object> param) {
 
 		System.out.println(param);
 		
-		NexacroResult result = new NexacroResult();
+		mainService.joinUser(param);
 		
-		int insertResult = mainService.joinUser(param);
-		
-		HashMap<String, Object> resultData = new HashMap<String, Object>();
-		
-		if(insertResult == 1) {
-			System.out.println("회원가입 완료");
-			resultData.put("message", "회원가입 완료");
-			resultData.put("result_value", 1);
-			
-			result.addDataSet("join_result", resultData);
-		} else {
-			System.out.println("회원가입중 오류");
-			resultData.put("message", "회원가입중 오류");
-			resultData.put("result_value", 0);
-			
-			result.addDataSet("join_result", resultData);
-		}
-		
-		return result;
+		return null;
 	}
 	
 }

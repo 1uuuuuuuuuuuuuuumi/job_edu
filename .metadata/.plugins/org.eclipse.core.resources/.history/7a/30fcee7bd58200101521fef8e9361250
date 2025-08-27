@@ -64,7 +64,7 @@ public class MainServiceImpl implements MainService {
 		
 		String user_pw = ShaUtil.sha256Encode(inputPw, salt);
 		
-		param.put("user_salt", salt);
+		param.put("salt", salt);
 		param.replace("user_pw", user_pw);
 		
 		System.out.println("튜닝된 PARAM : " + param);

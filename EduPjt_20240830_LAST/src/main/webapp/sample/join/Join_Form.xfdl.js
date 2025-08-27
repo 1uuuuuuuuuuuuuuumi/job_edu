@@ -267,6 +267,20 @@
 
         		this.join_result.clearData();
         	}
+        	else if(svcId == "joinUser"){
+        		var message = this.join_result.getColumn(0, "message");
+        		var resultValue = this.join_result.getColumn(0, "result_value");
+
+        		this.alert(message);
+
+        		if(resultValue === 1){
+        			this.getOwnerFrame().set_formurl("board::Form_Board.xfdl");
+        		} else {
+        			this.reload(); //화면 새로고침
+        		}
+
+        		this.join_result.clearData();
+        	}
         };
 
 
