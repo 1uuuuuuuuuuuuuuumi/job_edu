@@ -29,5 +29,20 @@ public class BoardServiceImpl implements BoardService {
 	public HashMap<String, Object> getBoard(Map<String, Object> param) {
 		return boardMapper.getBoard(param);
 	}
+
+	@Override
+	public int insertNewBoard(Map<String, Object> param) {
+		return boardMapper.insertNewBoard(param);
+	}
+
+	@Override
+	public int updateBoard(Map<String, Object> param) {
+		return boardMapper.updateBoard(param);
+	}
+
+	@Override
+	public int deleteBoard(Map<String, Object> param) {
+		return boardMapper.deleteBoard(param);
+	}
 	
 }

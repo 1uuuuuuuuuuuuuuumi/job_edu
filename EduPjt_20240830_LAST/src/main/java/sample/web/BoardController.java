@@ -61,4 +61,78 @@ public class BoardController {
 		return result;
 	}
 	
+	@RequestMapping(value="/insertNewBoard.do")
+	public NexacroResult insertNewBoard(@ParamDataSet(name="ds_list", required=false) Map<String, Object> param) {
+		
+		System.out.println(param);
+		
+		NexacroResult result = new NexacroResult();
+							
+		int insertResult = boardService.insertNewBoard(param);
+		
+		HashMap<String, Object> resultData = new HashMap<String, Object>();
+		
+		if(insertResult == 1) {
+			resultData.put("message", "게시물 등록이 완료되었습니다.");
+		} else {
+			resultData.put("message", "게시물 등록오류!");
+		}
+		
+		resultData.put("result_value", insertResult);
+		
+		result.addDataSet("result_data", resultData);
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/updateBoard.do")
+	public NexacroResult updateBoard(@ParamDataSet(name="ds_board", required=false) Map<String, Object> param) {
+		
+		NexacroResult result = new NexacroResult();
+
+		System.out.println(param);
+		
+		int updateResult = boardService.updateBoard(param);
+		
+		HashMap<String, Object> resultData = new HashMap<String, Object>();
+		
+		if(updateResult == 1) {
+			resultData.put("message", "수정완료");
+			
+			
+		} else {
+			resultData.put("message", "수정오류");
+			
+		}
+		
+		resultData.put("result_value", updateResult);
+		
+		result.addDataSet("result_data", resultData);
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/deleteBoard.do")
+	public NexacroResult deleteBoard(@ParamDataSet(name="ds_board", required=false) Map<String, Object> param) {
+		NexacroResult result = new NexacroResult();
+		
+		System.out.println(param);
+		
+		int deleteResult = boardService.deleteBoard(param);
+		
+		HashMap<String, Object> resultData = new HashMap<String, Object>();
+		
+		if(deleteResult == 1) {
+			resultData.put("message", "삭제완료");
+		} else {
+			resultData.put("message", "삭제오류");
+		}
+		
+		resultData.put("result_value", deleteResult);
+		
+		result.addDataSet("result_data", resultData);
+		
+		return result;
+	}
+	
 }

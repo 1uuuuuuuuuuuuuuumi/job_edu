@@ -25,6 +25,11 @@
             obj = new Dataset("ds_board", this);
             obj._setContents("<ColumnInfo><Column id=\"BOARD_CODE\" type=\"INT\" size=\"256\"/><Column id=\"BOARD_TITLE\" type=\"STRING\" size=\"256\"/><Column id=\"BOARD_WRITER\" type=\"STRING\" size=\"256\"/><Column id=\"BOARD_CONTENT\" type=\"STRING\" size=\"256\"/><Column id=\"REG_DATE\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
             this.addChild(obj.name, obj);
+
+
+            obj = new Dataset("result_data", this);
+            obj._setContents("<ColumnInfo><Column id=\"message\" type=\"STRING\" size=\"256\"/><Column id=\"result_value\" type=\"INT\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
             
             // UI Components Initialize
             obj = new Static("b_detail_st_title","408","206","50","32",null,null,null,null,null,null,this);
@@ -140,6 +145,60 @@
         };
 
 
+        this.Button00_00_onclick = function(obj,e)
+        {
+        	this.close();
+        };
+
+        this.Button00_onclick = function(obj,e)
+        {
+        		var strSvcID = "updateBoard";		//트랜잭션 아이디
+        		var strURL = "svc::updateBoard.do";	//url controller에서 받을 주소
+        		var strInDatasets = "ds_board=ds_board"; //내가 던질 데이터셋
+        		var strOutDatasets = "result_data=result_data"; //내가 받을 데이터셋
+        		var strArg = "";					//매개변수로 뭐가 들어가는지
+        		var callBack = "fn_callBack";		//콜백기능으로 뭘할건지(콜백:내가 이 함수를 실행했을때 되돌아와서 실행할 함수)
+        		var inAsync = true;					//동기 비동기 설정하는거 (Async:비동기 /sync:비동기)
+
+        		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync); //this.transaction() -> 함수 / 위의내용들을 전부 담기
+        };
+
+        this.fn_callBack = function(svcId, errCD, errMSG){
+        	if(svcId === "updateBoard"){
+        		var message = this.result_data.getColumn(0, "message");
+        		var resultValue = this.result_data.getColumn(0, "result_value");
+
+        		this.alert(message);
+        		this.reload();
+
+        		this.result_data.clearData();
+        	}
+        	else if(svcId === "deleteBoard"){
+        		var message = this.result_data.getColumn(0, "message");
+        		var resultValue = this.result_data.getColumn(0, "result_value");
+
+        		this.alert(message);
+        		this.close();
+
+        		this.result_data.clearData();
+        	}
+        }
+        this.Button00_01_onclick = function(obj,e)
+        {
+        	if(this.confirm("삭제하시겠습니까?")){
+        		var strSvcID = "deleteBoard";		//트랜잭션 아이디
+        		var strURL = "svc::deleteBoard.do";	//url controller에서 받을 주소
+        		var strInDatasets = "ds_board=ds_board"; //내가 던질 데이터셋
+        		var strOutDatasets = "result_data=result_data"; //내가 받을 데이터셋
+        		var strArg = "";					//매개변수로 뭐가 들어가는지
+        		var callBack = "fn_callBack";		//콜백기능으로 뭘할건지(콜백:내가 이 함수를 실행했을때 되돌아와서 실행할 함수)
+        		var inAsync = true;					//동기 비동기 설정하는거 (Async:비동기 /sync:비동기)
+
+        		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync); //this.transaction() -> 함수 / 위의내용들을 전부 담기
+        	} else {
+
+        	}
+        };
         });
         
         // Regist UI Components Event
@@ -149,6 +208,9 @@
             this.b_detail_st_title.addEventHandler("onclick",this.Common_onclick,this);
             this.b_detail_st_title00.addEventHandler("onclick",this.Common_onclick,this);
             this.b_detail_st_title00_00.addEventHandler("onclick",this.Common_onclick,this);
+            this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
+            this.Button00_00.addEventHandler("onclick",this.Button00_00_onclick,this);
+            this.Button00_01.addEventHandler("onclick",this.Button00_01_onclick,this);
         };
         this.loadIncludeScript("Form_BoardDetail.xfdl");
         this.loadPreloadList();

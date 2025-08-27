@@ -96,6 +96,11 @@
             obj.set_color("white");
             obj.set_font("bold 14px 맑은 고딕");
             this.Div00.addChild(obj.name, obj);
+
+            obj = new Button("Button00","527","43","136","52",null,null,null,null,null,null,this);
+            obj.set_taborder("3");
+            obj.set_text("글쓰기");
+            this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
             obj = new Layout("default","",1280,720,this,function(p){});
@@ -198,14 +203,21 @@
         		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync);
         };
 
+        this.Button00_onclick = function(obj,e)
+        {
+        	this.getOwnerFrame().set_formurl("board::Form_newBoard.xfdl");
+        };
+
         });
         
         // Regist UI Components Event
         this.on_initEvent = function()
         {
             this.addEventHandler("onload",this.Form_Board_onload,this);
+            this.addEventHandler("onsetfocus",this.Form_Board_onload,this);
             this.Grid00.addEventHandler("oncellclick",this.Grid00_oncellclick,this);
             this.Div00.form.Button00.addEventHandler("onclick",this.Div00_Button00_onclick,this);
+            this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
         };
         this.loadIncludeScript("Form_Board.xfdl");
         this.loadPreloadList();

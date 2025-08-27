@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Board" width="1280" height="720" titletext="New Form" onload="Form_Board_onload">
+  <Form id="Form_Board" width="1280" height="720" titletext="New Form" onload="Form_Board_onload" onsetfocus="Form_Board_onload">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
         <Static id="Static00" taborder="0" text="게시판입니다." left="41" top="58" width="172" height="62" font="bold 18pt/normal &quot;맑은 고딕&quot;" color="black"/>
@@ -47,6 +47,7 @@
             </Layout>
           </Layouts>
         </Div>
+        <Button id="Button00" taborder="3" text="글쓰기" left="527" top="43" width="136" height="52" onclick="Button00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -140,6 +141,11 @@ this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 		var inAsync = true;					//동기 비동기 설정하는거 (Async:비동기 /sync:비동기)
 
 		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync);
+};
+
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.getOwnerFrame().set_formurl("board::Form_newBoard.xfdl");
 };
 ]]></Script>
     <Bind>
