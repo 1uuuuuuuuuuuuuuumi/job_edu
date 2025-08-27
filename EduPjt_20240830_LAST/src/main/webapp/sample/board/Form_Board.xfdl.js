@@ -11,6 +11,7 @@
         {
             this.set_name("Form_Board");
             this.set_titletext("New Form");
+            this.set_background(" #F2CC0C");
             if (Form == this.constructor)
             {
                 this._setFormPosition(1280,720);
@@ -27,17 +28,20 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("Static00","41","58","172","62",null,null,null,null,null,null,this);
+            obj = new Static("Static00","43","58","377","62",null,null,null,null,null,null,this);
             obj.set_taborder("0");
-            obj.set_text("게시판입니다.");
-            obj.set_font("bold 18pt/normal \"맑은 고딕\"");
+            obj.set_text("★ 루미랜드 게시판 ★");
+            obj.set_font("bold 25pt/normal \"맑은 고딕\"");
             obj.set_color("black");
             this.addChild(obj.name, obj);
 
             obj = new Grid("Grid00","40","225","1190","435",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_binddataset("ds_list");
-            obj.set_font("17px/normal \"맑은 고딕\"");
+            obj.set_font("14px/normal \"맑은 고딕\"");
+            obj.set_useselcolor("false");
+            obj.set_border("2px solid  #0A4DA6");
+            obj.set_borderRadius("5px");
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"120\"/><Column size=\"120\"/><Column size=\"120\"/><Column size=\"120\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"순번\"/><Cell col=\"1\" text=\"제목\"/><Cell col=\"2\" text=\"작성자\"/><Cell col=\"3\" text=\"작성일자\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\"/><Cell col=\"1\" text=\"bind:BOARD_TITLE\"/><Cell col=\"2\" text=\"bind:BOARD_WRITER\"/><Cell col=\"3\" text=\"bind:REG_DATE\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
@@ -45,61 +49,73 @@
             obj.set_taborder("2");
             obj.set_text("");
             obj.set_border("2px solid #0A4DA6");
+            obj.set_background("#74BF04");
+            obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
             obj = new Static("board_st_title","31","17","54","37",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("0");
             obj.set_text("제목");
-            obj.set_font("14px/normal \"맑은 고딕\"");
+            obj.set_font("bold 14px 맑은 고딕");
             this.Div00.addChild(obj.name, obj);
 
-            obj = new Edit("board_search_ed_title","67","24","207","22",null,null,null,null,null,null,this.Div00.form);
+            obj = new Edit("board_search_ed_title","67","20","207","30",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("1");
+            obj.set_borderRadius("5px");
             this.Div00.addChild(obj.name, obj);
 
             obj = new Static("board_st_writer","294","17","54","37",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("2");
             obj.set_text("작성자");
-            obj.set_font("14px/normal \"맑은 고딕\"");
+            obj.set_font("bold 14px 맑은 고딕");
             this.Div00.addChild(obj.name, obj);
 
-            obj = new Edit("board_search_ed_writer","339","25","229","20",null,null,null,null,null,null,this.Div00.form);
+            obj = new Edit("board_search_ed_writer","339","20","229","30",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("3");
+            obj.set_borderRadius("5px");
             this.Div00.addChild(obj.name, obj);
 
             obj = new Static("board_st_regDate","607","16","54","37",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("4");
             obj.set_text("작성일자");
-            obj.set_font("14px/normal \"맑은 고딕\"");
+            obj.set_font("bold 14px 맑은 고딕");
             this.Div00.addChild(obj.name, obj);
 
-            obj = new Calendar("board_search_cd_firstDate","667","24","177","21",null,null,null,null,null,null,this.Div00.form);
+            obj = new Calendar("board_search_cd_firstDate","667","19","177","30",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("5");
             obj.set_displayinvalidtext("invalid value");
+            obj.set_borderRadius("5px");
             this.Div00.addChild(obj.name, obj);
 
-            obj = new Static("Static00_00_00_00","849","17","54","37",null,null,null,null,null,null,this.Div00.form);
+            obj = new Static("Static00_00_00_00","849","16","54","37",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("6");
             obj.set_text("~");
-            obj.set_font("14px/normal \"맑은 고딕\"");
+            obj.set_font("bold 14px 맑은 고딕");
             this.Div00.addChild(obj.name, obj);
 
-            obj = new Calendar("board_search_cd_secondDate","864","24","178","21",null,null,null,null,null,null,this.Div00.form);
+            obj = new Calendar("board_search_cd_secondDate","864","19","178","30",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("7");
+            obj.set_borderRadius("5px");
             this.Div00.addChild(obj.name, obj);
 
-            obj = new Button("Button00","1068","21","70","26",null,null,null,null,null,null,this.Div00.form);
+            obj = new Button("Button00","1068","19","77","30",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("8");
             obj.set_text("조회");
             obj.set_borderRadius("10px");
             obj.set_background("#0A4DA6");
             obj.set_color("white");
             obj.set_font("bold 14px 맑은 고딕");
+            obj.set_cursor("pointer");
             this.Div00.addChild(obj.name, obj);
 
-            obj = new Button("Button00","527","43","136","52",null,null,null,null,null,null,this);
+            obj = new Button("Button00","1130","80","100","42",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_text("글쓰기");
+            obj.set_background("#DC0630");
+            obj.set_font("bold 14px 맑은 고딕");
+            obj.set_color("#ffffff");
+            obj.set_cursor("pointer");
+            obj.set_borderRadius("10px");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this

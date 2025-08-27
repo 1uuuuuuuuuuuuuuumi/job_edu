@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_newBoard" width="1280" height="720" titletext="New Form">
+  <Form id="Form_newBoard" width="1280" height="720" titletext="New Form" background=" #F2CC0C">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Static id="Static00" taborder="0" text="제목" left="68" top="48" width="152" height="85"/>
-        <Edit id="Edit00" taborder="1" left="126" top="67" width="188" height="47"/>
-        <Static id="newBoard_st_writer" taborder="2" text="작성자" left="68" top="153" width="152" height="85"/>
-        <Edit id="newBoard_ed_writer" taborder="3" left="125" top="172" width="188" height="47" rtl=""/>
-        <Static id="newBoard_st_content" taborder="4" text="내용" left="68" top="293" width="152" height="85"/>
-        <TextArea id="newBoard_ta_content" taborder="5" left="118" top="316" width="252" height="180"/>
-        <Button id="Button00" taborder="6" text="등록" left="77" top="562" width="95" height="54" onclick="Button00_onclick"/>
-        <Button id="Button00_00" taborder="7" text="취소" left="320" top="562" width="95" height="54"/>
+        <Static id="Static00" taborder="0" text="제목" left="372" top="155" width="110" height="40" textAlign="center" background="#DC0630" font="bold 14px 맑은 고딕" borderRadius="5px" color="#ffffff"/>
+        <Edit id="Edit00" taborder="1" left="485" top="155" width="300" height="40"/>
+        <Static id="newBoard_st_writer" taborder="2" text="작성자" left="372" top="217" width="110" height="40" background="#DC0630"/>
+        <Edit id="newBoard_ed_writer" taborder="3" left="484" top="217" width="300" height="40" rtl=""/>
+        <Static id="newBoard_st_content" taborder="4" text="내용" left="372" top="274" width="110" height="40" background="#DC0630"/>
+        <TextArea id="newBoard_ta_content" taborder="5" left="483" top="274" width="300" height="200"/>
+        <Button id="Button00" taborder="6" text="등록" left="508" top="504" width="75" height="40" onclick="Button00_onclick"/>
+        <Button id="Button00_00" taborder="7" text="취소" left="670" top="504" width="75" height="40"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
