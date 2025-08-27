@@ -38,37 +38,53 @@
             obj.set_color("#ffffff");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("Edit00","485","155","300","40",null,null,null,null,null,null,this);
+            obj = new Edit("Edit00","487","155","300","40",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             this.addChild(obj.name, obj);
 
-            obj = new Static("newBoard_st_writer","427","195","152","85",null,null,null,null,null,null,this);
+            obj = new Static("newBoard_st_writer","372","217","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_text("작성자");
+            obj.set_background("#DC0630");
+            obj.set_font("bold 14px 맑은 고딕");
+            obj.set_borderRadius("5px");
+            obj.set_color("#ffffff");
+            obj.set_textAlign("center");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("newBoard_ed_writer","484","217","300","40",null,null,null,null,null,null,this);
+            obj = new Edit("newBoard_ed_writer","487","217","300","40",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_rtl("");
             this.addChild(obj.name, obj);
 
-            obj = new Static("newBoard_st_content","433","274","152","30",null,null,null,null,null,null,this);
+            obj = new Static("newBoard_st_content","372","275","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("내용");
+            obj.set_background("#DC0630");
+            obj.set_font("bold 14px 맑은 고딕");
+            obj.set_borderRadius("5px");
+            obj.set_color("#ffffff");
+            obj.set_textAlign("center");
             this.addChild(obj.name, obj);
 
-            obj = new TextArea("newBoard_ta_content","483","274","300","200",null,null,null,null,null,null,this);
+            obj = new TextArea("newBoard_ta_content","487","274","300","200",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","508","504","75","40",null,null,null,null,null,null,this);
+            obj = new Button("Button00","518","514","75","40",null,null,null,null,null,null,this);
             obj.set_taborder("6");
             obj.set_text("등록");
+            obj.set_background(" #0A4DA6");
+            obj.set_borderRadius("10px");
+            obj.set_font("bold 14px 맑은 고딕");
+            obj.set_color("#ffffff");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00_00","670","504","75","40",null,null,null,null,null,null,this);
+            obj = new Button("Button00_00","680","514","75","40",null,null,null,null,null,null,this);
             obj.set_taborder("7");
             obj.set_text("취소");
+            obj.set_font("bold 14px 맑은 고딕");
+            obj.set_borderRadius("10px");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
