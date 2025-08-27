@@ -1,0 +1,28 @@
+package sample.web;
+
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.uiadapter17.spring.core.annotation.ParamDataSet;
+import com.nexacro.uiadapter17.spring.core.data.NexacroResult;
+
+import sample.service.BoardService;
+
+@Controller
+public class BoardController {
+
+	@Autowired
+	private BoardService boardService;
+	
+	@RequestMapping(value="readBoardList.do")
+	public NexacroResult readBoardList(@ParamDataSet(name="ds_search", required=false) Map<String, Object> param) {
+		
+		System.out.println(param);
+		
+		return null;
+	}
+	
+}

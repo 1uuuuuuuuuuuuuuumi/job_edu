@@ -1,0 +1,8 @@
+package sample.mapper;
+
+import egovframework.rte.psl.dataaccess.mapper.Mapper;
+
+@Mapper("BoardMapper")
+public interface BoardMapper {
+	
+}

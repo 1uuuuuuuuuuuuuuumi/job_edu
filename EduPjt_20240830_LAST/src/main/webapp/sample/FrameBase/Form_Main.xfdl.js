@@ -23,7 +23,7 @@
 
 
             obj = new Dataset("ds_login", this);
-            obj._setContents("<ColumnInfo><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"PASS\" type=\"STRING\" size=\"256\"/><Column id=\"SALT\" type=\"STRING\" size=\"256\"/><Column id=\"NAME\" type=\"STRING\" size=\"256\"/><Column id=\"MAIL\" type=\"STRING\" size=\"256\"/><Column id=\"ADDRESS\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj._setContents("");
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
@@ -125,44 +125,7 @@
 
         	this.transaction(strSvcID,strURL,strDatasets,strOutDatasets,strArg,callBack,inAsync);
 
-
         };
-
-
-        this.fn_callBack = function(id, errCode, errMsg){
-
-        	if(id === "selectUser"){
-
-        		var glbAd = nexacro.getApplication();
-
-        		if(errCode < 0){
-        			this.alert("로그인 중 오류 발생 : " + errMsg);
-        			return;
-        		}
-
-        		var userId = this.ds_login.getColumn(0, "USER_ID");
-        		var userName = this.ds_login.getColumn(0, "NAME");
-
-        		if(userName != null && userName != ''){
-        			this.alert("로그인 성공!");
-        			//0번째 행의 "user_id"컬럼에 3번째 매개변수를 저장하겠따.
-        			glbAd.gds_userInfo.setColumn(0, "user_id", userId);
-
-        			this.ds_login.clear();
-
-        			this.getOwnerFrame().set_formurl("board::Form_Board.xfdl");
-
-        		} else {
-        			this.alert("아이디 또는 비밀번호가 올바르지 않습니다.");
-
-        			this.ds_login.clear();
-        		}
-        	}
-
-        };
-
-
-
         });
         
         // Regist UI Components Event
