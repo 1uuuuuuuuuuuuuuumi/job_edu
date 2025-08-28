@@ -1,17 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_BoardDetail" width="1280" height="720" titletext="New Form" onload="Form_BoardDetail_onload">
+  <Form id="Form_BoardDetail" width="1280" height="720" titletext="New Form" onload="Form_BoardDetail_onload" background=" #F2CC0C">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Static id="b_detail_st_title" taborder="0" text="제목" left="408" top="206" width="50" height="32" onclick="Common_onclick" textAlign="center" font="bold 14px 맑은 고딕"/>
-        <Edit id="b_detail_ed_title" taborder="1" left="466" top="208" width="274" height="30" onclick="Common_onclick" borderRadius="5px"/>
-        <Static id="b_detail_st_title00" taborder="2" text="작성자" left="408" top="255" width="50" height="32" onclick="Common_onclick" textAlign="center" font="bold 14px 맑은 고딕"/>
-        <Edit id="b_detail_ed_title00" taborder="3" left="465" top="258" width="275" height="30" onclick="Common_onclick" borderRadius="5px"/>
-        <Static id="b_detail_st_title00_00" taborder="4" text="내용" left="408" top="315" width="50" height="32" onclick="Common_onclick" textAlign="center" font="bold 14px 맑은 고딕"/>
-        <TextArea id="TextArea00" taborder="5" left="468" top="318" width="272" height="160" borderRadius="5px"/>
-        <Button id="Button00" taborder="6" text="수정" left="480" top="499" width="68" height="31" background=" #0A4DA6" borderRadius="10px" font="bold 14px 맑은 고딕" color="#ffffff" onclick="Button00_onclick"/>
-        <Button id="Button00_00" taborder="7" text="목록으로가기" left="640" top="153" width="100" height="25" font="bold 14px 맑은 고딕" borderRadius="10px" background="#74BF04" onclick="Button00_00_onclick"/>
-        <Button id="Button00_01" taborder="8" text="삭제" left="660" top="499" width="68" height="31" borderRadius="10px" font="bold 14px 맑은 고딕" onclick="Button00_01_onclick"/>
+        <Static id="b_detail_st_title" taborder="0" text="제목" left="382" top="215" width="110" height="40" onclick="Common_onclick" textAlign="center" font="bold 14px 맑은 고딕" background="#DC0630" color="#ffffff" borderRadius="5px"/>
+        <Edit id="b_detail_ed_title" taborder="1" left="502" top="215" width="300" height="40" onclick="Common_onclick" borderRadius="5px"/>
+        <Static id="b_detail_st_title00" taborder="2" text="작성자" left="382" top="270" width="110" height="40" onclick="Common_onclick" textAlign="center" font="bold 14px 맑은 고딕" background="#DC0630" color="#ffffff" borderRadius="5px"/>
+        <Edit id="b_detail_ed_title00" taborder="3" left="501" top="270" width="300" height="40" onclick="Common_onclick" borderRadius="5px" readonly="true"/>
+        <Static id="b_detail_st_title00_00" taborder="4" text="내용" left="382" top="325" width="110" height="40" onclick="Common_onclick" textAlign="center" font="bold 14px 맑은 고딕" background="#DC0630" color="#ffffff" borderRadius="5px"/>
+        <TextArea id="TextArea00" taborder="5" left="500" top="325" width="300" height="200" borderRadius="5px"/>
+        <Button id="Button00" taborder="6" text="수정" left="532" top="576" width="68" height="40" background=" #0A4DA6" borderRadius="10px" font="bold 14px 맑은 고딕" color="#ffffff" onclick="Button00_onclick"/>
+        <Button id="Button00_01" taborder="7" text="삭제" left="712" top="576" width="68" height="40" borderRadius="10px" font="bold 14px 맑은 고딕" onclick="Button00_01_onclick" color="#ffffff" background="#bbbbbb"/>
+        <Static id="Static00" taborder="8" text="★ 상세 페이지 ★" left="391" top="61" width="311" height="79" font="bold 25pt/normal &quot;맑은 고딕&quot;" color="black"/>
+        <Div id="Div00" taborder="9" left="383" top="140" width="421" height="55" background="#74BF04" border="2px solid #0A4DA6" borderRadius="5px">
+          <Layouts>
+            <Layout>
+              <Button id="Button00_00" taborder="0" text="목록으로가기" left="276" top="10" width="115" height="30" font="bold 14px 맑은 고딕" borderRadius="10px" background=" #0A4DA6" onclick="Button00_00_onclick" color="#ffffff"/>
+              <Static id="Static01" taborder="1" left="26" top="10" width="202" height="30" font="bold 14px 맑은 고딕" color="black" background="rgba(255, 255, 255, 0.5)" borderRadius="5px" padding="5px" textAlign="center" onclick="Div00_Static01_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -89,7 +97,14 @@ this.Button00_01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	} else {
 		
 	}
-};]]></Script>
+};
+
+
+this.Div00_Static01_onclick = function(obj:nexacro.Static,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_search">
         <ColumnInfo>
@@ -125,6 +140,7 @@ this.Button00_01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
       <BindItem id="item0" compid="b_detail_ed_title" propid="value" datasetid="ds_board" columnid="BOARD_TITLE"/>
       <BindItem id="item1" compid="b_detail_ed_title00" propid="value" datasetid="ds_board" columnid="BOARD_WRITER"/>
       <BindItem id="item2" compid="TextArea00" propid="value" datasetid="ds_board" columnid="BOARD_CONTENT"/>
+      <BindItem id="item3" compid="Div00.form.Static01" propid="text" datasetid="ds_board" columnid="REG_DATE"/>
     </Bind>
   </Form>
 </FDL>

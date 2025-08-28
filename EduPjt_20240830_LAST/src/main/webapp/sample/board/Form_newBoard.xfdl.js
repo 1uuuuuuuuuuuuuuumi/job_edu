@@ -28,7 +28,7 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("Static00","372","155","110","40",null,null,null,null,null,null,this);
+            obj = new Static("Static00","382","210","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_text("제목");
             obj.set_textAlign("center");
@@ -38,11 +38,11 @@
             obj.set_color("#ffffff");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("Edit00","487","155","300","40",null,null,null,null,null,null,this);
+            obj = new Edit("Edit00","502","210","300","40",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             this.addChild(obj.name, obj);
 
-            obj = new Static("newBoard_st_writer","372","217","110","40",null,null,null,null,null,null,this);
+            obj = new Static("newBoard_st_writer","382","267","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_text("작성자");
             obj.set_background("#DC0630");
@@ -52,12 +52,12 @@
             obj.set_textAlign("center");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("newBoard_ed_writer","487","217","300","40",null,null,null,null,null,null,this);
+            obj = new Edit("newBoard_ed_writer","502","267","300","40",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_rtl("");
             this.addChild(obj.name, obj);
 
-            obj = new Static("newBoard_st_content","372","275","110","40",null,null,null,null,null,null,this);
+            obj = new Static("newBoard_st_content","382","325","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("내용");
             obj.set_background("#DC0630");
@@ -67,11 +67,11 @@
             obj.set_textAlign("center");
             this.addChild(obj.name, obj);
 
-            obj = new TextArea("newBoard_ta_content","487","274","300","200",null,null,null,null,null,null,this);
+            obj = new TextArea("newBoard_ta_content","502","324","300","200",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","518","514","75","40",null,null,null,null,null,null,this);
+            obj = new Button("Button00","533","564","75","40",null,null,null,null,null,null,this);
             obj.set_taborder("6");
             obj.set_text("등록");
             obj.set_background(" #0A4DA6");
@@ -80,11 +80,27 @@
             obj.set_color("#ffffff");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00_00","680","514","75","40",null,null,null,null,null,null,this);
+            obj = new Button("Button00_00","695","564","75","40",null,null,null,null,null,null,this);
             obj.set_taborder("7");
             obj.set_text("취소");
             obj.set_font("bold 14px 맑은 고딕");
             obj.set_borderRadius("10px");
+            obj.set_background("#bbbbbb");
+            obj.set_color("#ffffff");
+            this.addChild(obj.name, obj);
+
+            obj = new Div("Div00","382","128","420","55",null,null,null,null,null,null,this);
+            obj.set_taborder("8");
+            obj.set_background("#74BF04");
+            obj.set_border("2px solid #0A4DA6");
+            obj.set_borderRadius("5px");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01","457","125","268","63",null,null,null,null,null,null,this);
+            obj.set_taborder("9");
+            obj.set_text("★ 작성 페이지 ★");
+            obj.set_font("bold 25pt/normal \"맑은 고딕\"");
+            obj.set_color("black");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
@@ -136,15 +152,22 @@
         		this.alert(this.result_data.getColumn(0, "message"));
         		this.result_data.clearData();
 
-        		this.getOwnerFrame().set_formurl("board::Form_Board.xfdl");
+        		this.close();
         	}
         }
+        this.Button00_00_onclick = function(obj,e)
+        {
+        	//목록으로 돌아가기
+        	this.close();
+        };
+
         });
         
         // Regist UI Components Event
         this.on_initEvent = function()
         {
             this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
+            this.Button00_00.addEventHandler("onclick",this.Button00_00_onclick,this);
         };
         this.loadIncludeScript("Form_newBoard.xfdl");
         this.loadPreloadList();

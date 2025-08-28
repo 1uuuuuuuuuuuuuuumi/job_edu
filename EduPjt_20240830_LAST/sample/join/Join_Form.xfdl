@@ -3,25 +3,25 @@
   <Form id="Join_Form" width="1280" height="720" titletext="New Form" onload="Join_Form_onload" background=" #F2CC0C">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Static id="join_st_id" taborder="0" text="아이디" left="398" top="144" width="110" height="32" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#ffffff" borderRadius="5px"/>
-        <Edit id="join_ed_id" taborder="1" left="513" top="145" width="307" height="31" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
-        <Static id="join_st_pw" taborder="2" text="패스워드" left="398" top="193" width="110" height="32" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
-        <Edit id="join_ed_pw" taborder="3" left="513" top="194" width="307" height="31" onchanged="Edit00_onchanged" password="true" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
-        <Static id="join_st_name" taborder="4" text="이름" left="398" top="239" width="110" height="32" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
-        <Edit id="join_ed_name" taborder="5" left="513" top="240" width="307" height="31" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
-        <Static id="join_st_email" taborder="6" text="이메일" left="398" top="288" width="110" height="32" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
-        <Edit id="join_ed_email" taborder="7" left="513" top="289" width="307" height="31" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
-        <Static id="join_st_emailChk" taborder="8" text="인증번호" left="398" top="337" width="110" height="32" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
-        <Edit id="join_ed_emailChk" taborder="9" left="513" top="337" width="307" height="31" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
-        <Static id="join_st_addr" taborder="10" text="주소" left="398" top="383" width="110" height="32" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
-        <Edit id="join_ed_addr" taborder="11" left="513" top="383" width="307" height="31" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
-        <Static id="join_st_recommend" taborder="12" text="추천인" left="399" top="430" width="110" height="32" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
-        <Edit id="join_ed_recommend" taborder="13" left="514" top="430" width="307" height="31" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
-        <Button id="join_btn_idChk" taborder="14" text="중복체크" left="831" top="144" width="108" height="32" borderRadius="10px" onclick="join_btn_idChk_onclick" background="#74BF04" color="#ffffff" font="bold 14px 맑은 고딕" cursor="pointer"/>
-        <Button id="join_btn_email" taborder="15" text="인증" left="830" top="287" width="108" height="32" borderRadius="8px" background="#74BF04" color="#ffffff" font="bold 14px 맑은 고딕"/>
-        <Button id="join_btn_emailChk" taborder="16" text="확인" left="829" top="335" width="108" height="32" borderRadius="8px" background="#74BF04" font="bold 14px 맑은 고딕" color="#ffffff"/>
-        <Button id="join_btn_submit" taborder="17" text="회원가입" left="498" top="534" width="108" height="32" borderRadius="10px" onclick="join_btn_submit_onclick" color="#ffffff" background=" #0A4DA6" font="bold 14px 맑은 고딕"/>
-        <Button id="join_btn_cancel" taborder="18" text="취소" left="656" top="534" width="108" height="32" borderRadius="10px" background="#bbbbbb" color="#ffffff" font="bold 14px 맑은 고딕"/>
+        <Static id="join_st_id" taborder="0" text="아이디" left="399" top="147" width="110" height="40" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#ffffff" borderRadius="5px"/>
+        <Edit id="join_ed_id" taborder="1" left="524" top="147" width="307" height="40" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
+        <Static id="join_st_pw" taborder="2" text="패스워드" left="399" top="196" width="110" height="40" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
+        <Edit id="join_ed_pw" taborder="3" left="524" top="196" width="307" height="40" onchanged="Edit00_onchanged" password="true" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
+        <Static id="join_st_name" taborder="4" text="이름" left="399" top="242" width="110" height="40" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
+        <Edit id="join_ed_name" taborder="5" left="524" top="242" width="307" height="40" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
+        <Static id="join_st_email" taborder="6" text="이메일" left="399" top="291" width="110" height="40" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
+        <Edit id="join_ed_email" taborder="7" left="524" top="291" width="307" height="40" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
+        <Static id="join_st_emailChk" taborder="8" text="인증번호" left="399" top="340" width="110" height="40" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
+        <Edit id="join_ed_emailChk" taborder="9" left="524" top="340" width="307" height="40" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
+        <Static id="join_st_addr" taborder="10" text="주소" left="399" top="386" width="110" height="40" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
+        <Edit id="join_ed_addr" taborder="11" left="524" top="386" width="307" height="40" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
+        <Static id="join_st_recommend" taborder="12" text="추천인" left="399" top="433" width="110" height="40" onclick="Static00_onclick" background="#DC0630" textAlign="center" font="bold 14px 맑은 고딕" color="#fff" borderRadius="5px"/>
+        <Edit id="join_ed_recommend" taborder="13" left="524" top="433" width="307" height="40" onchanged="Edit00_onchanged" font="13px 맑은 고딕" padding="5px" borderRadius="5px"/>
+        <Button id="join_btn_idChk" taborder="14" text="중복체크" left="851" top="147" width="108" height="40" borderRadius="10px" onclick="join_btn_idChk_onclick" background="#74BF04" color="#ffffff" font="bold 14px 맑은 고딕" cursor="pointer"/>
+        <Button id="join_btn_email" taborder="15" text="인증" left="850" top="291" width="108" height="40" borderRadius="8px" background="#74BF04" color="#ffffff" font="bold 14px 맑은 고딕"/>
+        <Button id="join_btn_emailChk" taborder="16" text="확인" left="849" top="340" width="108" height="40" borderRadius="8px" background="#74BF04" font="bold 14px 맑은 고딕" color="#ffffff"/>
+        <Button id="join_btn_submit" taborder="17" text="회원가입" left="498" top="537" width="108" height="40" borderRadius="10px" onclick="join_btn_submit_onclick" color="#ffffff" background=" #0A4DA6" font="bold 14px 맑은 고딕"/>
+        <Button id="join_btn_cancel" taborder="18" text="취소" left="656" top="537" width="108" height="40" borderRadius="10px" background="#bbbbbb" color="#ffffff" font="bold 14px 맑은 고딕"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.Join_Form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)

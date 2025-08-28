@@ -150,7 +150,7 @@ public class BoardController {
 			} else if(rowType.equals("2")) {
 				boardService.updateBoard(param.get(i));
 			} else if(rowType.equals("3")) {
-				boardService.deleteBoard(param.get(i));
+				boardService.deleteBoard(param)
 			} else {
 				System.out.println("해당 로직 없음");
 			}

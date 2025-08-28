@@ -3,14 +3,16 @@
   <Form id="Form_newBoard" width="1280" height="720" titletext="New Form" background=" #F2CC0C">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Static id="Static00" taborder="0" text="제목" left="372" top="155" width="110" height="40" textAlign="center" background="#DC0630" font="bold 14px 맑은 고딕" borderRadius="5px" color="#ffffff"/>
-        <Edit id="Edit00" taborder="1" left="487" top="155" width="300" height="40"/>
-        <Static id="newBoard_st_writer" taborder="2" text="작성자" left="372" top="217" width="110" height="40" background="#DC0630" font="bold 14px 맑은 고딕" borderRadius="5px" color="#ffffff" textAlign="center"/>
-        <Edit id="newBoard_ed_writer" taborder="3" left="487" top="217" width="300" height="40" rtl=""/>
-        <Static id="newBoard_st_content" taborder="4" text="내용" left="372" top="275" width="110" height="40" background="#DC0630" font="bold 14px 맑은 고딕" borderRadius="5px" color="#ffffff" textAlign="center"/>
-        <TextArea id="newBoard_ta_content" taborder="5" left="487" top="274" width="300" height="200"/>
-        <Button id="Button00" taborder="6" text="등록" left="518" top="514" width="75" height="40" onclick="Button00_onclick" background=" #0A4DA6" borderRadius="10px" font="bold 14px 맑은 고딕" color="#ffffff"/>
-        <Button id="Button00_00" taborder="7" text="취소" left="680" top="514" width="75" height="40" font="bold 14px 맑은 고딕" borderRadius="10px"/>
+        <Static id="Static00" taborder="0" text="제목" left="382" top="210" width="110" height="40" textAlign="center" background="#DC0630" font="bold 14px 맑은 고딕" borderRadius="5px" color="#ffffff"/>
+        <Edit id="Edit00" taborder="1" left="502" top="210" width="300" height="40"/>
+        <Static id="newBoard_st_writer" taborder="2" text="작성자" left="382" top="267" width="110" height="40" background="#DC0630" font="bold 14px 맑은 고딕" borderRadius="5px" color="#ffffff" textAlign="center"/>
+        <Edit id="newBoard_ed_writer" taborder="3" left="502" top="267" width="300" height="40" rtl=""/>
+        <Static id="newBoard_st_content" taborder="4" text="내용" left="382" top="325" width="110" height="40" background="#DC0630" font="bold 14px 맑은 고딕" borderRadius="5px" color="#ffffff" textAlign="center"/>
+        <TextArea id="newBoard_ta_content" taborder="5" left="502" top="324" width="300" height="200"/>
+        <Button id="Button00" taborder="6" text="등록" left="533" top="564" width="75" height="40" onclick="Button00_onclick" background=" #0A4DA6" borderRadius="10px" font="bold 14px 맑은 고딕" color="#ffffff"/>
+        <Button id="Button00_00" taborder="7" text="취소" left="695" top="564" width="75" height="40" font="bold 14px 맑은 고딕" borderRadius="10px" background="#bbbbbb" color="#ffffff" onclick="Button00_00_onclick"/>
+        <Div id="Div00" taborder="8" left="382" top="128" width="420" height="55" background="#74BF04" border="2px solid #0A4DA6" borderRadius="5px"/>
+        <Static id="Static01" taborder="9" text="★ 작성 페이지 ★" left="457" top="125" width="268" height="63" font="bold 25pt/normal &quot;맑은 고딕&quot;" color="black"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -33,9 +35,15 @@ this.fn_callBack = function(svcId, errCD, errMSG){
 		this.alert(this.result_data.getColumn(0, "message"));
 		this.result_data.clearData();
 		
-		this.getOwnerFrame().set_formurl("board::Form_Board.xfdl");
+		this.close();
 	}
-}]]></Script>
+}
+this.Button00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	//목록으로 돌아가기
+	this.close();
+};
+]]></Script>
     <Objects>
       <Dataset id="ds_list">
         <ColumnInfo>

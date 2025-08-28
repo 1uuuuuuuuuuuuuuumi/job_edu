@@ -43,7 +43,7 @@
             obj.set_border("2px solid  #0A4DA6");
             obj.set_borderRadius("5px");
             obj.set_autofittype("col");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"144\"/><Column size=\"318\"/><Column size=\"318\"/><Column size=\"318\"/><Column size=\"318\"/></Columns><Rows><Row size=\"52\" band=\"head\"/><Row size=\"44\"/></Rows><Band id=\"head\"><Cell text=\"순번\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"1\" text=\"제목\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"2\" text=\"작성자\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"3\" text=\"내용\"/><Cell col=\"4\" text=\"작성일자\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\" color=\"black\" textAlign=\"center\" cursor=\"pointer\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"1\" text=\"bind:BOARD_TITLE\" edittype=\"normal\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"2\" text=\"bind:BOARD_WRITER\" edittype=\"normal\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"3\" text=\"bind:BOARD_CONTENT\"/><Cell col=\"4\" text=\"bind:REG_DATE\" edittype=\"date\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"144\"/><Column size=\"309\"/><Column size=\"309\"/><Column size=\"309\"/><Column size=\"309\"/></Columns><Rows><Row size=\"52\" band=\"head\"/><Row size=\"44\"/></Rows><Band id=\"head\"><Cell text=\"순번\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"1\" text=\"제목\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"2\" text=\"작성자\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"3\" text=\"내용\"/><Cell col=\"4\" text=\"작성일자\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\" color=\"black\" textAlign=\"center\" cursor=\"pointer\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"1\" text=\"bind:BOARD_TITLE\" edittype=\"normal\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"2\" text=\"bind:BOARD_WRITER\" edittype=\"normal\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"3\" text=\"bind:BOARD_CONTENT\" edittype=\"normal\"/><Cell col=\"4\" text=\"bind:REG_DATE\" edittype=\"date\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Div("Div00","45","135","1190","71",null,null,null,null,null,null,this);
@@ -123,12 +123,12 @@
             obj.set_borderRadius("10px");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button01","1024","80","100","42",null,null,null,null,null,null,this);
+            obj = new Button("Button01","1022","80","100","42",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("행 추가");
             obj.set_font("bold 20px 맑은 고딕");
-            obj.set_background("#DC0630");
-            obj.set_color("white");
+            obj.set_background("white");
+            obj.set_color("#dc0630");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
@@ -138,6 +138,15 @@
             obj.set_font("bold 20px 맑은 고딕");
             obj.set_background("white");
             obj.set_color("#dc0630");
+            obj.set_borderRadius("5px");
+            this.addChild(obj.name, obj);
+
+            obj = new Button("Button02","910","80","100","42",null,null,null,null,null,null,this);
+            obj.set_taborder("6");
+            obj.set_text("저장");
+            obj.set_background("#DC0630");
+            obj.set_color("white");
+            obj.set_font("bold 20px 맑은 고딕");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
             // Layout Functions
@@ -173,7 +182,7 @@
         };
         
         // User Script
-        this.registerScript("Form_Board.xfdl", function() {
+        this.registerScript("Form_Board_copy0.xfdl", function() {
 
         this.Form_Board_onload = function(obj,e)
         {
@@ -249,31 +258,31 @@
         };
 
         //더블클릭할 때 이벤트
-        this.Grid00_oncelldblclick = function(obj,e)
-        {
-        	var boardIdx = this.ds_list.getColumn(e.row, "BOARD_CODE");
-
-        	var boardIdx2 = this.ds_list.getColumn(this.ds_list.rowposition, "BOARD_CODE");
-
-        	popup = new nexacro.ChildFrame;
-
-        	if(boardIdx != null && boardIdx != '' && boardIdx != undefined){
-
-        		var surl = "board::Form_BoardDetail.xfdl";
-
-        		var param = {
-        			boardIdx : boardIdx2
-        		};
-        	} else {
-        		var surl = "board::Form_newBoard.xfdl";
-        		var param = {};
-        	}
-
-        	popup.init("updatePop", 0, 0, 800, 700, null, null, surl);
-        	popup.set_dragmovetype("all");
-        	popup.set_showtitlebar("상세보기");
-        	popup.showModal(this.getOwnerFrame(), param, this, "fn_popCallback", true);
-        };
+        // this.Grid00_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+        // {
+        // 	var boardIdx = this.ds_list.getColumn(e.row, "BOARD_CODE");
+        //
+        // 	var boardIdx2 = this.ds_list.getColumn(this.ds_list.rowposition, "BOARD_CODE");
+        //
+        // 	popup = new nexacro.ChildFrame;
+        //
+        // 	if(boardIdx != null && boardIdx != '' && boardIdx != undefined){
+        //
+        // 		var surl = "board::Form_BoardDetail.xfdl";
+        //
+        // 		var param = {
+        // 			boardIdx : boardIdx2
+        // 		};
+        // 	} else {
+        // 		var surl = "board::Form_newBoard.xfdl";
+        // 		var param = {};
+        // 	}
+        //
+        // 	popup.init("updatePop", 0, 0, 800, 700, null, null, surl);
+        // 	popup.set_dragmovetype("all");
+        // 	popup.set_showtitlebar("상세보기");
+        // 	popup.showModal(this.getOwnerFrame(), param, this, "fn_popCallback", true);
+        // };
 
         //행추가
         this.Button01_onclick = function(obj,e)
@@ -284,11 +293,26 @@
         //행삭제
         this.Button01_00_onclick = function(obj,e)
         {
-        	this.ds_list.deleteRow(this.Grid00.getSelectedRows());
+        	var row = this.Grid00.getSelectedRows()
 
-        	//this.ds_list.deleteRow()
+        // 	this.ds_list.addColumn("ROW_TYPE", String());
+        // 	this.ds_list.setColumn(row, "ROW_TYPE", "D");
+        	this.ds_list.deleteRow(row);
         };
 
+        //저장
+        this.Button02_onclick = function(obj, e)
+        {
+        		var strSvcID = "saveBoard";		//트랜잭션 아이디
+        		var strURL = "svc::saveBoard.do";	//url controller에서 받을 주소
+        		var strInDatasets = "ds_list=ds_list:U"; //:U가 상태가 변화된 행만 서버에 데이터 전송
+        		var strOutDatasets = ""; //내가 받을 데이터셋
+        		var strArg = "";					//매개변수로 뭐가 들어가는지
+        		var callBack = "fn_callBack";		//콜백기능으로 뭘할건지(콜백:내가 이 함수를 실행했을때 되돌아와서 실행할 함수)
+        		var inAsync = true;					//동기 비동기 설정하는거 (Async:비동기 /sync:비동기)
+
+        		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync); //this.transaction() -> 함수 / 위의내용들을 전부 담기
+        };
 
         });
         
@@ -303,8 +327,9 @@
             this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
             this.Button01.addEventHandler("onclick",this.Button01_onclick,this);
             this.Button01_00.addEventHandler("onclick",this.Button01_00_onclick,this);
+            this.Button02.addEventHandler("onclick",this.Button02_onclick,this);
         };
-        this.loadIncludeScript("Form_Board.xfdl");
+        this.loadIncludeScript("Form_Board_copy0.xfdl");
         this.loadPreloadList();
         
         // Remove Reference

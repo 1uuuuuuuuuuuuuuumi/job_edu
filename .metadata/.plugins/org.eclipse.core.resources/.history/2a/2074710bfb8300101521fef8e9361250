@@ -142,15 +142,15 @@ public class BoardController {
 		for(int i = 0; i < param.size(); i++) {
 			//2. 리스트내의 한 행을 출력하기위해서 .get(i) (배열은 param[i]가 한 행 출력)
 			System.out.println(param.get(i));
-			//3. 컬럼 접근 후 찍히는거 확인
+			
 			String rowType = param.get(i).get("DataSetRowType").toString();
 			
 			if(rowType.equals("1")) {
 				boardService.insertNewBoard(param.get(i));
 			} else if(rowType.equals("2")) {
-				boardService.updateBoard(param.get(i));
+				System.out.println("수정로직");
 			} else if(rowType.equals("3")) {
-				boardService.deleteBoard(param.get(i));
+				System.out.println("삭제로직");
 			} else {
 				System.out.println("해당 로직 없음");
 			}
