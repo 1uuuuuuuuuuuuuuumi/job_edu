@@ -89,15 +89,8 @@
             obj.set_color("#ffffff");
             this.addChild(obj.name, obj);
 
-            obj = new Div("Div00","382","128","420","55",null,null,null,null,null,null,this);
+            obj = new Static("Static01","486","90","268","63",null,null,null,null,null,null,this);
             obj.set_taborder("8");
-            obj.set_background("#74BF04");
-            obj.set_border("2px solid #0A4DA6");
-            obj.set_borderRadius("5px");
-            this.addChild(obj.name, obj);
-
-            obj = new Static("Static01","457","125","268","63",null,null,null,null,null,null,this);
-            obj.set_taborder("9");
             obj.set_text("★ 작성 페이지 ★");
             obj.set_font("bold 25pt/normal \"맑은 고딕\"");
             obj.set_color("black");
@@ -168,6 +161,7 @@
         {
             this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
             this.Button00_00.addEventHandler("onclick",this.Button00_00_onclick,this);
+            this.Static01.addEventHandler("onclick",this.Static01_onclick,this);
         };
         this.loadIncludeScript("Form_newBoard.xfdl");
         this.loadPreloadList();
