@@ -28,7 +28,7 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("join_st_id","398","144","110","32",null,null,null,null,null,null,this);
+            obj = new Static("join_st_id","399","147","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_text("아이디");
             obj.set_background("#DC0630");
@@ -38,14 +38,14 @@
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("join_ed_id","513","145","307","31",null,null,null,null,null,null,this);
+            obj = new Edit("join_ed_id","524","147","307","40",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_font("13px 맑은 고딕");
             obj.set_padding("5px");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("join_st_pw","398","193","110","32",null,null,null,null,null,null,this);
+            obj = new Static("join_st_pw","399","196","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_text("패스워드");
             obj.set_background("#DC0630");
@@ -55,7 +55,7 @@
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("join_ed_pw","513","194","307","31",null,null,null,null,null,null,this);
+            obj = new Edit("join_ed_pw","524","196","307","40",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_password("true");
             obj.set_font("13px 맑은 고딕");
@@ -63,7 +63,7 @@
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("join_st_name","398","239","110","32",null,null,null,null,null,null,this);
+            obj = new Static("join_st_name","399","242","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("이름");
             obj.set_background("#DC0630");
@@ -73,14 +73,14 @@
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("join_ed_name","513","240","307","31",null,null,null,null,null,null,this);
+            obj = new Edit("join_ed_name","524","242","307","40",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             obj.set_font("13px 맑은 고딕");
             obj.set_padding("5px");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("join_st_email","398","288","110","32",null,null,null,null,null,null,this);
+            obj = new Static("join_st_email","399","291","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("6");
             obj.set_text("이메일");
             obj.set_background("#DC0630");
@@ -90,14 +90,14 @@
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("join_ed_email","513","289","307","31",null,null,null,null,null,null,this);
+            obj = new Edit("join_ed_email","524","291","307","40",null,null,null,null,null,null,this);
             obj.set_taborder("7");
             obj.set_font("13px 맑은 고딕");
             obj.set_padding("5px");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("join_st_emailChk","398","337","110","32",null,null,null,null,null,null,this);
+            obj = new Static("join_st_emailChk","399","340","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("8");
             obj.set_text("인증번호");
             obj.set_background("#DC0630");
@@ -107,14 +107,14 @@
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("join_ed_emailChk","513","337","307","31",null,null,null,null,null,null,this);
+            obj = new Edit("join_ed_emailChk","524","340","307","40",null,null,null,null,null,null,this);
             obj.set_taborder("9");
             obj.set_font("13px 맑은 고딕");
             obj.set_padding("5px");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("join_st_addr","398","383","110","32",null,null,null,null,null,null,this);
+            obj = new Static("join_st_addr","399","386","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("10");
             obj.set_text("주소");
             obj.set_background("#DC0630");
@@ -124,14 +124,14 @@
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("join_ed_addr","513","383","307","31",null,null,null,null,null,null,this);
+            obj = new Edit("join_ed_addr","524","386","307","40",null,null,null,null,null,null,this);
             obj.set_taborder("11");
             obj.set_font("13px 맑은 고딕");
             obj.set_padding("5px");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Static("join_st_recommend","399","430","110","32",null,null,null,null,null,null,this);
+            obj = new Static("join_st_recommend","399","433","110","40",null,null,null,null,null,null,this);
             obj.set_taborder("12");
             obj.set_text("추천인");
             obj.set_background("#DC0630");
@@ -141,14 +141,14 @@
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("join_ed_recommend","514","430","307","31",null,null,null,null,null,null,this);
+            obj = new Edit("join_ed_recommend","524","433","307","40",null,null,null,null,null,null,this);
             obj.set_taborder("13");
             obj.set_font("13px 맑은 고딕");
             obj.set_padding("5px");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Button("join_btn_idChk","831","144","108","32",null,null,null,null,null,null,this);
+            obj = new Button("join_btn_idChk","851","147","108","40",null,null,null,null,null,null,this);
             obj.set_taborder("14");
             obj.set_text("중복체크");
             obj.set_borderRadius("10px");
@@ -158,7 +158,7 @@
             obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Button("join_btn_email","830","287","108","32",null,null,null,null,null,null,this);
+            obj = new Button("join_btn_email","850","291","108","40",null,null,null,null,null,null,this);
             obj.set_taborder("15");
             obj.set_text("인증");
             obj.set_borderRadius("8px");
@@ -167,7 +167,7 @@
             obj.set_font("bold 14px 맑은 고딕");
             this.addChild(obj.name, obj);
 
-            obj = new Button("join_btn_emailChk","829","335","108","32",null,null,null,null,null,null,this);
+            obj = new Button("join_btn_emailChk","849","340","108","40",null,null,null,null,null,null,this);
             obj.set_taborder("16");
             obj.set_text("확인");
             obj.set_borderRadius("8px");
@@ -176,7 +176,7 @@
             obj.set_color("#ffffff");
             this.addChild(obj.name, obj);
 
-            obj = new Button("join_btn_submit","498","534","108","32",null,null,null,null,null,null,this);
+            obj = new Button("join_btn_submit","498","537","108","40",null,null,null,null,null,null,this);
             obj.set_taborder("17");
             obj.set_text("회원가입");
             obj.set_borderRadius("10px");
@@ -185,7 +185,7 @@
             obj.set_font("bold 14px 맑은 고딕");
             this.addChild(obj.name, obj);
 
-            obj = new Button("join_btn_cancel","656","534","108","32",null,null,null,null,null,null,this);
+            obj = new Button("join_btn_cancel","656","537","108","40",null,null,null,null,null,null,this);
             obj.set_taborder("18");
             obj.set_text("취소");
             obj.set_borderRadius("10px");

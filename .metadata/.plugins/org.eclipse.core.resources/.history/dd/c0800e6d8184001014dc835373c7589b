@@ -1,0 +1,25 @@
+package sample.web;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.uiadapter17.spring.core.data.NexacroResult;
+
+import sample.service.ProductService;
+
+@Controller
+public class ProductController {
+
+	@Autowired
+	private ProductService productService;
+	
+	@RequestMapping("/categoryList.do")
+	public NexacroResult categoryList() {
+		
+		productService.categoryList();
+		
+		return null;
+	}
+	
+}

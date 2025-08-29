@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sample.mapper.ProductMapper">
+	
+	<select id="categoryList" resultType="java.util.HashMap">
+		SELECT CATE_CODE
+			FROM CATEGORY
+	</select>
+	
+	<select id="productList" parameterType="String" resultType="java.util.HashMap">
+		SELECT P.PRODUCT_CODE
+			, P.PRODUCT_NAME
+			, P.CATE_CODE
+			, C.CATE_NAME
+			, P.PRODUCT_PRICE
+			, P.PRODUCT_SALE_RATE
+			, P.PRODUCT_STOCK
+			, P.PRODUCT_CONTENT
+		FROM PRODUCT P
+		JOIN CATEGORY C 
+		ON P.CATE_CODE = C.CATE_CODE
+	</select>
+	
+</mapper>

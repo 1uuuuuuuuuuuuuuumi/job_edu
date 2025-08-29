@@ -1,0 +1,18 @@
+package sample.service.impl;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import sample.service.ProductService;
+
+@Service
+public class ProductServiceImpl implements ProductService {
+
+	@Override
+	public List<HashMap<String, Object>> categoryList() {
+		return productMapper.categoryList;
+	}
+
+}

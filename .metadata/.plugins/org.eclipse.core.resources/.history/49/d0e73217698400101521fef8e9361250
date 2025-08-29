@@ -1,0 +1,164 @@
+package sample.web;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.uiadapter17.spring.core.annotation.ParamDataSet;
+import com.nexacro.uiadapter17.spring.core.data.NexacroResult;
+
+import sample.service.BoardService;
+
+@Controller
+public class BoardController {
+
+	@Autowired
+	private BoardService boardService;
+	
+	@RequestMapping(value="/readBoardList.do")
+	public NexacroResult readBoardList() {
+		
+		NexacroResult result = new NexacroResult();
+		
+		List<HashMap<String, Object>> resultData = boardService.readBoardList();
+		
+		if(resultData != null) {
+			result.addDataSet("ds_list", resultData);
+		}
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/searchBoardList.do")
+	public NexacroResult searchBoardList(@ParamDataSet(name="ds_search", required=false) Map<String, Object> param) {
+		
+		NexacroResult result = new NexacroResult();
+		
+		System.out.println(param);
+		
+		List<HashMap<String, Object>> resultData = boardService.searchBoardList(param);
+		
+		result.addDataSet("ds_list", resultData);
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/getBoard.do")
+	public NexacroResult getBoard(@ParamDataSet(name="ds_search", required=false) Map<String, Object> param) {
+		
+		System.out.println(param);
+		
+		HashMap<String, Object> resultData = boardService.getBoard(param);
+		
+		NexacroResult result = new NexacroResult();
+		
+		result.addDataSet("ds_board", resultData);
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/insertNewBoard.do")
+	public NexacroResult insertNewBoard(@ParamDataSet(name="ds_list", required=false) Map<String, Object> param) {
+		
+		System.out.println(param);
+		
+		NexacroResult result = new NexacroResult();
+							
+		int insertResult = boardService.insertNewBoard(param);
+		
+		HashMap<String, Object> resultData = new HashMap<String, Object>();
+		
+		if(insertResult == 1) {
+			resultData.put("message", "게시물 등록이 완료되었습니다.");
+		} else {
+			resultData.put("message", "게시물 등록오류!");
+		}
+		
+		resultData.put("result_value", insertResult);
+		
+		result.addDataSet("result_data", resultData);
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/updateBoard.do")
+	public NexacroResult updateBoard(@ParamDataSet(name="ds_board", required=false) Map<String, Object> param) {
+		
+		NexacroResult result = new NexacroResult();
+
+		System.out.println(param);
+		
+		int updateResult = boardService.updateBoard(param);
+		
+		HashMap<String, Object> resultData = new HashMap<String, Object>();
+		
+		if(updateResult == 1) {
+			resultData.put("message", "수정완료");
+			
+			
+		} else {
+			resultData.put("message", "수정오류");
+			
+		}
+		
+		resultData.put("result_value", updateResult);
+		
+		result.addDataSet("result_data", resultData);
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/deleteBoard.do")
+	public NexacroResult deleteBoard(@ParamDataSet(name="ds_board", required=false) Map<String, Object> param) {
+		NexacroResult result = new NexacroResult();
+		
+		System.out.println(param);
+		
+		int deleteResult = boardService.deleteBoard(param);
+		
+		HashMap<String, Object> resultData = new HashMap<String, Object>();
+		
+		if(deleteResult == 1) {
+			resultData.put("message", "삭제완료");
+		} else {
+			resultData.put("message", "삭제오류");
+		}
+		
+		resultData.put("result_value", deleteResult);
+		
+		result.addDataSet("result_data", resultData);
+		
+		return result;
+	}
+	
+	@RequestMapping(value="/saveBoard.do")
+	public NexacroResult saveBoard(@ParamDataSet(name="ds_list", required=false) List<Map<String, Object>> param) {
+
+		//1. 리스트보이면(=데이터를 여러개품고있다고생각하기) 무조건 반복문돌리기
+		for(int i = 0; i < param.size(); i++) {
+			//2. 리스트내의 한 행을 출력하기위해서 .get(i) (배열은 param[i]가 한 행 출력)
+			System.out.println(param.get(i));
+			//3. 컬럼 접근 후 찍히는거 확인
+			String rowType = param.get(i).get("DataSetRowType").toString();
+			
+			if(rowType.equals("1")) {
+				boardService.insertNewBoard(param.get(i));
+			} else if(rowType.equals("2")) {
+				boardService.updateBoard(param.get(i));
+			} else if(rowType.equals("3")) {
+				boardService.deleteBoard(param.get(i));
+			} else {
+				System.out.println("해당 로직 없음");
+			}
+			
+		}
+		
+		return null;
+	}
+	
+	
+}

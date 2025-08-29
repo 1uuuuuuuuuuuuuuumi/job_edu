@@ -1,0 +1,20 @@
+package sample.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.uiadapter17.spring.core.annotation.ParamDataSet;
+import com.nexacro.uiadapter17.spring.core.data.NexacroResult;
+
+@Controller
+public class ProductController {
+
+	@RequestMapping(value="/categoryList.do")
+	public NexacroResult categoryList() {
+		
+		
+		
+		return null;
+	}
+	
+}
