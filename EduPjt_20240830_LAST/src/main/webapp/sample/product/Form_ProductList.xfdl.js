@@ -213,7 +213,7 @@
 
         	if(productIdx != null && productIdx != '' && productIdx != undefined){
 
-        		var surl = "product::Form_ProductPop.xfdl";
+        		var surl = "product::Form_UpdateProduct.xfdl";
 
         		var param = {
         			productIdx : productIdx2
@@ -235,6 +235,7 @@
         this.on_initEvent = function()
         {
             this.addEventHandler("onload",this.Form_ProductList_onload,this);
+            this.addEventHandler("onsetfocus",this.Form_ProductList_onload,this);
             this.Div00.form.grid_category.addEventHandler("oncellclick",this.Div00_Grid00_oncellclick,this);
             this.Div00.form.Combo00.addEventHandler("onitemchanged",this.Div00_Combo00_onitemchanged,this);
             this.Div00.form.grid_product.addEventHandler("oncelldblclick",this.Div00_grid_product_oncelldblclick,this);

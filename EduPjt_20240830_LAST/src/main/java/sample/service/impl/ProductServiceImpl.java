@@ -2,6 +2,7 @@ package sample.service.impl;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,10 +23,17 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<HashMap<String, Object>> productList(String cateCode) {
-		
-		
-		
 		return productMapper.productList(cateCode);
+	}
+
+	@Override
+	public HashMap<String, Object> getProduct(Map<String, Object> param) {
+		return productMapper.getProduct(param);
+	}
+
+	@Override
+	public int saveProduct(Map<String, Object> param) {
+		return productMapper.saveProduct(param);
 	}
 
 }

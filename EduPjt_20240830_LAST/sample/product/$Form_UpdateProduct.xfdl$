@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_UpdateProduct" width="1280" height="720" titletext="New Form" onload="Form_UpdateProduct_onload">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Div id="Div00" taborder="0" left="348" top="30" width="585" height="660" background="lightgray" borderRadius="10px">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="카테고리명" left="78" top="52" width="150" height="60" font="bold 20px 맑은 고딕" textAlign="left"/>
+              <Static id="Static01" taborder="1" text="상품명" left="118" top="115" width="150" height="60" font="bold 20px 맑은 고딕" textAlign="left"/>
+              <Static id="Static02" taborder="2" text="재고" left="134" top="230" width="150" height="72" font="bold 20px 맑은 고딕" textAlign="left"/>
+              <Static id="Static03" taborder="3" text="설명" left="136" top="293" width="150" height="76" font="bold 20px 맑은 고딕" textAlign="left"/>
+              <Edit id="Edit00" taborder="4" left="195" top="58" width="317" height="47" borderRadius="5px" onchanged="Div00_Edit00_onchanged"/>
+              <Edit id="Edit01" taborder="5" left="195" top="120" width="317" height="47" borderRadius="5px"/>
+              <Edit id="Edit02" taborder="6" left="195" top="242" width="317" height="47" borderRadius="5px"/>
+              <TextArea id="TextArea00" taborder="7" left="195" top="304" width="317" height="186" borderRadius="5px"/>
+              <Button id="Button00" taborder="8" text="저장" left="105" top="564" width="96" height="46" font="bold 17px 맑은 고딕" borderRadius="5px" onclick="Div00_Button00_onclick"/>
+              <Button id="Button00_00" taborder="9" text="삭제" left="263" top="564" width="96" height="46" font="bold 17px 맑은 고딕" borderRadius="5px"/>
+              <Button id="Button00_01" taborder="10" text="취소" left="421" top="564" width="96" height="46" font="bold 17px 맑은 고딕" borderRadius="5px" onclick="Div00_Button00_01_onclick"/>
+              <Edit id="Edit01_00" taborder="11" left="195" top="180" width="317" height="47" borderRadius="5px"/>
+              <Static id="Static01_00" taborder="12" text="가격" left="134" top="175" width="150" height="60" font="bold 20px 맑은 고딕" textAlign="left"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_product">
+        <ColumnInfo>
+          <Column id="PRODUCT_CODE" type="INT" size="256"/>
+          <Column id="PRODUCT_NAME" type="STRING" size="256"/>
+          <Column id="CATE_CODE" type="STRING" size="256"/>
+          <Column id="PRODUCT_PRICE" type="INT" size="256"/>
+          <Column id="PRODUCT_SALE_RATE" type="INT" size="256"/>
+          <Column id="PRODUCT_STOCK" type="INT" size="256"/>
+          <Column id="PRODUCT_CONTENT" type="STRING" size="256"/>
+          <Column id="CATE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_search">
+        <ColumnInfo>
+          <Column id="PRODUCT_CODE" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_response">
+        <ColumnInfo>
+          <Column id="message" type="STRING" size="256"/>
+          <Column id="result_value" type="INT" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.Edit00" propid="value" datasetid="ds_product" columnid="PRODUCT_NAME"/>
+      <BindItem id="item1" compid="Div00.form.Edit01" propid="value" datasetid="ds_product" columnid="PRODUCT_NAME"/>
+      <BindItem id="item2" compid="Div00.form.Edit01_00" propid="value" datasetid="ds_product" columnid="PRODUCT_PRICE"/>
+      <BindItem id="item3" compid="Div00.form.Edit02" propid="value" datasetid="ds_product" columnid="PRODUCT_STOCK"/>
+      <BindItem id="item4" compid="Div00.form.TextArea00" propid="value" datasetid="ds_product" columnid="PRODUCT_CONTENT"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+this.Form_UpdateProduct_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var productCode = this.parent.productIdx;
+	
+	trace(productCode);
+	
+	this.ds_search.setColumn(0, "PRODUCT_CODE", productCode);
+	
+	this.fn_search();
+};
+
+this.fn_search = function(){
+		var strSvcID = "getProduct";		//트랜잭션 아이디
+		var strURL = "svc::getProduct.do";	//url controller에서 받을 주소
+		var strInDatasets = "ds_search=ds_search"; //내가 던질 데이터셋
+		var strOutDatasets = "ds_product=ds_product"; //내가 받을 데이터셋
+		var strArg = "";					//매개변수로 뭐가 들어가는지
+		var callBack = "fn_callBack";		//콜백기능으로 뭘할건지(콜백:내가 이 함수를 실행했을때 되돌아와서 실행할 함수)
+		var inAsync = true;					//동기 비동기 설정하는거 (Async:비동기 /sync:비동기)
+
+		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync); //this.transaction() -> 함수 / 위의내용들을 전부 담기
+}
+this.Div00_Button00_01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
+};
+
+this.fn_save = function(){
+		var strSvcID = "saveProduct";		//트랜잭션 아이디
+		var strURL = "svc::saveProduct.do";	//url controller에서 받을 주소
+		var strInDatasets = "ds_product=ds_product"; //내가 던질 데이터셋
+		var strOutDatasets = "ds_response=ds_response"; //내가 받을 데이터셋
+		var strArg = "";					//매개변수로 뭐가 들어가는지
+		var callBack = "fn_callBack";		//콜백기능으로 뭘할건지(콜백:내가 이 함수를 실행했을때 되돌아와서 실행할 함수)
+		var inAsync = true;					//동기 비동기 설정하는거 (Async:비동기 /sync:비동기)
+
+		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync); //this.transaction() -> 함수 / 위의내용들을 전부 담기
+}
+
+this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fn_save();
+};
+
+this.fn_callBack = function(svcId, errCd, errMsg){
+
+	switch(svcId) {
+	case "saveProduct":
+	
+		var message = this.ds_response.getColumn(0, "message");
+		var result_value = this.ds_response.getColumn(0, "result_value");
+		
+		if(result_value === 1){
+			this.alert(message);
+			this.close();
+		} else {
+			this.alert(message);
+		}	
+	
+		break;
+
+	default:
+	
+	}
+};]]></Script>
+  </Form>
+</FDL>

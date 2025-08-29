@@ -2,6 +2,7 @@ package sample.mapper;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import egovframework.rte.psl.dataaccess.mapper.Mapper;
 
@@ -10,4 +11,9 @@ public interface ProductMapper {
 	List<HashMap<String, Object>> categoryList();
 
 	List<HashMap<String, Object>> productList(String cateCode);
+
+	HashMap<String, Object> getProduct(Map<String, Object> param);
+
+	int saveProduct(Map<String, Object> param);
+
 }

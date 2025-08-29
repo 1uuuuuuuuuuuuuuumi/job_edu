@@ -1,0 +1,13 @@
+package sample.mapper;
+
+import java.util.HashMap;
+import java.util.List;
+
+import egovframework.rte.psl.dataaccess.mapper.Mapper;
+
+@Mapper("ProductMapper")
+public interface ProductMapper {
+	List<HashMap<String, Object>> categoryList();
+
+	List<HashMap<String, Object>> productList(String cateCode);
+}
