@@ -108,15 +108,20 @@ this.fn_save = function(){
 this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.fn_save();
+	
 };
 
 this.fn_callBack = function(svcId, errCd, errMsg){
+
+	 trace("CALLBACK: " + svcId + ", errCd=" + errCd);
 
 	switch(svcId) {
 	case "saveProduct":
 	
 		var message = this.ds_response.getColumn(0, "message");
 		var result_value = this.ds_response.getColumn(0, "result_value");
+		
+		 trace("SAVE CALLBACK: message=" + message + ", result=" + result_value);
 		
 		if(result_value === 1){
 			this.alert(message);
@@ -130,6 +135,9 @@ this.fn_callBack = function(svcId, errCd, errMsg){
 	default:
 	
 	}
-};]]></Script>
+};
+
+//삭제
+]]></Script>
   </Form>
 </FDL>

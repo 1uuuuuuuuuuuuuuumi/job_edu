@@ -135,6 +135,7 @@ public class BoardController {
 		return result;
 	}
 	
+	//저장
 	@RequestMapping(value="/saveBoard.do")
 	public NexacroResult saveBoard(@ParamDataSet(name="ds_list", required=false) List<Map<String, Object>> param) {
 

@@ -1,0 +1,8 @@
+package sample.mapper;
+
+import egovframework.rte.psl.dataaccess.mapper.Mapper;
+
+@Mapper("DeptMapper")
+public interface DeptMapper {
+	
+}

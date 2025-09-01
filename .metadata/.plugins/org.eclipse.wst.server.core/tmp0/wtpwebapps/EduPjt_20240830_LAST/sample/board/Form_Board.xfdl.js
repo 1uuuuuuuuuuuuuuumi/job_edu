@@ -290,6 +290,11 @@
         };
 
 
+        this.Div00_board_search_ed_title_onchanged = function(obj,e)
+        {
+
+        };
+
         });
         
         // Regist UI Components Event
@@ -299,6 +304,7 @@
             this.addEventHandler("onsetfocus",this.Form_Board_onload,this);
             this.Grid00.addEventHandler("oncellclick",this.Grid00_oncellclick,this);
             this.Grid00.addEventHandler("oncelldblclick",this.Grid00_oncelldblclick,this);
+            this.Div00.form.board_search_ed_title.addEventHandler("onchanged",this.Div00_board_search_ed_title_onchanged,this);
             this.Div00.form.Button00.addEventHandler("onclick",this.Div00_Button00_onclick,this);
             this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
             this.Button01.addEventHandler("onclick",this.Button01_onclick,this);

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sample.mapper.DeptMapper">
+	<select id="getDept" resultType="java.util.HashMap">
+		SELECT dept_dc
+			, dept_nm
+			, reg_dt
+			FORM DEPT
+	</select>
+</mapper>

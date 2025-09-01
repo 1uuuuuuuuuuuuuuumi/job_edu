@@ -1,0 +1,12 @@
+package sample.service;
+
+import java.util.HashMap;
+import java.util.List;
+
+public interface DeptService {
+	List<HashMap<String, Object>> getDept();
+
+	List<HashMap<String, Object>> getSubDept();
+
+	List<HashMap<String, Object>> getUsers();
+}

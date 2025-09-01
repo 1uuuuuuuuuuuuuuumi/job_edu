@@ -12,3 +12,9 @@
 2025-08-29 11:21:05,898 [Worker-662: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for EduPjt_20240830_LAST
 2025-08-29 11:21:06,438 [Worker-678: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of EduPjt_20240830_LAST
 2025-08-29 11:21:06,438 [Worker-678: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for EduPjt_20240830_LAST
+2025-09-01 08:57:18,215 [Worker-1: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for EduPjt_20240830_LAST
+2025-09-01 08:57:19,089 [Worker-32: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of EduPjt_20240830_LAST
+2025-09-01 08:57:19,092 [Worker-32: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for EduPjt_20240830_LAST
+2025-09-01 09:03:34,633 [Worker-38: Updating Maven Project] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Cleaning filtered folder for EduPjt_20240830_LAST
+2025-09-01 09:03:35,168 [Worker-33: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Changed resources require a complete clean of filtered resources of EduPjt_20240830_LAST
+2025-09-01 09:03:35,169 [Worker-33: Building] INFO  o.e.m.w.i.f.ResourceFilteringBuildParticipant - Executing resource filtering for EduPjt_20240830_LAST

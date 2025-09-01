@@ -199,15 +199,20 @@
         this.Div00_Button00_onclick = function(obj,e)
         {
         	this.fn_save();
+
         };
 
         this.fn_callBack = function(svcId, errCd, errMsg){
+
+        	 trace("CALLBACK: " + svcId + ", errCd=" + errCd);
 
         	switch(svcId) {
         	case "saveProduct":
 
         		var message = this.ds_response.getColumn(0, "message");
         		var result_value = this.ds_response.getColumn(0, "result_value");
+
+        		 trace("SAVE CALLBACK: message=" + message + ", result=" + result_value);
 
         		if(result_value === 1){
         			this.alert(message);
@@ -222,6 +227,9 @@
 
         	}
         };
+
+        //삭제
+
         });
         
         // Regist UI Components Event
