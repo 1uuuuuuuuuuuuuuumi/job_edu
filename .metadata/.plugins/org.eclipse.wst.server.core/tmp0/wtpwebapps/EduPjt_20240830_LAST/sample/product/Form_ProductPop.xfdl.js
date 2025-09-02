@@ -87,6 +87,11 @@
             obj.set_font("bold 17px 맑은 고딕");
             obj.set_borderRadius("5px");
             this.Div00.addChild(obj.name, obj);
+
+            obj = new Button("Button01","41","476","106","53",null,null,null,null,null,null,this.Div00.form);
+            obj.set_taborder("10");
+            obj.set_text("부모로 데이터");
+            this.Div00.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
             obj = new Layout("default","",1280,720,this,function(p){});
@@ -129,6 +134,7 @@
         {
             this.addEventHandler("onload",this.Form_ProductPop_onload,this);
             this.Div00.form.Edit00.addEventHandler("onchanged",this.Div00_Edit00_onchanged,this);
+            this.Div00.form.Button01.addEventHandler("onclick",this.Div00_Button01_onclick,this);
         };
         this.loadIncludeScript("Form_ProductPop.xfdl");
         this.loadPreloadList();

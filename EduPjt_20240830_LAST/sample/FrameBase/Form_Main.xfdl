@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Main" width="1280" height="720" titletext="New Form" onload="Form_Main_onload" background=" #F2CC0C">
+  <Form id="Form_Main" width="1080" height="720" titletext="New Form" onload="Form_Main_onload" background=" #F2CC0C">
     <Layouts>
-      <Layout height="720" mobileorientation="landscape" width="1280">
-        <Static id="Static00" taborder="0" text="아이디" left="416" top="242" width="120" height="50" onclick="Static00_onclick" background="#DC0630" borderRadius="8px" textAlign="center" font="bold 23px 맑은 고딕" color="#fff" verticalAlign="middle"/>
-        <Static id="Static00_00" taborder="1" text="비밀번호" left="416" top="324" width="120" height="50" onclick="Static00_onclick" background="#DC0630" borderRadius="8px" textAlign="center" font="bold 23px 맑은 고딕" color="#fff"/>
-        <Edit id="ed_id" taborder="2" left="546" top="247" width="300" height="40" onchanged="Edit00_onchanged"/>
-        <Edit id="ed_pw" taborder="3" left="546" top="329" width="300" height="40"/>
-        <Button id="Button00" taborder="4" text="로그인" left="565" top="450" width="145" height="50" borderRadius="12px" onclick="Button00_onclick" font="bold 23px 맑은 고딕" color="#ffffff" background=" #0A4DA6"/>
+      <Layout height="720" mobileorientation="landscape" width="1080">
+        <Static id="Static00" taborder="0" text="아이디" left="286" top="242" width="120" height="50" onclick="Static00_onclick" background="#DC0630" borderRadius="8px" textAlign="center" font="bold 23px 맑은 고딕" color="#fff" verticalAlign="middle"/>
+        <Static id="Static00_00" taborder="1" text="비밀번호" left="286" top="324" width="120" height="50" onclick="Static00_onclick" background="#DC0630" borderRadius="8px" textAlign="center" font="bold 23px 맑은 고딕" color="#fff"/>
+        <Edit id="ed_id" taborder="2" left="416" top="247" width="300" height="40" onchanged="Edit00_onchanged"/>
+        <Edit id="ed_pw" taborder="3" left="416" top="329" width="300" height="40" password="true"/>
+        <Button id="Button00" taborder="4" text="로그인" left="435" top="450" width="145" height="50" borderRadius="12px" onclick="Button00_onclick" font="bold 23px 맑은 고딕" color="#ffffff" background=" #0A4DA6"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -67,9 +67,16 @@ this.fn_callBack = function(id, errCode, errMsg){
 			//0번째 행의 "user_id"컬럼에 3번째 매개변수를 저장하겠따.
 			glbAd.gds_userInfo.setColumn(0, "user_id", userId);
 			
+			trace(userId);
+			
 			this.ds_login.clear();
 			
-			this.getOwnerFrame().set_formurl("board::Form_Board.xfdl");
+			var objApp = nexacro.getApplication();
+			objApp.mainframe.VFrameSet00.TopFrame.set_visible(true);
+			objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_visible(true);
+			objApp.mainframe.VFrameSet00.HFrameSet00.WorkFrame.set_formurl("board::Form_Board.xfdl");
+			
+			//this.getOwnerFrame().set_formurl("board::Form_Board.xfdl");
 			
 		} else {
 			this.alert("아이디 또는 비밀번호가 올바르지 않습니다.");

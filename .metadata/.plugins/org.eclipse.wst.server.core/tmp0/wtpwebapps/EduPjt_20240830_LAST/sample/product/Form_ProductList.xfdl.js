@@ -25,6 +25,11 @@
             obj = new Dataset("ds_product", this);
             obj._setContents("<ColumnInfo><Column id=\"PRODUCT_CODE\" type=\"INT\" size=\"256\"/><Column id=\"PRODUCT_NAME\" type=\"STRING\" size=\"256\"/><Column id=\"CATE_CODE\" type=\"STRING\" size=\"256\"/><Column id=\"PRODUCT_PRICE\" type=\"INT\" size=\"256\"/><Column id=\"PRODUCT_SALE_RATE\" type=\"INT\" size=\"256\"/><Column id=\"PRODUCT_STOCK\" type=\"INT\" size=\"256\"/><Column id=\"PRODUCT_CONTENT\" type=\"STRING\" size=\"256\"/><Column id=\"CATE_NAME\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
+
+
+            obj = new Dataset("ds_combo", this);
+            obj._setContents("<ColumnInfo><Column id=\"CATE_CODE\" type=\"STRING\" size=\"256\"/><Column id=\"CATE_NAME\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
+            this.addChild(obj.name, obj);
             
             // UI Components Initialize
             obj = new Div("Div00","87","39","1109","650",null,null,null,null,null,null,this);
@@ -51,7 +56,7 @@
             obj = new Combo("Combo00","206","50","195","37",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("2");
             obj.set_borderRadius("5px");
-            obj.set_innerdataset("ds_category");
+            obj.set_innerdataset("ds_combo");
             obj.set_datacolumn("CATE_CODE");
             obj.set_text("");
             obj.set_index("-1");
@@ -110,6 +115,10 @@
             obj = new BindItem("item3","Div00.form.grid_category","binddataset","ds_category","");
             this.addChild(obj.name, obj);
             obj.bind();
+
+            obj = new BindItem("item1","Div00.form.Combo00","index","ds_combo","");
+            this.addChild(obj.name, obj);
+            obj.bind();
             
             // TriggerItem Information
 
@@ -135,7 +144,7 @@
         		var strSvcID = "categoryList";
         		var strURL = "svc::categoryList.do";
         		var strInDatasets = "";
-        		var strOutDatasets = "ds_category=ds_category";
+        		var strOutDatasets = "ds_category=ds_category ds_combo=ds_category";
         		var strArg = "";
         		var callBack = "fn_callBack";
         		var inAsync = true;
@@ -144,12 +153,27 @@
         }
 
         this.fn_callBack = function(svcId, errCD, errMSG){
-        	if(svcId === "categoryList"){
 
-        	}
-        	else if(svcId === "productList"){
+        	switch(svcId) {
+        	case "productList":
+        		break;
+        	case "categoryList" :
 
+        		case "categoryList" :
+            trace("Before addRow: " + this.ds_combo.rowcount);
+
+            var addRow = this.ds_combo.insertRow(0);
+            this.ds_combo.setColumn(addRow, "CATE_NAME", "- 전체 -");
+            this.ds_combo.setColumn(addRow, "CATE_CODE", "- 전체 -");
+
+            this.Div00.form.Combo00.set_value("- 전체 -");
+            break;
+
+
+        		break;
+        	default:
         	}
+
         };
 
         this.fn_productList = function(cate_code){
@@ -189,11 +213,6 @@
 
 
 
-        this.Div00_Combo00_onitemchanged = function(obj,e)
-        {
-        	this.Div00.form.Combo00.set_value("- 전체 -");
-        };
-
         this.Div00_Button00_00_00_00_onclick = function(obj,e)
         {
         	var row = this.ds_product.rowposition;
@@ -223,12 +242,29 @@
         		var param = {};
         	}
 
+        	//첫번째줄의 "productPop"는 네번째줄의"fn_popCallback"에 던져지는 svcID
         	popup.init("productPop", 0, 0, 800, 700, null, null, surl);
         	popup.set_dragmovetype("all");
         	popup.set_showtitlebar("상세보기");
         	popup.showModal(this.getOwnerFrame(), param, this, "fn_popCallback", true);
         };
 
+        //부모로 데이터
+        this.fn_popCallback = function(svcID, strVal){
+        	switch(svcID) {
+        		case "productPop":
+        			//넥사크로에서 지원하는 String함수
+        			//indexOf() : 소괄호안의 문자열에 해당하는 값을 찾아주는 함수
+        			if(String(strVal).indexOf("ok:::") > -1){
+        				var rtnArr = String(strVal).replace("ok:::", "").split(",");
+
+        				trace(rtnArr[0]);
+
+        			}
+        		break;
+        	default:
+        	}
+        }
         });
         
         // Regist UI Components Event

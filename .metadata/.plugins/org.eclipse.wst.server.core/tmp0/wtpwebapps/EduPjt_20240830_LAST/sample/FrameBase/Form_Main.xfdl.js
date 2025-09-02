@@ -14,7 +14,7 @@
             this.set_background(" #F2CC0C");
             if (Form == this.constructor)
             {
-                this._setFormPosition(1280,720);
+                this._setFormPosition(1080,720);
             }
             
             // Object(Dataset, ExcelExportObject) Initialize
@@ -28,7 +28,7 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("Static00","416","242","120","50",null,null,null,null,null,null,this);
+            obj = new Static("Static00","286","242","120","50",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_text("아이디");
             obj.set_background("#DC0630");
@@ -39,7 +39,7 @@
             obj.set_verticalAlign("middle");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00_00","416","324","120","50",null,null,null,null,null,null,this);
+            obj = new Static("Static00_00","286","324","120","50",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_text("비밀번호");
             obj.set_background("#DC0630");
@@ -49,15 +49,16 @@
             obj.set_color("#fff");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("ed_id","546","247","300","40",null,null,null,null,null,null,this);
+            obj = new Edit("ed_id","416","247","300","40",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("ed_pw","546","329","300","40",null,null,null,null,null,null,this);
+            obj = new Edit("ed_pw","416","329","300","40",null,null,null,null,null,null,this);
             obj.set_taborder("3");
+            obj.set_password("true");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","565","450","145","50",null,null,null,null,null,null,this);
+            obj = new Button("Button00","435","450","145","50",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("로그인");
             obj.set_borderRadius("12px");
@@ -67,7 +68,7 @@
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
-            obj = new Layout("default","",1280,720,this,function(p){});
+            obj = new Layout("default","",1080,720,this,function(p){});
             obj.set_mobileorientation("landscape");
             this.addLayout(obj.name, obj);
             
@@ -148,9 +149,16 @@
         			//0번째 행의 "user_id"컬럼에 3번째 매개변수를 저장하겠따.
         			glbAd.gds_userInfo.setColumn(0, "user_id", userId);
 
+        			trace(userId);
+
         			this.ds_login.clear();
 
-        			this.getOwnerFrame().set_formurl("board::Form_Board.xfdl");
+        			var objApp = nexacro.getApplication();
+        			objApp.mainframe.VFrameSet00.TopFrame.set_visible(true);
+        			objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_visible(true);
+        			objApp.mainframe.VFrameSet00.HFrameSet00.WorkFrame.set_formurl("board::Form_Board.xfdl");
+
+        			//this.getOwnerFrame().set_formurl("board::Form_Board.xfdl");
 
         		} else {
         			this.alert("아이디 또는 비밀번호가 올바르지 않습니다.");

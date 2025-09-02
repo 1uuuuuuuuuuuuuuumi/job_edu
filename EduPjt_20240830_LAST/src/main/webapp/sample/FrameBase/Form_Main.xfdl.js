@@ -11,9 +11,10 @@
         {
             this.set_name("Form_Main");
             this.set_titletext("New Form");
+            this.set_background(" #F2CC0C");
             if (Form == this.constructor)
             {
-                this._setFormPosition(1280,720);
+                this._setFormPosition(1080,720);
             }
             
             // Object(Dataset, ExcelExportObject) Initialize
@@ -23,51 +24,51 @@
 
 
             obj = new Dataset("ds_login", this);
-            obj._setContents("");
+            obj._setContents("<ColumnInfo><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"PASS\" type=\"STRING\" size=\"256\"/><Column id=\"SALT\" type=\"STRING\" size=\"256\"/><Column id=\"NAME\" type=\"STRING\" size=\"256\"/><Column id=\"MAIL\" type=\"STRING\" size=\"256\"/><Column id=\"ADDRESS\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("Static00","40","40","138","60",null,null,null,null,null,null,this);
+            obj = new Static("Static00","286","242","120","50",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_text("아이디");
-            obj.set_background("red");
-            obj.set_border("1px solid");
+            obj.set_background("#DC0630");
             obj.set_borderRadius("8px");
             obj.set_textAlign("center");
-            obj.set_font("24px/normal \"Gulim\"");
+            obj.set_font("bold 23px 맑은 고딕");
             obj.set_color("#fff");
             obj.set_verticalAlign("middle");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00_00","40","120","138","60",null,null,null,null,null,null,this);
+            obj = new Static("Static00_00","286","324","120","50",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_text("비밀번호");
-            obj.set_background("red");
-            obj.set_border("1px solid");
+            obj.set_background("#DC0630");
             obj.set_borderRadius("8px");
             obj.set_textAlign("center");
-            obj.set_font("24px/normal \"Gulim\"");
+            obj.set_font("bold 23px 맑은 고딕");
             obj.set_color("#fff");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("ed_id","190","52","254","36",null,null,null,null,null,null,this);
+            obj = new Edit("ed_id","416","247","300","40",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("ed_pw","190","134","254","36",null,null,null,null,null,null,this);
+            obj = new Edit("ed_pw","416","329","300","40",null,null,null,null,null,null,this);
             obj.set_taborder("3");
+            obj.set_password("true");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","480","84","145","50",null,null,null,null,null,null,this);
+            obj = new Button("Button00","435","450","145","50",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("로그인");
             obj.set_borderRadius("12px");
-            obj.set_font("bold 24px/normal \"Gulim\"");
-            obj.set_color("red");
+            obj.set_font("bold 23px 맑은 고딕");
+            obj.set_color("#ffffff");
+            obj.set_background(" #0A4DA6");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
-            obj = new Layout("default","",1280,720,this,function(p){});
+            obj = new Layout("default","",1080,720,this,function(p){});
             obj.set_mobileorientation("landscape");
             this.addLayout(obj.name, obj);
             
@@ -125,7 +126,51 @@
 
         	this.transaction(strSvcID,strURL,strDatasets,strOutDatasets,strArg,callBack,inAsync);
 
+
         };
+
+
+        this.fn_callBack = function(id, errCode, errMsg){
+
+        	if(id === "selectUser"){
+
+        		var glbAd = nexacro.getApplication();
+
+        		if(errCode < 0){
+        			this.alert("로그인 중 오류 발생 : " + errMsg);
+        			return;
+        		}
+
+        		var userId = this.ds_login.getColumn(0, "USER_ID");
+        		var userName = this.ds_login.getColumn(0, "NAME");
+
+        		if(userName != null && userName != ''){
+        			this.alert("로그인 성공!");
+        			//0번째 행의 "user_id"컬럼에 3번째 매개변수를 저장하겠따.
+        			glbAd.gds_userInfo.setColumn(0, "user_id", userId);
+
+        			trace(userId);
+
+        			this.ds_login.clear();
+
+        			var objApp = nexacro.getApplication();
+        			objApp.mainframe.VFrameSet00.TopFrame.set_visible(true);
+        			objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_visible(true);
+        			objApp.mainframe.VFrameSet00.HFrameSet00.WorkFrame.set_formurl("board::Form_Board.xfdl");
+
+        			//this.getOwnerFrame().set_formurl("board::Form_Board.xfdl");
+
+        		} else {
+        			this.alert("아이디 또는 비밀번호가 올바르지 않습니다.");
+
+        			this.ds_login.clear();
+        		}
+        	}
+
+        };
+
+
+
         });
         
         // Regist UI Components Event

@@ -6,7 +6,7 @@
 		  FROM USERS
 	   	 WHERE 1=1
 		   AND USER_ID = #{user_id}
-		   AND PASS = #{user_pw}
+		   AND PASS    = #{user_pw}
 	</select>
 	
 	<select id="selectUserForLogin" parameterType="java.util.Map" resultType="java.util.Map">

@@ -11,6 +11,16 @@
             obj = new Dataset("gds_userInfo", this);
             obj._setContents("<ColumnInfo><Column id=\"user_id\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row/></Rows>");
             this._addDataset(obj.name, obj);
+
+
+            obj = new Dataset("gdsMenu", this);
+            obj._setContents("<ColumnInfo><Column id=\"MENU_ID\" type=\"STRING\" size=\"256\"/><Column id=\"MENU_NM\" type=\"STRING\" size=\"256\"/><Column id=\"MENU_LEVEL\" type=\"STRING\" size=\"256\"/><Column id=\"MENU_PATH\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"MENU_ID\">00</Col><Col id=\"MENU_NM\">게시판</Col><Col id=\"MENU_LEVEL\">0</Col><Col id=\"MENU_PATH\">board::Form_Board.xfdl</Col></Row><Row><Col id=\"MENU_ID\">01</Col><Col id=\"MENU_NM\">관리</Col><Col id=\"MENU_LEVEL\">0</Col></Row><Row><Col id=\"MENU_ID\">0100</Col><Col id=\"MENU_NM\">사용자부서관리</Col><Col id=\"MENU_LEVEL\">1</Col><Col id=\"MENU_PATH\">dept::Form_MainDept.xfdl</Col></Row></Rows>");
+            this._addDataset(obj.name, obj);
+
+
+            obj = new Dataset("gdsOpenMenu", this);
+            obj._setContents("<ColumnInfo><Column id=\"MENU_ID\" type=\"STRING\" size=\"256\"/><Column id=\"OPEN_YES\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            this._addDataset(obj.name, obj);
             
             // global variable
 
@@ -70,11 +80,11 @@
             frame3.set_formurl("FrameBase::Form_Left.xfdl");
 
 
-            var frame4 = new ChildFrame("WorkFrame",null,null,null,null,null,null,"FrameBase::Form_Login.xfdl",frame2);
+            var frame4 = new ChildFrame("WorkFrame",null,null,null,null,null,null,"FrameBase::Form_Main.xfdl",frame2);
             frame4.set_showtitlebar("false");
             frame4.set_showstatusbar("false");
             frame2.addChild(frame4.name, frame4);
-            frame4.set_formurl("FrameBase::Form_Login.xfdl");
+            frame4.set_formurl("FrameBase::Form_Main.xfdl");
         };
         
         this.on_initEvent = function()
