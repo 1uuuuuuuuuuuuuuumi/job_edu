@@ -118,6 +118,11 @@
             obj.set_font("bold 20px 맑은 고딕");
             obj.set_textAlign("left");
             this.Div00.addChild(obj.name, obj);
+
+            obj = new Button("Button01","41","476","106","53",null,null,null,null,null,null,this.Div00.form);
+            obj.set_taborder("13");
+            obj.set_text("부모로 데이터");
+            this.Div00.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
             obj = new Layout("default","",1280,720,this,function(p){});
@@ -228,7 +233,15 @@
         	}
         };
 
-        //삭제
+        //부모로 데이터
+        this.Div00_Button01_onclick = function(obj,e)
+        {
+        	var arr = new Array();
+
+        	arr[0] = "팝업창데이터임";
+
+        	this.close("ok:::" + arr); //부모한테 던질때 구분지으려고 ok씀
+        };
 
         });
         
@@ -239,6 +252,7 @@
             this.Div00.form.Edit00.addEventHandler("onchanged",this.Div00_Edit00_onchanged,this);
             this.Div00.form.Button00.addEventHandler("onclick",this.Div00_Button00_onclick,this);
             this.Div00.form.Button00_01.addEventHandler("onclick",this.Div00_Button00_01_onclick,this);
+            this.Div00.form.Button01.addEventHandler("onclick",this.Div00_Button01_onclick,this);
         };
         this.loadIncludeScript("Form_UpdateProduct.xfdl");
         this.loadPreloadList();

@@ -242,12 +242,29 @@
         		var param = {};
         	}
 
+        	//첫번째줄의 "productPop"는 네번째줄의"fn_popCallback"에 던져지는 svcID
         	popup.init("productPop", 0, 0, 800, 700, null, null, surl);
         	popup.set_dragmovetype("all");
         	popup.set_showtitlebar("상세보기");
         	popup.showModal(this.getOwnerFrame(), param, this, "fn_popCallback", true);
         };
 
+        //부모로 데이터
+        this.fn_popCallback = function(svcID, strVal){
+        	switch(svcID) {
+        		case "productPop":
+        			//넥사크로에서 지원하는 String함수
+        			//indexOf() : 소괄호안의 문자열에 해당하는 값을 찾아주는 함수
+        			if(String(strVal).indexOf("ok:::") > -1){
+        				var rtnArr = String(strVal).replace("ok:::", "").split(",");
+
+        				trace(rtnArr[0]);
+
+        			}
+        		break;
+        	default:
+        	}
+        }
         });
         
         // Regist UI Components Event

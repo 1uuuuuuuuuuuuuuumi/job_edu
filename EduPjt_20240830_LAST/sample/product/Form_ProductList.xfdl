@@ -211,12 +211,29 @@ this.Div00_grid_product_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.Gri
 		var param = {};
 	}
 	
+	//첫번째줄의 "productPop"는 네번째줄의"fn_popCallback"에 던져지는 svcID 
 	popup.init("productPop", 0, 0, 800, 700, null, null, surl);
 	popup.set_dragmovetype("all");
 	popup.set_showtitlebar("상세보기");
 	popup.showModal(this.getOwnerFrame(), param, this, "fn_popCallback", true); 
 };
-]]></Script>
+
+//부모로 데이터
+this.fn_popCallback = function(svcID, strVal){
+	switch(svcID) {
+		case "productPop":
+			//넥사크로에서 지원하는 String함수
+			//indexOf() : 소괄호안의 문자열에 해당하는 값을 찾아주는 함수
+			if(String(strVal).indexOf("ok:::") > -1){
+				var rtnArr = String(strVal).replace("ok:::", "").split(",");
+				
+				trace(rtnArr[0]);
+				
+			}
+		break;
+	default:
+	}
+}]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.grid_category" propid="autofittype" datasetid="gds_userInfo" columnid=""/>
       <BindItem id="item3" compid="Div00.form.grid_category" propid="binddataset" datasetid="ds_category" columnid=""/>

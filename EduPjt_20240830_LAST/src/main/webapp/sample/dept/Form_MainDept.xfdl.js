@@ -32,7 +32,7 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Combo("Combo00","128","149","310","40",null,null,null,null,null,null,this);
+            obj = new Combo("Combo00","125","176","310","35",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_borderRadius("5px");
             obj.set_innerdataset("ds_dept");
@@ -41,7 +41,7 @@
             obj.set_text("Combo00");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","1020","160","60","30",null,null,null,null,null,null,this);
+            obj = new Button("Button00","1017","178","60","30",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_text("조회");
             obj.set_font("11pt/normal \"맑은 고딕\"");
@@ -49,31 +49,32 @@
             obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Grid("Grid00","128","207","1027","433",null,null,null,null,null,null,this);
+            obj = new Grid("Grid00","125","225","1027","433",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_autofittype("col");
             obj.set_binddataset("ds_users");
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"141\"/><Column size=\"111\"/><Column size=\"141\"/><Column size=\"164\"/><Column size=\"137\"/><Column size=\"141\"/><Column size=\"137\"/><Column size=\"141\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"아이디\"/><Cell col=\"1\" text=\"이름\"/><Cell col=\"2\" text=\"이메일\"/><Cell col=\"3\" text=\"주소\"/><Cell col=\"4\" text=\"부서코드\"/><Cell col=\"5\" text=\"부서명\"/><Cell col=\"6\" text=\"하위부서코드\"/><Cell col=\"7\" text=\"하위부서명\"/></Band><Band id=\"body\"><Cell text=\"bind:USER_ID\"/><Cell col=\"1\" text=\"bind:NAME\"/><Cell col=\"2\" text=\"bind:MAIL\"/><Cell col=\"3\" text=\"bind:ADDRESS\"/><Cell col=\"4\" text=\"bind:dept_cd\"/><Cell col=\"5\" text=\"bind:dept_nm\"/><Cell col=\"6\" text=\"bind:dept_sub_cd\"/><Cell col=\"7\" text=\"bind:dept_sub_nm\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00","132","57","433","66",null,null,null,null,null,null,this);
+            obj = new Static("Static00","129","85","433","66",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_text("ദ്ദി(｡•̀ ᗜ<) 부서");
             obj.set_font("bold 25pt/normal \"맑은 고딕\"");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button01","1095","160","60","30",null,null,null,null,null,null,this);
+            obj = new Button("Button01","1092","178","60","30",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("초기화");
             obj.set_font("11pt/normal \"맑은 고딕\"");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
-            obj = new Combo("cb_sub_dept","472","148","295","42",null,null,null,null,null,null,this);
+            obj = new Combo("cb_sub_dept","457","176","295","35",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             obj.set_innerdataset("ds_sub_dept");
             obj.set_codecolumn("dept_sub__cd");
             obj.set_datacolumn("dept_sub_nm");
+            obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
@@ -194,6 +195,11 @@
         	this.ds_users.filter("");
         };
 
+        this.cb_sub_dept_onitemchanged = function(obj,e)
+        {
+
+        };
+
         });
         
         // Regist UI Components Event
@@ -204,6 +210,7 @@
             this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
             this.Static00.addEventHandler("onclick",this.Static00_onclick,this);
             this.Button01.addEventHandler("onclick",this.Button01_onclick,this);
+            this.cb_sub_dept.addEventHandler("onitemchanged",this.cb_sub_dept_onitemchanged,this);
         };
         this.loadIncludeScript("Form_MainDept.xfdl");
         this.loadPreloadList();

@@ -19,6 +19,7 @@
               <Button id="Button00_01" taborder="10" text="취소" left="421" top="564" width="96" height="46" font="bold 17px 맑은 고딕" borderRadius="5px" onclick="Div00_Button00_01_onclick"/>
               <Edit id="Edit01_00" taborder="11" left="195" top="180" width="317" height="47" borderRadius="5px"/>
               <Static id="Static01_00" taborder="12" text="가격" left="134" top="175" width="150" height="60" font="bold 20px 맑은 고딕" textAlign="left"/>
+              <Button id="Button01" taborder="13" text="부모로 데이터" left="41" top="476" width="106" height="53" onclick="Div00_Button01_onclick"/>
             </Layout>
           </Layouts>
         </Div>
@@ -137,7 +138,15 @@ this.fn_callBack = function(svcId, errCd, errMsg){
 	}
 };
 
-//삭제
+//부모로 데이터
+this.Div00_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var arr = new Array();
+	
+	arr[0] = "팝업창데이터임";
+	
+	this.close("ok:::" + arr); //부모한테 던질때 구분지으려고 ok씀
+}; 
 ]]></Script>
   </Form>
 </FDL>

@@ -16,6 +16,7 @@
               <TextArea id="TextArea00" taborder="7" left="195" top="324" width="317" height="186" borderRadius="5px"/>
               <Button id="Button00" taborder="8" text="등록" left="105" top="564" width="125" height="52" font="bold 17px 맑은 고딕" borderRadius="5px"/>
               <Button id="Button00_00" taborder="9" text="취소" left="342" top="564" width="125" height="52" font="bold 17px 맑은 고딕" borderRadius="5px"/>
+              <Button id="Button01" taborder="10" text="부모로 데이터" left="41" top="476" width="106" height="53" onclick="Div00_Button01_onclick"/>
             </Layout>
           </Layouts>
         </Div>

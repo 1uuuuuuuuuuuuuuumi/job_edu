@@ -34,7 +34,7 @@ public class DeptController {
 		} catch(Exception e) {
 			result.setErrorCode(-1);
 			result.setErrorMsg("오류발생!");
-		} 
+		}
 		
 		return result;
 		

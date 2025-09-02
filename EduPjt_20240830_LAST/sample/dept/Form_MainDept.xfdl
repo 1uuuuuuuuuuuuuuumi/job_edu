@@ -3,9 +3,9 @@
   <Form id="Form_MainDept" width="1280" height="720" titletext="New Form" onload="Form_MainDept_onload">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Combo id="Combo00" taborder="0" text="Combo00" left="128" top="149" width="310" height="40" borderRadius="5px" innerdataset="ds_dept" codecolumn="dept_cd" datacolumn="dept_nm" onitemchanged="Combo00_onitemchanged"/>
-        <Button id="Button00" taborder="1" text="조회" left="1020" top="160" width="60" height="30" font="11pt/normal &quot;맑은 고딕&quot;" borderRadius="5px" onclick="Button00_onclick" cursor="pointer"/>
-        <Grid id="Grid00" taborder="2" left="128" top="207" width="1027" height="433" autofittype="col" binddataset="ds_users">
+        <Combo id="Combo00" taborder="0" text="Combo00" left="125" top="176" width="310" height="35" borderRadius="5px" innerdataset="ds_dept" codecolumn="dept_cd" datacolumn="dept_nm" onitemchanged="Combo00_onitemchanged"/>
+        <Button id="Button00" taborder="1" text="조회" left="1017" top="178" width="60" height="30" font="11pt/normal &quot;맑은 고딕&quot;" borderRadius="5px" onclick="Button00_onclick" cursor="pointer"/>
+        <Grid id="Grid00" taborder="2" left="125" top="225" width="1027" height="433" autofittype="col" binddataset="ds_users">
           <Formats>
             <Format id="default">
               <Columns>
@@ -45,9 +45,9 @@
             </Format>
           </Formats>
         </Grid>
-        <Static id="Static00" taborder="3" text="ദ്ദി(｡•̀ ᗜ&lt;) 부서" left="132" top="57" width="433" height="66" onclick="Static00_onclick" font="bold 25pt/normal &quot;맑은 고딕&quot;"/>
-        <Button id="Button01" taborder="4" text="초기화" left="1095" top="160" width="60" height="30" font="11pt/normal &quot;맑은 고딕&quot;" borderRadius="5px" onclick="Button01_onclick"/>
-        <Combo id="cb_sub_dept" taborder="5" left="472" top="148" width="295" height="42" innerdataset="ds_sub_dept" codecolumn="dept_sub__cd" datacolumn="dept_sub_nm"/>
+        <Static id="Static00" taborder="3" text="ദ്ദി(｡•̀ ᗜ&lt;) 부서" left="129" top="85" width="433" height="66" onclick="Static00_onclick" font="bold 25pt/normal &quot;맑은 고딕&quot;"/>
+        <Button id="Button01" taborder="4" text="초기화" left="1092" top="178" width="60" height="30" font="11pt/normal &quot;맑은 고딕&quot;" borderRadius="5px" onclick="Button01_onclick"/>
+        <Combo id="cb_sub_dept" taborder="5" left="457" top="176" width="295" height="35" innerdataset="ds_sub_dept" codecolumn="dept_sub__cd" datacolumn="dept_sub_nm" onitemchanged="cb_sub_dept_onitemchanged" borderRadius="5px"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[
@@ -147,6 +147,11 @@ this.Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.cb_sub_dept.set_value("-전체-");
 	this.cb_sub_dept.set_readonly(true);
 	this.ds_users.filter("");
+};
+	
+this.cb_sub_dept_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	
 };
 ]]></Script>
     <Objects>
