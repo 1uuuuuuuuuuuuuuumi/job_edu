@@ -126,7 +126,7 @@
 
         	//버튼 id에서 메뉴 id값을 추출
         	//ex) btn_000001 -> 000001 / _언더바기준으로 짤라서 두번째값임
-        	var arrResultId = obj.id.split('-');
+        	var arrResultId = obj.id.split('_');
         	var sResultId = arrResultId[1];
 
         	//왼쪽 메뉴 가져오는 함수 호출 - frmleft화면

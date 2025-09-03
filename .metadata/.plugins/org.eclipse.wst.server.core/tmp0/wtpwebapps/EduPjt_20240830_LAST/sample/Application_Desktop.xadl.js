@@ -14,7 +14,7 @@
 
 
             obj = new Dataset("gdsMenu", this);
-            obj._setContents("<ColumnInfo><Column id=\"MENU_ID\" type=\"STRING\" size=\"256\"/><Column id=\"MENU_NM\" type=\"STRING\" size=\"256\"/><Column id=\"MENU_LEVEL\" type=\"STRING\" size=\"256\"/><Column id=\"MENU_PATH\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"MENU_ID\">00</Col><Col id=\"MENU_NM\">게시판</Col><Col id=\"MENU_LEVEL\">0</Col><Col id=\"MENU_PATH\">board::Form_Board.xfdl</Col></Row><Row><Col id=\"MENU_ID\">01</Col><Col id=\"MENU_NM\">관리</Col><Col id=\"MENU_LEVEL\">0</Col></Row><Row><Col id=\"MENU_ID\">0100</Col><Col id=\"MENU_NM\">사용자부서관리</Col><Col id=\"MENU_LEVEL\">1</Col><Col id=\"MENU_PATH\">dept::Form_MainDept.xfdl</Col></Row></Rows>");
+            obj._setContents("<ColumnInfo><Column id=\"MENU_ID\" type=\"STRING\" size=\"256\"/><Column id=\"MENU_NM\" type=\"STRING\" size=\"256\"/><Column id=\"MENU_LEVEL\" type=\"STRING\" size=\"256\"/><Column id=\"MENU_PATH\" type=\"STRING\" size=\"256\"/></ColumnInfo><Rows><Row><Col id=\"MENU_ID\">00</Col><Col id=\"MENU_NM\">게시판</Col><Col id=\"MENU_LEVEL\">0</Col><Col id=\"MENU_PATH\">board::Form_Board.xfdl</Col></Row><Row><Col id=\"MENU_ID\">01</Col><Col id=\"MENU_NM\">관리</Col><Col id=\"MENU_LEVEL\">0</Col></Row><Row><Col id=\"MENU_ID\">0100</Col><Col id=\"MENU_NM\">사용자</Col><Col id=\"MENU_LEVEL\">1</Col><Col id=\"MENU_PATH\"/></Row><Row><Col id=\"MENU_ID\">010000</Col><Col id=\"MENU_NM\">사용자부서관리</Col><Col id=\"MENU_LEVEL\">2</Col><Col id=\"MENU_PATH\">dept::Form_MainDept.xfdl</Col></Row></Rows>");
             this._addDataset(obj.name, obj);
 
 

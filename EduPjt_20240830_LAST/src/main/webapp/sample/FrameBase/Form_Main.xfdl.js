@@ -104,6 +104,7 @@
         	var userPw = this.ds_user.getColumn(0, "user_pw");
 
 
+
         	if(userId == null || userId =='undefined' || userId == ''){
         		this.alert("아이디 입력");
         		return;
@@ -145,7 +146,7 @@
         		var userName = this.ds_login.getColumn(0, "NAME");
 
         		if(userName != null && userName != ''){
-        			this.alert("로그인 성공!");
+        			//this.alert("로그인 성공!");
         			//0번째 행의 "user_id"컬럼에 3번째 매개변수를 저장하겠따.
         			glbAd.gds_userInfo.setColumn(0, "user_id", userId);
 

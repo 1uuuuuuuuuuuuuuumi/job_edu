@@ -25,7 +25,8 @@
             // UI Components Initialize
             obj = new Grid("gridLeftMenu","0","69",null,null,"0","0",null,null,null,null,this);
             obj.set_taborder("1");
-            obj._setContents("");
+            obj.set_binddataset("dsLeft");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"132\"/></Columns><Rows><Row size=\"24\"/></Rows><Band id=\"body\"><Cell displaytype=\"treeitemcontrol\" edittype=\"tree\" text=\"bind:MENU_NM\" treelevel=\"bind:MENU_LEVEL\" treestartlevel=\"1\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
@@ -79,7 +80,7 @@
 
         	//그리드에 바인딩된 데이터셋으로 가져오기
         	var objDsMenu = obj.getBindDataset();
-        	var sMenuId = objDsOpenMenu.getColumn(e.row, "MENU_ID");
+        	var sMenuId = objDsMenu.getColumn(e.row, "MENU_ID");
 
         	if(sMenuId.length == 4){
         		var RowTree = this.gridLeftMenu.getTreeRow(e.row);
@@ -99,7 +100,7 @@
         	}
         };
 
-        this.fnOpenMenu = function(){
+        this.fnOpenMenu = function(sMenuId){
         	var objApp = nexacro.getApplication();
 
         	//메뉴 데이터셋 가져오기
@@ -109,7 +110,7 @@
         	var objDsOpenMenu = objApp.gdsOpenMenu;
 
         	//오픈할 메뉴 정보 가져오기
-        	var nFRow = objDsOpenMenu.findRow("MENU_ID", sMenuId);
+        	var nFRow     = objDsMenu.findRow("MENU_ID", sMenuId);
         	var sMenuPath = objDsMenu.getColumn(nFRow, "MENU_PATH");
 
         	objApp.mainframe.VFrameSet00.HFrameSet00.WorkFrame.set_formurl(sMenuPath);

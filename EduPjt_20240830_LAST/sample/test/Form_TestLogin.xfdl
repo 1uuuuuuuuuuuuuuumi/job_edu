@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_TestLogin" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Static id="static_login" taborder="0" text="로그인" left="223" top="250" width="142" height="53" font="bold 25pt/normal &quot;맑은 고딕&quot;" textAlign="center"/>
+        <Static id="Static00" taborder="1" text="패스워드" left="200" top="327" width="189" height="87" font="bold 25pt/normal &quot;맑은 고딕&quot;" textAlign="center"/>
+        <Edit id="edit_login" taborder="2" left="405" top="247" width="375" height="58"/>
+        <Edit id="edit_password" taborder="3" left="410" top="336" width="373" height="54"/>
+        <Button id="button_login" taborder="4" text="로그인" left="370" top="495" width="146" height="68"/>
+        <Button id="button_join" taborder="5" text="회원가입" left="577" top="493" width="143" height="72"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>
