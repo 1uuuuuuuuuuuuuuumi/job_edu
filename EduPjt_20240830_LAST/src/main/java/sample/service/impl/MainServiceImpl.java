@@ -2,6 +2,7 @@ package sample.service.impl;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class MainServiceImpl implements MainService {
 	@Override
 	public Map<String, Object> selectUser(Map<String, Object> dsUser){
 		
-		String inputId = (String) dsUser.get("user_id");
+		String inputId = (String) dsUser.get("user_id"); //넥사크로 데이터셋 통이랑 맞춰줘야함
 		String inputPw = (String) dsUser.get("user_pw");
 		
 		Map<String, Object> user = mainMapper.selectUserForLogin(dsUser);
@@ -71,5 +72,10 @@ public class MainServiceImpl implements MainService {
 		
 		
 		return mainMapper.joinUser(param);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> userList() {
+		return mainMapper.userList();
 	}
 }

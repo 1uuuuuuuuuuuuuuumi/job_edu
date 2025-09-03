@@ -183,6 +183,7 @@
         	this.ds_search.setColumn(0, "SECOND_REG_DATE", 20251231);
         };
 
+
         //조회 함수
         this.fn_search = function(){
         		var strSvcID = "readBoardList";
@@ -290,10 +291,7 @@
         };
 
 
-        this.Div00_board_search_ed_title_onchanged = function(obj,e)
-        {
 
-        };
 
         });
         

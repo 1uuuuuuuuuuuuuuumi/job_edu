@@ -2,6 +2,7 @@ package sample.web;
 
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ public class MainController {
 	@Autowired 
 	private MainService mainService;
 
+	//로그인
 	@RequestMapping(value="/selectUser.do")
 	public NexacroResult selectUser(@ParamDataSet(name="ds_user", required = false) Map<String, Object> dsUser) {
 		NexacroResult result = new NexacroResult();
@@ -30,15 +32,17 @@ public class MainController {
 			if(user != null && !user.isEmpty()) {
 				
 				result.addDataSet("ds_login", user);
-			}
+			} 
 		}catch(Exception e){
 			e.printStackTrace();
 			result.addDataSet("ds_login", new HashMap<>());
-		}
+		} 
+		
 		
 		return result;
 	}
 	
+	//ID중복체크
 	@RequestMapping(value="/idChk.do")
 	public NexacroResult idChk(@ParamDataSet(name="idChk", required=false) Map<String, Object> param) {
 		
@@ -73,6 +77,7 @@ public class MainController {
 	}
 	
 	
+	//회원가입
 	@RequestMapping(value="/joinUser.do")
 	public NexacroResult joinUser(@ParamDataSet(name="join_user", required = false) Map<String, Object> param) throws NoSuchAlgorithmException {
 
@@ -97,6 +102,18 @@ public class MainController {
 			
 			result.addDataSet("join_result", resultData);
 		}
+		
+		return result;
+	}
+	
+	//유저리스트조회
+	@RequestMapping(value="userList.do")
+	public NexacroResult userList() {
+		NexacroResult result = new NexacroResult(); // 넥사크로에 데이터를 전달하기 위한 배달원.
+		
+		List<HashMap<String, Object>> getList = mainService.userList(); // 서비스처리 후 최종 반환 데이터를 변수에 할당.
+		
+		result.addDataSet("ds_users", getList); // 배달원 배달차에 상품 적재(데이터셋).
 		
 		return result;
 	}

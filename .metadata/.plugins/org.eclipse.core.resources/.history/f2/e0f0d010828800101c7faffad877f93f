@@ -1,0 +1,18 @@
+package sample.web;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.uiadapter17.spring.core.data.NexacroResult;
+
+@Controller
+public class TestController {
+	
+	@RequestMapping(value="/userLogin.do")
+	public NexacroResult userLogin() {
+		NexacroResult result = new NexacroResult()
+		
+		return result;
+	}
+	
+}

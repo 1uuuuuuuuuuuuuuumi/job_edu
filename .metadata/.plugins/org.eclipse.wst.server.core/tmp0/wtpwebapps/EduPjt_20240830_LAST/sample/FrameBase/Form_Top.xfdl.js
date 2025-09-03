@@ -19,7 +19,7 @@
             
             // Object(Dataset, ExcelExportObject) Initialize
             obj = new Dataset("dsTop", this);
-            obj._setContents("");
+            obj._setContents("<ColumnInfo><Column id=\"test_\" type=\"STRING\" size=\"256\"/><Column id=\"Column1\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
@@ -118,6 +118,7 @@
 
         };
 
+        //버튼을 클릭했을때 우측에 어쩌구저쩌구
         this.btnTopMenu_onclick = function(obj, e){
         	objApp = nexacro.getApplication();
 

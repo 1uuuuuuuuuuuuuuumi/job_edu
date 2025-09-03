@@ -23,7 +23,7 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Grid("gridLeftMenu","0","69",null,null,"0","0",null,null,null,null,this);
+            obj = new Grid("gridLeftMenu","0","0",null,null,"0","0",null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_binddataset("dsLeft");
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"132\"/></Columns><Rows><Row size=\"24\"/></Rows><Band id=\"body\"><Cell displaytype=\"treeitemcontrol\" edittype=\"tree\" text=\"bind:MENU_NM\" treelevel=\"bind:MENU_LEVEL\" treestartlevel=\"1\"/></Band></Format></Formats>");

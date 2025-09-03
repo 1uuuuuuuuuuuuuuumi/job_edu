@@ -5,11 +5,55 @@
       <Layout height="720" mobileorientation="landscape" width="1280">
         <Static id="static_login" taborder="0" text="로그인" left="223" top="250" width="142" height="53" font="bold 25pt/normal &quot;맑은 고딕&quot;" textAlign="center"/>
         <Static id="Static00" taborder="1" text="패스워드" left="200" top="327" width="189" height="87" font="bold 25pt/normal &quot;맑은 고딕&quot;" textAlign="center"/>
-        <Edit id="edit_login" taborder="2" left="405" top="247" width="375" height="58"/>
+        <Edit id="edit_login" taborder="2" left="405" top="247" width="375" height="58" onchanged="edit_login_onchanged"/>
         <Edit id="edit_password" taborder="3" left="410" top="336" width="373" height="54"/>
-        <Button id="button_login" taborder="4" text="로그인" left="370" top="495" width="146" height="68"/>
-        <Button id="button_join" taborder="5" text="회원가입" left="577" top="493" width="143" height="72"/>
+        <Button id="button_login" taborder="4" text="로그인" left="370" top="495" width="146" height="68" onclick="button_login_onclick"/>
+        <Button id="button_join" taborder="5" text="회원가입" left="577" top="493" width="143" height="72" onclick="button_join_onclick"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+//로그인
+this.button_login_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		var strSvcID = "selectUser";		//트랜잭션 아이디
+		var strURL = "svc::selectUser.do";	//url controller에서 받을 주소
+		var strInDatasets = "ds_user=dsLogin"; //내가 던질 데이터셋
+		var strOutDatasets = "dsLogin=ds_login"; //내가 받을 데이터셋(뒤에꺼만바꾸기)
+		var strArg = "";					//매개변수로 뭐가 들어가는지
+		var callBack = "fn_callBack";		//콜백기능으로 뭘할건지(콜백:내가 이 함수를 실행했을때 되돌아와서 실행할 함수)
+		var inAsync = true;					//동기 비동기 설정하는거 (Async:비동기 /sync:비동기)
+
+		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync); //this.transaction() -> 함수 / 위의내용들을 전부 담기
+};
+
+this.fn_callBack = function(svcId, errCd, errMsg){
+	if(svcId == "selectUser"){
+		
+	} else if(){
+		
+	}
+}
+
+//회원가입
+this.button_join_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
+    <Objects>
+      <Dataset id="dsLogin">
+        <ColumnInfo>
+          <Column id="user_id" type="STRING" size="256"/>
+          <Column id="user_pw" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="edit_login" propid="value" datasetid="dsLogin" columnid="user_id"/>
+      <BindItem id="item1" compid="edit_password" propid="value" datasetid="dsLogin" columnid="user_pw"/>
+    </Bind>
   </Form>
 </FDL>

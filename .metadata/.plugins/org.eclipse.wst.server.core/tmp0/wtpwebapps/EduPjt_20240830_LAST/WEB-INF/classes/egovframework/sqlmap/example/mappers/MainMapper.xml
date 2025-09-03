@@ -35,4 +35,10 @@
 			)
 	</insert>
 	
+	<!-- 유저 리스트 조회 -->
+	<select id="userList" resultType="java.util.HashMap">
+		SELECT USER_ID, NAME, ADDRESS
+			FROM USERS
+	</select>
+	
 </mapper>

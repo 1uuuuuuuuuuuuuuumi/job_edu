@@ -78,6 +78,7 @@ this.fnCreateTopMenu = function(){
 	
 };
 
+//버튼을 클릭했을때 우측에 어쩌구저쩌구
 this.btnTopMenu_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo){
 	objApp = nexacro.getApplication();
 	
@@ -93,7 +94,12 @@ this.btnTopMenu_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 	nexacro.LeftFrame.form.fnGetLeftMenu(sResultId);
 };]]></Script>
     <Objects>
-      <Dataset id="dsTop"/>
+      <Dataset id="dsTop">
+        <ColumnInfo>
+          <Column id="test_" type="STRING" size="256"/>
+          <Column id="Column1" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
   </Form>
 </FDL>

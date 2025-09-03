@@ -89,6 +89,7 @@ this.Form_Board_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	this.ds_search.setColumn(0, "SECOND_REG_DATE", 20251231);
 };
 
+
 //조회 함수
 this.fn_search = function(){
 		var strSvcID = "readBoardList";
@@ -196,10 +197,7 @@ this.Button01_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 };
 
 
-this.Div00_board_search_ed_title_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
-{
-	
-};
+
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.board_search_ed_title" propid="value" datasetid="ds_search" columnid="BOARD_TITLE"/>
