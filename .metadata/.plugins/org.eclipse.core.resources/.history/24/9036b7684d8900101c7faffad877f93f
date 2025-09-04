@@ -1,0 +1,29 @@
+package sample.service.impl;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import sample.mapper.UserMapper;
+import sample.service.UserService;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	@Autowired
+	private UserMapper userMapper;
+	
+	@Override
+	public List<HashMap<String, Object>> searchUserList(Map<String, Object> param) {
+		return userMapper.searchUserList(param);
+	}
+
+	@Override
+	public HashMap<String, Object> userList(Map<String, Object> param) {
+		return userMapper.userList(param);
+	}
+
+}

@@ -32,75 +32,80 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Div("Div00","87","39","1109","650",null,null,null,null,null,null,this);
-            obj.set_taborder("0");
-            obj.set_text("");
-            obj.set_background("lightgray");
-            obj.set_borderRadius("10px");
+            obj = new Div("Div00","10","20",null,"80","0",null,null,null,null,null,this);
+            obj.set_taborder("5");
+            obj.set_border("1px solid #CDCDCD");
+            obj.set_background("#F6F6F6");
             this.addChild(obj.name, obj);
 
-            obj = new Grid("grid_category","39","173","244","437",null,null,null,null,null,null,this.Div00.form);
+            obj = new Combo("Combo00","472","16","200","45",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("0");
-            obj.set_autofittype("col");
-            obj.set_binddataset("ds_category");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"230\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"카테고리 코드\"/></Band><Band id=\"body\"><Cell text=\"bind:CATE_CODE\" edittype=\"none\" textAlign=\"center\"/></Band></Format></Formats>");
+            obj.set_borderRadius("5px");
+            obj.set_text("Combo00");
             this.Div00.addChild(obj.name, obj);
 
-            obj = new Static("Static00","63","40","254","56",null,null,null,null,null,null,this.Div00.form);
+            obj = new Edit("Edit00","757","18","200","40",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("1");
-            obj.set_text("카테고리코드 :");
-            obj.getSetter("onitemchanged").set("Div00_Static00_onitemchanged");
-            obj.set_font("bold 20px 맑은 고딕");
+            obj.set_borderRadius("5px");
             this.Div00.addChild(obj.name, obj);
 
-            obj = new Combo("Combo00","206","50","195","37",null,null,null,null,null,null,this.Div00.form);
-            obj.set_taborder("2");
+            obj = new Combo("Combo00","159","37","200","45",null,null,null,null,null,null,this);
+            obj.set_taborder("0");
             obj.set_borderRadius("5px");
             obj.set_innerdataset("ds_combo");
             obj.set_datacolumn("CATE_CODE");
             obj.set_text("");
             obj.set_index("-1");
-            this.Div00.addChild(obj.name, obj);
+            this.addChild(obj.name, obj);
 
-            obj = new Grid("grid_product","313","173","756","437",null,null,null,null,null,null,this.Div00.form);
-            obj.set_taborder("3");
+            obj = new Grid("grid_product","10","180",null,null,"10","20",null,null,null,null,this);
+            obj.set_taborder("1");
             obj.set_binddataset("ds_product");
             obj.set_autofittype("col");
             obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"134\"/><Column size=\"174\"/><Column size=\"112\"/><Column size=\"64\"/><Column size=\"267\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"카테고리명\"/><Cell col=\"1\" text=\"상품명\"/><Cell col=\"2\" text=\"가격\"/><Cell col=\"3\" text=\"재고\"/><Cell col=\"4\" text=\"설명\"/></Band><Band id=\"body\"><Cell text=\"bind:CATE_NAME\"/><Cell col=\"1\" text=\"bind:PRODUCT_NAME\"/><Cell col=\"2\" text=\"bind:PRODUCT_PRICE\"/><Cell col=\"3\" text=\"bind:PRODUCT_STOCK\"/><Cell col=\"4\" text=\"bind:PRODUCT_CONTENT\"/></Band></Format></Formats>");
-            this.Div00.addChild(obj.name, obj);
+            this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","800","122","79","44",null,null,null,null,null,null,this.Div00.form);
-            obj.set_taborder("4");
+            obj = new Button("Button00","1102","40","80","40",null,null,null,null,null,null,this);
+            obj.set_taborder("2");
             obj.set_text("조회");
             obj.set_borderRadius("5px");
-            obj.set_font("bold 17px 맑은 고딕");
-            this.Div00.addChild(obj.name, obj);
+            obj.set_font("bold 13pt \"굴림\"");
+            this.addChild(obj.name, obj);
 
-            obj = new Button("Button00_00_00_00","988","122","79","44",null,null,null,null,null,null,this.Div00.form);
-            obj.set_taborder("5");
-            obj.set_text("삭제");
+            obj = new Button("Button00_00_00_00","1015","38","79","44",null,null,null,null,null,null,this);
+            obj.set_taborder("3");
+            obj.set_text("엑셀");
             obj.set_borderRadius("5px");
-            obj.set_font("bold 17px 맑은 고딕");
-            this.Div00.addChild(obj.name, obj);
+            obj.set_font("bold 13pt \"굴림\"");
+            this.addChild(obj.name, obj);
 
-            obj = new Button("Button00_00_01","894","122","79","44",null,null,null,null,null,null,this.Div00.form);
+            obj = new Button("Button00_00_01","1190","40","80","40",null,null,null,null,null,null,this);
+            obj.set_taborder("4");
+            obj.set_text("등록");
+            obj.set_borderRadius("5px");
+            obj.set_font("bold 13pt \"굴림\"");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static00_00","6","38","167","41",null,null,null,null,null,null,this);
             obj.set_taborder("6");
-            obj.set_text("저장");
-            obj.set_borderRadius("5px");
-            obj.set_font("bold 17px 맑은 고딕");
-            this.Div00.addChild(obj.name, obj);
+            obj.set_text("•카테고리코드");
+            obj.set_textAlign("center");
+            obj.set_font("bold 13pt \"돋움\"");
+            this.addChild(obj.name, obj);
 
-            obj = new Button("Button01","207","132","35","35",null,null,null,null,null,null,this.Div00.form);
+            obj = new Static("Static00_00_00","340","38","167","41",null,null,null,null,null,null,this);
             obj.set_taborder("7");
-            obj.set_text("+");
-            obj.set_borderRadius("5px");
-            this.Div00.addChild(obj.name, obj);
+            obj.set_text("•카테고리명");
+            obj.set_textAlign("center");
+            obj.set_font("bold 13pt \"돋움\"");
+            this.addChild(obj.name, obj);
 
-            obj = new Button("Button02","247","132","35","35",null,null,null,null,null,null,this.Div00.form);
+            obj = new Static("Static00_00_00_00","646","38","167","41",null,null,null,null,null,null,this);
             obj.set_taborder("8");
-            obj.set_text("-");
-            obj.set_borderRadius("5px");
-            this.Div00.addChild(obj.name, obj);
+            obj.set_text("•상품명");
+            obj.set_textAlign("center");
+            obj.set_font("bold 13pt \"돋움\"");
+            this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
             obj = new Layout("default","",1280,720,this,function(p){});
@@ -108,15 +113,7 @@
             this.addLayout(obj.name, obj);
             
             // BindItem Information
-            obj = new BindItem("item0","Div00.form.grid_category","autofittype","gds_userInfo","");
-            this.addChild(obj.name, obj);
-            obj.bind();
-
-            obj = new BindItem("item3","Div00.form.grid_category","binddataset","ds_category","");
-            this.addChild(obj.name, obj);
-            obj.bind();
-
-            obj = new BindItem("item1","Div00.form.Combo00","index","ds_combo","");
+            obj = new BindItem("item2","Combo00","index","ds_combo","");
             this.addChild(obj.name, obj);
             obj.bind();
             
@@ -265,6 +262,11 @@
         	default:
         	}
         }
+        this.Div00_Combo00_onitemchanged = function(obj,e)
+        {
+
+        };
+
         });
         
         // Regist UI Components Event
@@ -272,13 +274,11 @@
         {
             this.addEventHandler("onload",this.Form_ProductList_onload,this);
             this.addEventHandler("onsetfocus",this.Form_ProductList_onload,this);
-            this.Div00.form.grid_category.addEventHandler("oncellclick",this.Div00_Grid00_oncellclick,this);
             this.Div00.form.Combo00.addEventHandler("onitemchanged",this.Div00_Combo00_onitemchanged,this);
-            this.Div00.form.grid_product.addEventHandler("oncelldblclick",this.Div00_grid_product_oncelldblclick,this);
-            this.Div00.form.Button00.addEventHandler("onclick",this.Div00_Button00_onclick,this);
-            this.Div00.form.Button00_00_00_00.addEventHandler("onclick",this.Div00_Button00_00_00_00_onclick,this);
-            this.Div00.form.Button01.addEventHandler("onclick",this.Div00_Button01_onclick,this);
-            this.Div00.form.Button02.addEventHandler("onclick",this.Div00_Button02_onclick,this);
+            this.Combo00.addEventHandler("onitemchanged",this.Div00_Combo00_onitemchanged,this);
+            this.grid_product.addEventHandler("oncelldblclick",this.Div00_grid_product_oncelldblclick,this);
+            this.Button00.addEventHandler("onclick",this.Div00_Button00_onclick,this);
+            this.Button00_00_00_00.addEventHandler("onclick",this.Div00_Button00_00_00_00_onclick,this);
         };
         this.loadIncludeScript("Form_ProductList.xfdl");
         this.loadPreloadList();

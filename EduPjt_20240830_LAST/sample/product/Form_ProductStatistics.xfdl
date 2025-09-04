@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_ProductStatistics" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Div id="Div00" taborder="0" left="10" top="20" border="1px solid #CDCDCD" background="#F6F6F6" right="0" height="80">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Button id="Button00_00_00_00" taborder="1" text="엑셀" left="1102" top="38" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;" onclick="Div00_Button00_00_00_00_onclick"/>
+        <Button id="Button00_00" taborder="2" text="조회" left="1190" top="38" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;" onclick="Div00_Button00_onclick"/>
+        <Grid id="Grid00" taborder="3" left="10" top="180" right="10" bottom="20" binddataset="ds_search" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="84"/>
+                <Column size="125"/>
+                <Column size="125"/>
+                <Column size="126"/>
+                <Column size="234"/>
+                <Column size="129"/>
+                <Column size="111"/>
+                <Column size="97"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="회원ID"/>
+                <Cell col="2" text="이름"/>
+                <Cell col="3" text="생년월일"/>
+                <Cell col="4" text="주소"/>
+                <Cell col="5" text="등급"/>
+                <Cell col="6" text="포인트"/>
+                <Cell col="7" text="휴면유무"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="currow + 1" textAlign="center"/>
+                <Cell col="1" text="bind:USER_ID" edittype="normal" textAlign="center"/>
+                <Cell col="2" text="bind:NAME" edittype="normal" textAlign="center"/>
+                <Cell col="3" text="bind:BIRTH_DAY" edittype="normal" textAlign="center"/>
+                <Cell col="4" text="bind:ADDRESS" edittype="normal" textAlign="center"/>
+                <Cell col="5" text="bind:LEVEL" edittype="normal" textAlign="center"/>
+                <Cell col="6" text="bind:POINT" edittype="normal" textAlign="center"/>
+                <Cell col="7" text="bind:IS_USE" edittype="normal" textAlign="center"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00_00_01" taborder="4" text="상품별통계" left="0" top="140" width="150" height="38" textAlign="center" font="bold 15pt &quot;돋움&quot;" onclick="Static00_00_01_onclick"/>
+        <Static id="st_total" taborder="5" text="| " left="136" top="142" width="143" height="34" font="bold 15pt &quot;돋움&quot;" color="#7ec0e3" onclick="Static01_onclick"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item3" compid="Grid00" propid="binddataset" datasetid="ds_users" columnid=""/>
+    </Bind>
+  </Form>
+</FDL>

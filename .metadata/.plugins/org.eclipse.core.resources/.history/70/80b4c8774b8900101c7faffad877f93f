@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sample.mapper.UserMapper">
+	
+	<select id="searchUserList" parameterType="java.util.Map" resultType="java.util.HashMap">
+		SELECT USER_ID, NAME, LEVEL
+			FROM USERS
+			WHERE 1=1
+			<if test="USER_ID != null and BOARD_TITLE != ''">
+				AND USER_ID LIKE CONCAT('%', #{USER_ID}, '%')
+			</if>
+			<if test="NAME != null and NAME != ''">
+				AND NAME LIKE CONCAT ('%', #{NAME}, '%')
+			</if>
+			<!-- 
+			<if test="FIRST_REG_DATE != null and FIRST_REG_DATE != ''">
+				AND DATE(REG_DATE) >= DATE(#{FIRST_REG_DATE})
+			</if>
+			
+			<if test="SECOND_REG_DATE != null and SECOND_REG_DATE != ''">
+				AND DATE(REG_DATE) <![CDATA[ <= ]]> DATE(#{SECOND_REG_DATE})
+			</if>
+			 -->
+	</select>
+	
+</mapper>

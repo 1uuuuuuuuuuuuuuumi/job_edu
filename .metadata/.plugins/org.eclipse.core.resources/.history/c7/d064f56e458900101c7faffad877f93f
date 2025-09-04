@@ -1,0 +1,6 @@
+package sample.mapper;
+
+@Mapper("UserMapper")
+public interface UserMapper {
+
+}

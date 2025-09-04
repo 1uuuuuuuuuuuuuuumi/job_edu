@@ -18,4 +18,13 @@ public interface MainMapper {
 	int joinUser(Map<String, Object> param);
 
 	List<HashMap<String, Object>> userList();
+
+	List<HashMap<String, Object>> searchUserList(Map<String, Object> param);
+	
+	int insertNewUser(Map<String, Object> param);
+
+	int updateUser(Map<String, Object> param);
+
+	int deleteUser(Map<String, Object> param);
+	
 }

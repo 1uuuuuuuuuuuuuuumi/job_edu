@@ -3,7 +3,7 @@
   <Form id="Form_Left" width="200" height="600" titletext="New Form" background="white">
     <Layouts>
       <Layout height="600" mobileorientation="landscape" width="200">
-        <Grid id="gridLeftMenu" taborder="1" left="0" top="0" right="0" bottom="0" oncellclick="gridLeftMenu_oncellclick" binddataset="dsLeft">
+        <Grid id="gridLeftMenu" taborder="1" left="5" top="20" right="5" bottom="20" oncellclick="gridLeftMenu_oncellclick" binddataset="dsLeft">
           <Formats>
             <Format id="default">
               <Columns>
@@ -13,7 +13,7 @@
                 <Row size="24"/>
               </Rows>
               <Band id="body">
-                <Cell displaytype="treeitemcontrol" edittype="tree" text="bind:MENU_NM" treelevel="bind:MENU_LEVEL" treestartlevel="1"/>
+                <Cell displaytype="treeitemcontrol" edittype="tree" text="bind:MENU_NM" treelevel="bind:MENU_LEVEL" treestartlevel="1" color="#d3d3d3"/>
               </Band>
             </Format>
           </Formats>

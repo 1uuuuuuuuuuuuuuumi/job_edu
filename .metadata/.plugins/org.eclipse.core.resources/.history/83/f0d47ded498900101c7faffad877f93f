@@ -1,0 +1,37 @@
+package sample.web;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.uiadapter17.spring.core.annotation.ParamDataSet;
+import com.nexacro.uiadapter17.spring.core.data.NexacroResult;
+
+import sample.service.UserService;
+
+@Controller
+public class UserController {
+	
+	@Autowired
+	private UserService userService;
+
+	//유저조회
+	@RequestMapping(value="/searchUserList.do")
+	public NexacroResult searchUserList(@ParamDataSet(name="ds_search", required=false) Map<String, Object> param) {
+		
+		NexacroResult result = new NexacroResult();
+		
+		System.out.println(param);
+		
+		List<HashMap<String, Object>> resultData = userService.searchUserList(param);
+		
+		result.addDataSet("ds_user", resultData);
+		
+		return result;
+	}
+	
+}

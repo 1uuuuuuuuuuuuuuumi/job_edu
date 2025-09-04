@@ -1,10 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="Form_Board" width="1280" height="720" titletext="New Form" onload="Form_Board_onload" onsetfocus="Form_Board_onload" background=" #F2CC0C">
+  <Form id="Form_Board" width="1280" height="720" titletext="New Form" onload="Form_Board_onload" onsetfocus="Form_Board_onload" background="white">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
-        <Static id="Static00" taborder="0" text="★ 루미랜드 게시판 ★" left="46" top="58" width="377" height="62" font="bold 25pt/normal &quot;맑은 고딕&quot;" color="black"/>
-        <Grid id="Grid00" taborder="1" left="45" top="225" width="92.97%" height="435" binddataset="ds_list" oncellclick="Grid00_oncellclick" font="bold 14px 맑은 고딕" useselcolor="false" border="2px solid  #0A4DA6" borderRadius="5px" oncelldblclick="Grid00_oncelldblclick" autofittype="col">
+        <Grid id="Grid00" taborder="0" left="45" top="225" width="92.97%" height="435" binddataset="ds_list" oncellclick="Grid00_oncellclick" font="bold 14px 맑은 고딕" useselcolor="false" border="2px solid  #0A4DA6" borderRadius="5px" oncelldblclick="Grid00_oncelldblclick" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
@@ -35,7 +34,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Div id="Div00" taborder="2" text="" left="45" top="135" width="1190" height="71" border="2px solid #0A4DA6" background="#74BF04" borderRadius="5px">
+        <Div id="Div00" taborder="1" text="" left="45" top="135" width="1190" height="71" border="2px solid #0A4DA6" background="white" borderRadius="5px">
           <Layouts>
             <Layout>
               <Static id="board_st_title" taborder="0" text="제목" left="29" top="17" width="54" height="37" font="bold 17px 맑은 고딕" color="black"/>
@@ -50,9 +49,9 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="Button00" taborder="3" text="글쓰기" left="1330" top="109" width="100" height="42" onclick="Button00_onclick" background="#DC0630" font="bold 14px 맑은 고딕" color="#ffffff" cursor="pointer" borderRadius="10px"/>
-        <Button id="Button01" taborder="4" text="행 추가" left="1024" top="80" width="100" height="42" font="bold 20px 맑은 고딕" background="#DC0630" color="white" borderRadius="5px" onclick="Button01_onclick"/>
-        <Button id="Button01_00" taborder="5" text="행 삭제" left="1134" top="80" width="100" height="42" font="bold 20px 맑은 고딕" background="white" color="#dc0630" borderRadius="5px" onclick="Button01_00_onclick"/>
+        <Button id="Button00" taborder="2" text="글쓰기" left="1330" top="109" width="100" height="42" onclick="Button00_onclick" background="#DC0630" font="bold 14px 맑은 고딕" color="#ffffff" cursor="pointer" borderRadius="10px"/>
+        <Button id="Button01" taborder="3" text="행 추가" left="1024" top="80" width="100" height="42" font="bold 20px 맑은 고딕" background="#DC0630" color="white" borderRadius="5px" onclick="Button01_onclick"/>
+        <Button id="Button01_00" taborder="4" text="행 삭제" left="1134" top="80" width="100" height="42" font="bold 20px 맑은 고딕" background="white" color="#dc0630" borderRadius="5px" onclick="Button01_00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>

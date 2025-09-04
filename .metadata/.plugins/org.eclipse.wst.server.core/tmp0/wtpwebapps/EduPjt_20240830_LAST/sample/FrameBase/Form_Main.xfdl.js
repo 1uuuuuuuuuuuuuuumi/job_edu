@@ -11,7 +11,7 @@
         {
             this.set_name("Form_Main");
             this.set_titletext("New Form");
-            this.set_background(" #F2CC0C");
+            this.set_background("white");
             if (Form == this.constructor)
             {
                 this._setFormPosition(1080,720);
@@ -30,41 +30,51 @@
             // UI Components Initialize
             obj = new Static("Static00","286","242","120","50",null,null,null,null,null,null,this);
             obj.set_taborder("0");
-            obj.set_text("아이디");
-            obj.set_background("#DC0630");
+            obj.set_text("아이디 : ");
+            obj.set_background("white");
             obj.set_borderRadius("8px");
             obj.set_textAlign("center");
             obj.set_font("bold 23px 맑은 고딕");
-            obj.set_color("#fff");
+            obj.set_color("black");
             obj.set_verticalAlign("middle");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static00_00","286","324","120","50",null,null,null,null,null,null,this);
             obj.set_taborder("1");
-            obj.set_text("비밀번호");
-            obj.set_background("#DC0630");
+            obj.set_text("비밀번호 : ");
+            obj.set_background("white");
             obj.set_borderRadius("8px");
             obj.set_textAlign("center");
             obj.set_font("bold 23px 맑은 고딕");
-            obj.set_color("#fff");
+            obj.set_color("black");
             this.addChild(obj.name, obj);
 
             obj = new Edit("ed_id","416","247","300","40",null,null,null,null,null,null,this);
             obj.set_taborder("2");
+            obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
             obj = new Edit("ed_pw","416","329","300","40",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_password("true");
+            obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","435","450","145","50",null,null,null,null,null,null,this);
+            obj = new Button("Button00","440","430","145","50",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("로그인");
             obj.set_borderRadius("12px");
             obj.set_font("bold 23px 맑은 고딕");
-            obj.set_color("#ffffff");
-            obj.set_background(" #0A4DA6");
+            obj.set_color("navy");
+            obj.set_background("white");
+            obj.set_border("1px solid gray");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01","280","520","522","67",null,null,null,null,null,null,this);
+            obj.set_taborder("5");
+            obj.set_text("(주) 에이치씨엔씨에 오신걸 환영 합니다.");
+            obj.set_font("bold 16pt \"돋움\"");
+            obj.set_textAlign("center");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this
@@ -157,7 +167,7 @@
         			var objApp = nexacro.getApplication();
         			objApp.mainframe.VFrameSet00.TopFrame.set_visible(true);
         			objApp.mainframe.VFrameSet00.HFrameSet00.LeftFrame.set_visible(true);
-        			objApp.mainframe.VFrameSet00.HFrameSet00.WorkFrame.set_formurl("board::Form_Board.xfdl");
+        			objApp.mainframe.VFrameSet00.HFrameSet00.WorkFrame.set_formurl("product::Form_ProductMain.xfdl");
 
         			//this.getOwnerFrame().set_formurl("board::Form_Board.xfdl");
 
@@ -171,6 +181,11 @@
         };
 
 
+
+        this.ImageViewer00_onclick = function(obj,e)
+        {
+
+        };
 
         });
         

@@ -118,4 +118,44 @@ public class MainController {
 		return result;
 	}
 	
+	//유저조회
+	@RequestMapping(value="/searchUserList.do")
+	public NexacroResult searchUserList(@ParamDataSet(name="ds_search", required=false) Map<String, Object> param) {
+		
+		NexacroResult result = new NexacroResult();
+		
+		System.out.println(param);
+		
+		List<HashMap<String, Object>> resultData = mainService.searchUserList(param);
+		
+		result.addDataSet("ds_users", resultData);
+		
+		return result;
+	}
+	
+	//유저저장
+	@RequestMapping(value="/saveUser.do")
+	public NexacroResult saveUser(@ParamDataSet(name="ds_users", required=false) List<Map<String, Object>> param) {
+
+		for(int i = 0; i < param.size(); i++) {
+			
+			System.out.println(param.get(i));
+			
+			String rowType = param.get(i).get("DataSetRowType").toString();
+			
+			if(rowType.equals("1")) {
+				mainService.insertNewUser(param.get(i));
+			} else if(rowType.equals("2")) {
+				mainService.updateUser(param.get(i));
+			} else if(rowType.equals("3")) {
+				mainService.deleteUser(param.get(i));
+			} else {
+				System.out.println("해당 로직 없음");
+			}
+			
+		}
+		
+		return null;
+	}
+	
 }

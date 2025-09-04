@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_ProductMain" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Div id="Div00" taborder="0" left="10" top="20" border="1px solid black" right="10" bottom="20">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="메뉴를 클릭 해주세요." left="429" top="287" width="402" height="107" textAlign="center" font="bold 15pt &quot;돋움&quot;"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>

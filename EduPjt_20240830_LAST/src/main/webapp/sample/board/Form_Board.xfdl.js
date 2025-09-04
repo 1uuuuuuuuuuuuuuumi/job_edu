@@ -11,7 +11,7 @@
         {
             this.set_name("Form_Board");
             this.set_titletext("New Form");
-            this.set_background(" #F2CC0C");
+            this.set_background("white");
             if (Form == this.constructor)
             {
                 this._setFormPosition(1280,720);
@@ -28,15 +28,8 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("Static00","46","58","377","62",null,null,null,null,null,null,this);
-            obj.set_taborder("0");
-            obj.set_text("★ 루미랜드 게시판 ★");
-            obj.set_font("bold 25pt/normal \"맑은 고딕\"");
-            obj.set_color("black");
-            this.addChild(obj.name, obj);
-
             obj = new Grid("Grid00","45","225","92.97%","435",null,null,null,null,null,null,this);
-            obj.set_taborder("1");
+            obj.set_taborder("0");
             obj.set_binddataset("ds_list");
             obj.set_font("bold 14px 맑은 고딕");
             obj.set_useselcolor("false");
@@ -47,10 +40,10 @@
             this.addChild(obj.name, obj);
 
             obj = new Div("Div00","45","135","1190","71",null,null,null,null,null,null,this);
-            obj.set_taborder("2");
+            obj.set_taborder("1");
             obj.set_text("");
             obj.set_border("2px solid #0A4DA6");
-            obj.set_background("#74BF04");
+            obj.set_background("white");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
@@ -114,7 +107,7 @@
             this.Div00.addChild(obj.name, obj);
 
             obj = new Button("Button00","1330","109","100","42",null,null,null,null,null,null,this);
-            obj.set_taborder("3");
+            obj.set_taborder("2");
             obj.set_text("글쓰기");
             obj.set_background("#DC0630");
             obj.set_font("bold 14px 맑은 고딕");
@@ -124,7 +117,7 @@
             this.addChild(obj.name, obj);
 
             obj = new Button("Button01","1024","80","100","42",null,null,null,null,null,null,this);
-            obj.set_taborder("4");
+            obj.set_taborder("3");
             obj.set_text("행 추가");
             obj.set_font("bold 20px 맑은 고딕");
             obj.set_background("#DC0630");
@@ -133,7 +126,7 @@
             this.addChild(obj.name, obj);
 
             obj = new Button("Button01_00","1134","80","100","42",null,null,null,null,null,null,this);
-            obj.set_taborder("5");
+            obj.set_taborder("4");
             obj.set_text("행 삭제");
             obj.set_font("bold 20px 맑은 고딕");
             obj.set_background("white");

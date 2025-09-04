@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sample.mapper.MainMapper">
+	<select id="selectUser" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT *
+		  FROM USERS
+	   	 WHERE 1=1
+		   AND USER_ID = #{user_id}
+		   AND PASS    = #{user_pw}
+	</select>
+	
+	<select id="selectUserForLogin" parameterType="java.util.Map" resultType="java.util.Map">
+		SELECT USER_ID, PASS, SALT, NAME, MAIL, ADDRESS
+		FROM USERS
+		WHERE USER_ID = #{user_id}
+	</select>
+	
+	<select id="idChk" parameterType="java.util.Map" resultType="java.util.HashMap">
+		SELECT USER_ID
+			FROM USERS
+			WHERE 1=1
+				AND USER_ID = #{user_id}
+	</select>
+	
+	<insert id="joinUser" parameterType="java.util.Map">
+		INSERT INTO USERS (USER_ID, PASS, NAME, MAIL, ADDRESS, SALT, RECOMMEND_USER)
+			VALUES (
+				#{user_id}
+				, #{user_pw}
+				, #{user_name}
+				, #{user_email}
+				, #{user_addr}
+				, #{user_salt}
+				, #{user_recommend}
+			)
+	</insert>
+	
+	<!-- 유저 리스트 조회 -->
+	<select id="userList" resultType="java.util.HashMap">
+		SELECT USER_ID, NAME, BIRTH_DAY, ADDRESS, LEVEL, POINT, IS_USE
+			FROM USERS
+	</select>
+
+	<!-- 유저 검색 -->
+	<select id="searchUserList" parameterType="java.util.Map" resultType="java.util.HashMap">
+		SELECT USER_ID, NAME, BIRTH_DAY, ADDRESS, LEVEL, POINT, IS_USE
+			FROM USERS
+		WHERE 1=1
+		<if test="USER_ID != null and userId != ''">
+			AND USER_ID LIKE CONCAT('%', #{USER_ID}, '%')
+		</if>
+		<if test="NAME != null and NAME != ''">
+		AND NAME LIKE CONCAT('%', #{NAME}, '%')
+		</if>
+		<if test="LEVEL != null and LEVEL != ''">
+			AND LEVEL = #{LEVEL}
+		</if>
+	</select>
+
+	<!-- 저장할때필요한애들 -->
+	<insert id="insertNewUser" parameterType="java.util.Map">
+		INSERT INTO USERS (USER_ID, NAME, BIRTH_DAY, ADDRESS, LEVEL, POINT, IS_USE)
+			VALUES (#{USER_ID}, #{NAME}, #{BIRTH_DAY}, #{ADDRESS}, #{LEVEL}, #{POINT}, #{IS_USE})
+	</insert>
+	
+	<update id="updateUser" parameterType="java.util.Map">
+		UPDATE USERS
+			SET USER_ID = #{USER_ID}
+				, NAME = #{NAME}
+				, BIRTH_DAY = #{BIRTH_DAY}
+				, ADDRESS = #{ADDRESS}
+				, LEVEL = #{LEVEL}
+				, POINT = #{POINT}
+				, IS_USE = #{IS_USE}
+			WHERE USER_ID = #{USER_ID}
+	</update>
+	
+	<delete id="deleteUser" parameterType="java.util.Map">
+		DELETE FROM USERS
+			WHERE USER_ID = #{USER_ID}
+	</delete>
+
+</mapper>

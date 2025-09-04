@@ -48,6 +48,7 @@
     <Service prefixid="dept" type="form" url="./dept/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="test" type="form" url="./test/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="users" type="form" url="./users/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
+    <Service prefixid="order" type="form" url="./order/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
   </Services>
   <Protocols/>
   <DeviceAdaptors/>

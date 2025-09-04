@@ -1,0 +1,16 @@
+package sample.mapper;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import egovframework.rte.psl.dataaccess.mapper.Mapper;
+
+@Mapper("UserMapper")
+public interface UserMapper {
+	
+	List<HashMap<String, Object>> searchUserList(Map<String, Object>param);
+
+	List<HashMap<String, Object>> userList(Map<String, Object> param);
+	
+}

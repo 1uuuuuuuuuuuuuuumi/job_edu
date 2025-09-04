@@ -78,4 +78,25 @@ public class MainServiceImpl implements MainService {
 	public List<HashMap<String, Object>> userList() {
 		return mainMapper.userList();
 	}
+
+	@Override
+	public List<HashMap<String, Object>> searchUserList(Map<String, Object> param) {
+		return mainMapper.searchUserList(param);
+	}
+	
+	@Override
+	public int insertNewUser(Map<String, Object> param) {
+		return mainMapper.insertNewUser(param);
+	}
+
+	@Override
+	public int updateUser(Map<String, Object> param) {
+		return mainMapper.updateUser(param);
+	}
+
+	@Override
+	public int deleteUser(Map<String, Object> param) {
+		return mainMapper.deleteUser(param);
+	}
+	
 }

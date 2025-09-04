@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_ProductList" width="1280" height="720" titletext="New Form" onload="Form_ProductList_onload" onsetfocus="Form_ProductList_onload">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Div id="Div00" taborder="8" left="10" top="20" border="1px solid #CDCDCD" background="#F6F6F6" right="0" height="80">
+          <Layouts>
+            <Layout>
+              <Combo id="Combo00" taborder="0" text="Combo00" left="589" top="17" width="200" height="45" borderRadius="5px"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grid_category" taborder="0" left="126" top="237" width="244" height="437" autofittype="col" binddataset="ds_category" oncellclick="Div00_Grid00_oncellclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="230"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="카테고리 코드"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:CATE_CODE" edittype="none" textAlign="center"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Combo id="Combo00" taborder="1" text="" left="190" top="38" width="200" height="45" borderRadius="5px" onitemchanged="Div00_Combo00_onitemchanged" index="-1" innerdataset="ds_combo" datacolumn="CATE_CODE"/>
+        <Grid id="grid_product" taborder="2" left="400" top="237" width="756" height="437" binddataset="ds_product" autofittype="col" oncelldblclick="Div00_grid_product_oncelldblclick">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="134"/>
+                <Column size="174"/>
+                <Column size="112"/>
+                <Column size="64"/>
+                <Column size="267"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="카테고리명"/>
+                <Cell col="1" text="상품명"/>
+                <Cell col="2" text="가격"/>
+                <Cell col="3" text="재고"/>
+                <Cell col="4" text="설명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:CATE_NAME"/>
+                <Cell col="1" text="bind:PRODUCT_NAME"/>
+                <Cell col="2" text="bind:PRODUCT_PRICE"/>
+                <Cell col="3" text="bind:PRODUCT_STOCK"/>
+                <Cell col="4" text="bind:PRODUCT_CONTENT"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button00" taborder="3" text="조회" left="887" top="186" width="79" height="44" borderRadius="5px" font="bold 17px 맑은 고딕" onclick="Div00_Button00_onclick"/>
+        <Button id="Button00_00_00_00" taborder="4" text="삭제" left="1075" top="186" width="79" height="44" borderRadius="5px" font="bold 17px 맑은 고딕" onclick="Div00_Button00_00_00_00_onclick"/>
+        <Button id="Button00_00_01" taborder="5" text="저장" left="981" top="186" width="79" height="44" borderRadius="5px" font="bold 17px 맑은 고딕"/>
+        <Button id="Button01" taborder="6" text="+" left="294" top="196" width="35" height="35" borderRadius="5px" onclick="Div00_Button01_onclick"/>
+        <Button id="Button02" taborder="7" text="-" left="334" top="196" width="35" height="35" borderRadius="5px" onclick="Div00_Button02_onclick"/>
+        <Static id="Static00_00" taborder="9" text="•카테고리코드" left="33" top="38" width="167" height="41" textAlign="center" font="bold 15pt &quot;돋움&quot;"/>
+        <Static id="Static00_00_00" taborder="10" text="•카테고리명" left="447" top="38" width="167" height="41" textAlign="center" font="bold 15pt &quot;돋움&quot;"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_category">
+        <ColumnInfo>
+          <Column id="CATE_CODE" type="STRING" size="256"/>
+          <Column id="CATE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_product">
+        <ColumnInfo>
+          <Column id="PRODUCT_CODE" type="INT" size="256"/>
+          <Column id="PRODUCT_NAME" type="STRING" size="256"/>
+          <Column id="CATE_CODE" type="STRING" size="256"/>
+          <Column id="PRODUCT_PRICE" type="INT" size="256"/>
+          <Column id="PRODUCT_SALE_RATE" type="INT" size="256"/>
+          <Column id="PRODUCT_STOCK" type="INT" size="256"/>
+          <Column id="PRODUCT_CONTENT" type="STRING" size="256"/>
+          <Column id="CATE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_combo">
+        <ColumnInfo>
+          <Column id="CATE_CODE" type="STRING" size="256"/>
+          <Column id="CATE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.Form_ProductList_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	
+	this.fn_categoryList();
+	this.fn_productList();
+	
+};
+
+this.fn_categoryList = function(){
+		var strSvcID = "categoryList";
+		var strURL = "svc::categoryList.do";
+		var strInDatasets = "";
+		var strOutDatasets = "ds_category=ds_category ds_combo=ds_category";
+		var strArg = "";
+		var callBack = "fn_callBack";
+		var inAsync = true;
+
+		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync);
+}
+
+this.fn_callBack = function(svcId, errCD, errMSG){
+	
+	switch(svcId) {
+	case "productList":
+		break;
+	case "categoryList" :
+	
+		case "categoryList" :
+    trace("Before addRow: " + this.ds_combo.rowcount);
+
+    var addRow = this.ds_combo.insertRow(0);
+    this.ds_combo.setColumn(addRow, "CATE_NAME", "- 전체 -");
+    this.ds_combo.setColumn(addRow, "CATE_CODE", "- 전체 -");
+
+    this.Div00.form.Combo00.set_value("- 전체 -");
+    break;
+
+		
+		break;
+	default:
+	}
+	
+};
+
+this.fn_productList = function(cate_code){
+		var strSvcID = "productList";
+		var strURL = "svc::productList.do";
+		var strInDatasets = "";
+		var strOutDatasets = "ds_product=ds_product";
+		var strArg = "CATE_CODE=" + cate_code; //파라미터 추가
+		var callBack = "fn_callBack";
+		var inAsync = true;
+
+		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync);
+}
+this.Div00_Grid00_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var row = this.Div00.form.grid_category.currentrow;
+	var targetCode = this.ds_category.getColumn(row, "CATE_CODE");
+	this.ds_product.filter("CATE_CODE == '" + targetCode + "'");
+};
+
+
+
+
+this.Div00_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_category.addRow();
+};
+
+this.Div00_Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var row = this.ds_category.rowposition;
+	if(row > -1){
+		this.ds_category.deleteRow(row);
+	}
+};
+
+
+
+
+this.Div00_Button00_00_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var row = this.ds_product.rowposition;
+	if(row > -1){
+		this.ds_product.deleteRow(row);
+	}
+};
+
+//상품리스트 더블클릭
+this.Div00_grid_product_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	var productIdx = this.ds_product.getColumn(e.row, "PRODUCT_CODE");
+	
+	var productIdx2 = this.ds_product.getColumn(this.ds_product.rowposition, "PRODUCT_CODE");
+	
+	popup = new nexacro.ChildFrame;
+	
+	if(productIdx != null && productIdx != '' && productIdx != undefined){
+		
+		var surl = "product::Form_UpdateProduct.xfdl";
+		
+		var param = {
+			productIdx : productIdx2
+		};
+	} else {
+		var surl = "product::Form_ProductPop.xfdl";
+		var param = {};
+	}
+	
+	//첫번째줄의 "productPop"는 네번째줄의"fn_popCallback"에 던져지는 svcID 
+	popup.init("productPop", 0, 0, 800, 700, null, null, surl);
+	popup.set_dragmovetype("all");
+	popup.set_showtitlebar("상세보기");
+	popup.showModal(this.getOwnerFrame(), param, this, "fn_popCallback", true); 
+};
+
+//부모로 데이터
+this.fn_popCallback = function(svcID, strVal){
+	switch(svcID) {
+		case "productPop":
+			//넥사크로에서 지원하는 String함수
+			//indexOf() : 소괄호안의 문자열에 해당하는 값을 찾아주는 함수
+			if(String(strVal).indexOf("ok:::") > -1){
+				var rtnArr = String(strVal).replace("ok:::", "").split(",");
+				
+				trace(rtnArr[0]);
+				
+			}
+		break;
+	default:
+	}
+}]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="grid_category" propid="autofittype" datasetid="gds_userInfo" columnid=""/>
+      <BindItem id="item1" compid="grid_category" propid="binddataset" datasetid="ds_category" columnid=""/>
+      <BindItem id="item2" compid="Combo00" propid="index" datasetid="ds_combo" columnid=""/>
+    </Bind>
+  </Form>
+</FDL>

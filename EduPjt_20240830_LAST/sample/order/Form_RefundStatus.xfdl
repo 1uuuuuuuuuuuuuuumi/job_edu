@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_RefundStatus" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Div id="Div00" taborder="0" left="10" top="20" border="1px solid #CDCDCD" background="#F6F6F6" right="0" height="80">
+          <Layouts>
+            <Layout>
+              <Edit id="Edit00" taborder="0" left="91" top="19" width="200" height="40" borderRadius="5px"/>
+              <Edit id="Edit01" taborder="1" left="389" top="18" width="200" height="40" borderRadius="5px"/>
+              <Combo id="Combo00" taborder="2" text="Combo00" left="704" top="18" width="200" height="40" borderRadius="5px"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00" taborder="1" text="•회원ID" left="7" top="37" width="107" height="41" font="bold 13pt &quot;돋움&quot;" textAlign="center"/>
+        <Static id="Static00_00" taborder="2" text="•상품명" left="310" top="38" width="107" height="41" font="bold 13pt &quot;돋움&quot;" textAlign="center"/>
+        <Static id="Static00_00_00" taborder="3" text="•환불여부" left="616" top="37" width="107" height="41" font="bold 13pt &quot;돋움&quot;" textAlign="center"/>
+        <Button id="Button00_00_00_00" taborder="4" text="엑셀" left="1014" top="40" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;" onclick="Div00_Button00_00_00_00_onclick"/>
+        <Button id="Button00_00" taborder="5" text="조회" left="1102" top="40" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;" onclick="Div00_Button00_onclick"/>
+        <Button id="Button00_00_01" taborder="6" text="저장" left="1190" top="40" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;"/>
+        <Grid id="Grid00" taborder="7" left="10" top="180" right="10" bottom="20" binddataset="ds_search" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="84"/>
+                <Column size="125"/>
+                <Column size="125"/>
+                <Column size="126"/>
+                <Column size="234"/>
+                <Column size="129"/>
+                <Column size="111"/>
+                <Column size="97"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="회원ID"/>
+                <Cell col="2" text="이름"/>
+                <Cell col="3" text="생년월일"/>
+                <Cell col="4" text="주소"/>
+                <Cell col="5" text="등급"/>
+                <Cell col="6" text="포인트"/>
+                <Cell col="7" text="휴면유무"/>
+              </Band>
+              <Band id="body">
+                <Cell expr="currow + 1" textAlign="center"/>
+                <Cell col="1" text="bind:USER_ID" edittype="normal" textAlign="center"/>
+                <Cell col="2" text="bind:NAME" edittype="normal" textAlign="center"/>
+                <Cell col="3" text="bind:BIRTH_DAY" edittype="normal" textAlign="center"/>
+                <Cell col="4" text="bind:ADDRESS" edittype="normal" textAlign="center"/>
+                <Cell col="5" text="bind:LEVEL" edittype="normal" textAlign="center"/>
+                <Cell col="6" text="bind:POINT" edittype="normal" textAlign="center"/>
+                <Cell col="7" text="bind:IS_USE" edittype="normal" textAlign="center"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00_00_01" taborder="8" text="환불관리" left="20" top="142" width="95" height="36" textAlign="center" font="bold 15pt &quot;돋움&quot;" onclick="Static00_00_01_onclick"/>
+        <Static id="st_total" taborder="9" text="| " left="125" top="143" width="143" height="34" font="bold 15pt &quot;돋움&quot;" color="#7ec0e3" onclick="Static01_onclick"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.Edit00" propid="value" datasetid="ds_search" columnid="USER_ID"/>
+      <BindItem id="item1" compid="Div00.form.Edit01" propid="value" datasetid="ds_search" columnid="PROD_NAME"/>
+      <BindItem id="item2" compid="Div00.form.Combo00" propid="value" datasetid="ds_search" columnid="ORDER_STATUS"/>
+      <BindItem id="item3" compid="Grid00" propid="binddataset" datasetid="ds_users" columnid=""/>
+    </Bind>
+  </Form>
+</FDL>

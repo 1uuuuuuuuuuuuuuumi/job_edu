@@ -11,7 +11,7 @@
         {
             this.set_name("Form_Board");
             this.set_titletext("New Form");
-            this.set_background(" #F2CC0C");
+            this.set_background("white");
             if (Form == this.constructor)
             {
                 this._setFormPosition(1280,720);
@@ -43,14 +43,14 @@
             obj.set_border("2px solid  #0A4DA6");
             obj.set_borderRadius("5px");
             obj.set_autofittype("col");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"144\"/><Column size=\"309\"/><Column size=\"309\"/><Column size=\"309\"/><Column size=\"309\"/></Columns><Rows><Row size=\"52\" band=\"head\"/><Row size=\"44\"/></Rows><Band id=\"head\"><Cell text=\"순번\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"1\" text=\"제목\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"2\" text=\"작성자\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"3\" text=\"내용\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"4\" text=\"작성일자\" background=\"#74BF04\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\" color=\"black\" textAlign=\"center\" cursor=\"pointer\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"1\" text=\"bind:BOARD_TITLE\" edittype=\"normal\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"2\" text=\"bind:BOARD_WRITER\" edittype=\"normal\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"3\" text=\"bind:BOARD_CONTENT\" edittype=\"normal\"/><Cell col=\"4\" text=\"bind:REG_DATE\" edittype=\"date\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"144\"/><Column size=\"309\"/><Column size=\"309\"/><Column size=\"309\"/><Column size=\"309\"/></Columns><Rows><Row size=\"52\" band=\"head\"/><Row size=\"44\"/></Rows><Band id=\"head\"><Cell text=\"순번\" background=\"white\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"1\" text=\"제목\" background=\"white\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"2\" text=\"작성자\" background=\"white\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"3\" text=\"내용\" background=\"white\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"4\" text=\"작성일자\" background=\"white\" font=\"bold 20px 맑은 고딕\" padding=\"5px 0px\"/></Band><Band id=\"body\"><Cell text=\"expr:currow + 1\" color=\"black\" textAlign=\"center\" cursor=\"pointer\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"1\" text=\"bind:BOARD_TITLE\" edittype=\"normal\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"2\" text=\"bind:BOARD_WRITER\" edittype=\"normal\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/><Cell col=\"3\" text=\"bind:BOARD_CONTENT\" edittype=\"normal\"/><Cell col=\"4\" text=\"bind:REG_DATE\" edittype=\"date\" color=\"black\" cursor=\"pointer\" textAlign=\"center\" font=\"bold 15px 맑은 고딕\" padding=\"5px 0px\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Div("Div00","45","135","1190","71",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_text("");
             obj.set_border("2px solid #0A4DA6");
-            obj.set_background("#74BF04");
+            obj.set_background("white");
             obj.set_borderRadius("5px");
             this.addChild(obj.name, obj);
 
@@ -314,6 +314,8 @@
         		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync); //this.transaction() -> 함수 / 위의내용들을 전부 담기
         };
 
+
+
         });
         
         // Regist UI Components Event
@@ -323,6 +325,7 @@
             this.addEventHandler("onsetfocus",this.Form_Board_onload,this);
             this.Grid00.addEventHandler("oncellclick",this.Grid00_oncellclick,this);
             this.Grid00.addEventHandler("oncelldblclick",this.Grid00_oncelldblclick,this);
+            this.Div00.form.board_search_ed_title.addEventHandler("onchanged",this.Div00_board_search_ed_title_onchanged,this);
             this.Div00.form.Button00.addEventHandler("onclick",this.Div00_Button00_onclick,this);
             this.Button00.addEventHandler("onclick",this.Button00_onclick,this);
             this.Button01.addEventHandler("onclick",this.Button01_onclick,this);

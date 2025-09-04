@@ -28,6 +28,7 @@ if (nexacro.Environment)
         nexacro._addService("dept", "form", "./dept/", "session", null, "", "0", "0");
         nexacro._addService("test", "form", "./test/", "session", null, "", "0", "0");
         nexacro._addService("users", "form", "./users/", "session", null, "", "0", "0");
+        nexacro._addService("order", "form", "./order/", "session", null, "", "0", "0");
     	nexacro._component_uri = (nexacro._arg_compurl ? nexacro._arg_compurl : "./nexacro17lib/component/");
     	nexacro._theme_uri = "./_resource_/_theme_/";
     	// load components
