@@ -15,9 +15,9 @@
         <Static id="Static00" taborder="1" text="•회원ID" left="7" top="37" width="107" height="41" font="bold 13pt &quot;돋움&quot;" textAlign="center"/>
         <Static id="Static00_00" taborder="2" text="•상품명" left="310" top="38" width="107" height="41" font="bold 13pt &quot;돋움&quot;" textAlign="center"/>
         <Static id="Static00_00_00" taborder="3" text="•환불여부" left="616" top="37" width="107" height="41" font="bold 13pt &quot;돋움&quot;" textAlign="center"/>
-        <Button id="Button00_00_00_00" taborder="4" text="엑셀" left="1014" top="40" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;" onclick="Div00_Button00_00_00_00_onclick"/>
-        <Button id="Button00_00" taborder="5" text="조회" left="1102" top="40" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;" onclick="Div00_Button00_onclick"/>
-        <Button id="Button00_00_01" taborder="6" text="저장" left="1190" top="40" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;"/>
+        <Button id="Button00_00_00_00" taborder="4" text="엑셀" left="1014" top="40" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;" onclick="Div00_Button00_00_00_00_onclick" cursor="pointer"/>
+        <Button id="Button00_00" taborder="5" text="조회" left="1102" top="40" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;" onclick="Div00_Button00_onclick" cursor="pointer"/>
+        <Button id="Button00_00_01" taborder="6" text="저장" left="1190" top="40" width="80" height="40" borderRadius="5px" font="bold 13pt &quot;굴림&quot;" cursor="pointer"/>
         <Grid id="Grid00" taborder="7" left="10" top="180" right="10" bottom="20" binddataset="ds_search" autofittype="col">
           <Formats>
             <Format id="default">

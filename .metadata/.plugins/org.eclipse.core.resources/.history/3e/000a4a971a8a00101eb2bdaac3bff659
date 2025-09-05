@@ -1,0 +1,32 @@
+package sample.web;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nexacro.uiadapter17.spring.core.data.NexacroResult;
+
+import sample.service.OrderService;
+
+@Controller
+public class OrderController {
+	
+	@Autowired
+	private OrderService orderService;
+
+	//주문목록조회
+	@RequestMapping(value="/orderList.do")
+	public NexacroResult orderList() {
+		NexacroResult result = new NexacroResult();
+		
+		List<HashMap<String, Object>> getList = orderService.orderList();
+		
+		result.addDataSet("ds_list", getList);
+		
+		return result;
+	}
+	
+}

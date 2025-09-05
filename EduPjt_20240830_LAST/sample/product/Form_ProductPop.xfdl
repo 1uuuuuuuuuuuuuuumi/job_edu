@@ -3,20 +3,22 @@
   <Form id="Form_ProductPop" width="1280" height="720" titletext="New Form" onload="Form_ProductPop_onload">
     <Layouts>
       <Layout height="720" width="1280">
-        <Div id="Div00" taborder="0" left="348" top="30" width="585" height="660" background="lightgray" borderRadius="10px">
+        <Div id="Div00" taborder="0" left="335" top="30" width="611" height="660" background="white" border="3px solid black">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="카테고리명" left="78" top="72" width="150" height="60" font="bold 20px 맑은 고딕" textAlign="left"/>
-              <Static id="Static01" taborder="1" text="상품명" left="118" top="155" width="150" height="60" font="bold 20px 맑은 고딕" textAlign="left"/>
-              <Static id="Static02" taborder="2" text="재고" left="134" top="230" width="150" height="72" font="bold 20px 맑은 고딕" textAlign="left"/>
-              <Static id="Static03" taborder="3" text="설명" left="136" top="313" width="150" height="76" font="bold 20px 맑은 고딕" textAlign="left"/>
-              <Edit id="Edit00" taborder="4" left="195" top="78" width="317" height="47" borderRadius="5px" onchanged="Div00_Edit00_onchanged"/>
-              <Edit id="Edit01" taborder="5" left="195" top="160" width="317" height="47" borderRadius="5px"/>
-              <Edit id="Edit02" taborder="6" left="195" top="242" width="317" height="47" borderRadius="5px"/>
-              <TextArea id="TextArea00" taborder="7" left="195" top="324" width="317" height="186" borderRadius="5px"/>
-              <Button id="Button00" taborder="8" text="등록" left="105" top="564" width="125" height="52" font="bold 17px 맑은 고딕" borderRadius="5px"/>
-              <Button id="Button00_00" taborder="9" text="취소" left="342" top="564" width="125" height="52" font="bold 17px 맑은 고딕" borderRadius="5px"/>
-              <Button id="Button01" taborder="10" text="부모로 데이터" left="41" top="476" width="106" height="53" onclick="Div00_Button01_onclick"/>
+              <Static id="Static00" taborder="0" text="• 카테고리코드" left="78" top="95" width="150" height="51" font="bold 20px 맑은 고딕" textAlign="left" color="black"/>
+              <Static id="Static01" taborder="1" text="• 카테고리명" left="78" top="155" width="150" height="51" font="bold 20px 맑은 고딕" textAlign="left" color="black"/>
+              <Static id="Static02" taborder="2" text="• 상품명" left="78" top="215" width="150" height="51" font="bold 20px 맑은 고딕" textAlign="left" color="black"/>
+              <Static id="Static03" taborder="3" text="• 금액" left="78" top="276" width="150" height="51" font="bold 20px 맑은 고딕" textAlign="left" color="black"/>
+              <Button id="Button00" taborder="4" text="저장" left="240" top="538" width="110" height="50" font="bold 18px &quot;굴림&quot;" borderRadius="5px" color="navy" border="1px solid black" background="white" onclick="Div00_Button00_onclick" cursor="pointer"/>
+              <Static id="Static04" taborder="5" text="• 할인여부" left="78" top="337" width="155" height="51" font="bold 20px 맑은 고딕" color="black"/>
+              <Static id="Static05" taborder="6" text="• 할인금액" left="78" top="401" width="120" height="51" font="bold 20px 맑은 고딕" color="black"/>
+              <Edit id="Edit03" taborder="7" left="246" top="284" width="300" height="40"/>
+              <Combo id="Combo00" taborder="8" text="Combo00" left="246" top="344" width="300" height="40" innerdataset="ds_discount_yn" codecolumn="DISCOUNT_YN" datacolumn="DISCOUNT_YN"/>
+              <Combo id="Combo02" taborder="9" text="Combo02" left="246" top="101" width="300" height="40" innerdataset="ds_cate" codecolumn="CATE_CODE" datacolumn="CATE_CODE" onitemchanged="Div00_Combo02_onitemchanged"/>
+              <Combo id="Combo03" taborder="10" text="Combo03" left="246" top="162" width="300" height="40" innerdataset="ds_cate" codecolumn="SUB_CATE_CODE" datacolumn="CATE_NAME"/>
+              <Edit id="Edit00" taborder="11" left="246" top="223" width="300" height="40"/>
+              <Edit id="Edit01" taborder="12" left="246" top="407" width="300" height="40"/>
             </Layout>
           </Layouts>
         </Div>
@@ -25,18 +27,69 @@
     <Script type="xscript5.1"><![CDATA[
 this.Form_ProductPop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-		var strSvcID = "selectUser";		//트랜잭션 아이디
-		var strURL = "svc::selectUser.do";	//url controller에서 받을 주소
-		var strInDatasets = "ds_user=ds_user"; //내가 던질 데이터셋
-		var strOutDatasets = "ds_login=ds_login"; //내가 받을 데이터셋
-		var strArg = "";					//매개변수로 뭐가 들어가는지
-		var callBack = "fn_callBack";		//콜백기능으로 뭘할건지(콜백:내가 이 함수를 실행했을때 되돌아와서 실행할 함수)
-		var inAsync = true;					//동기 비동기 설정하는거 (Async:비동기 /sync:비동기)
+	//this.Div00.form.Combo03.set_readonly(true);
 
-		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync); //this.transaction() -> 함수 / 위의내용들을 전부 담기
+	var cate = this.parent.cate;
+	
+	this.ds_cate.copyData(cate);
+	this.ds_cate.deleteRow(0);
 };
 
 
-]]></Script>
+this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var strSvcID = "saveProduct";		//트랜잭션 아이디
+	var strURL = "svc::saveProduct.do";	//url controller에서 받을 주소
+	var strInDatasets = "ds_product=ds_product"; //내가 던질 데이터셋
+	var strOutDatasets = "ds_product=ds_product"; //내가 받을 데이터셋
+	var strArg = "";					//매개변수로 뭐가 들어가는지
+	var callBack = "fn_callBack";		//콜백기능으로 뭘할건지(콜백:내가 이 함수를 실행했을때 되돌아와서 실행할 함수)
+	var inAsync = true;					//동기 비동기 설정하는거 (Async:비동기 /sync:비동기)
+
+	this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync); //this.transaction() -> 함수 / 위의내용들을 전부 담기
+};]]></Script>
+    <Objects>
+      <Dataset id="ds_product">
+        <ColumnInfo>
+          <Column id="PROD_CODE" type="STRING" size="256"/>
+          <Column id="CATE_CODE" type="STRING" size="256"/>
+          <Column id="SUB_CATE_CODE" type="STRING" size="256"/>
+          <Column id="PROD_NAME" type="STRING" size="256"/>
+          <Column id="PRICE" type="STRING" size="256"/>
+          <Column id="DISCOUNT_YN" type="STRING" size="256"/>
+          <Column id="DISCOUNT_PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_cate">
+        <ColumnInfo>
+          <Column id="CATE_CODE" type="STRING" size="256"/>
+          <Column id="CATE_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_discount_yn">
+        <ColumnInfo>
+          <Column id="DISCOUNT_YN" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="DISCOUNT_YN">Y</Col>
+          </Row>
+          <Row>
+            <Col id="DISCOUNT_YN">N</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.Edit00" propid="value" datasetid="ds_product" columnid="PROD_NAME"/>
+      <BindItem id="item1" compid="Div00.form.Edit03" propid="value" datasetid="ds_product" columnid="PRICE"/>
+      <BindItem id="item2" compid="Div00.form.Combo02" propid="value" datasetid="ds_product" columnid="CATE_CODE"/>
+      <BindItem id="item3" compid="Div00.form.Combo03" propid="value" datasetid="ds_cate" columnid="CATE_NAME"/>
+      <BindItem id="item4" compid="Div00.form.Edit01" propid="value" datasetid="ds_product" columnid="DISCOUNT_PRICE"/>
+      <BindItem id="item5" compid="Div00.form.Combo00" propid="value" datasetid="ds_product" columnid="DISCOUNT_YN"/>
+    </Bind>
   </Form>
 </FDL>

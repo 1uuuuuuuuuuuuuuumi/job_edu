@@ -96,7 +96,7 @@
 		this.checkLicense("");
         
         this.loadPreloadList();
-
+        this.loadCss("xcssrc::TopMenuStyle.xcss");
     };
 }
 )();

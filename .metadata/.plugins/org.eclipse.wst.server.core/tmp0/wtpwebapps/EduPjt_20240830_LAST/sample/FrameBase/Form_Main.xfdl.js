@@ -28,53 +28,75 @@
             this.addChild(obj.name, obj);
             
             // UI Components Initialize
-            obj = new Static("Static00","286","242","120","50",null,null,null,null,null,null,this);
+            obj = new Div("Div00","118","155","842","410",null,null,null,null,null,null,this);
+            obj.set_taborder("6");
+            obj.set_border("3px solid black");
+            this.addChild(obj.name, obj);
+
+            obj = new ImageViewer("ImageViewer00","296","32","250","80",null,null,null,null,null,null,this.Div00.form);
+            obj.set_taborder("0");
+            obj.set_image("url(\'https://hcnc.co.kr/wp-content/uploads/2021/05/hcnc_logo.png\')");
+            obj.set_stretch("fit");
+            obj.set_border("1px none white");
+            this.Div00.addChild(obj.name, obj);
+
+            obj = new Static("Static00","310","320","120","50",null,null,null,null,null,null,this);
             obj.set_taborder("0");
             obj.set_text("아이디 : ");
             obj.set_background("white");
             obj.set_borderRadius("8px");
             obj.set_textAlign("center");
-            obj.set_font("bold 23px 맑은 고딕");
+            obj.set_font("bold 17px 맑은 고딕");
             obj.set_color("black");
             obj.set_verticalAlign("middle");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static00_00","286","324","120","50",null,null,null,null,null,null,this);
+            obj = new Static("Static00_00","300","369","120","50",null,null,null,null,null,null,this);
             obj.set_taborder("1");
             obj.set_text("비밀번호 : ");
             obj.set_background("white");
             obj.set_borderRadius("8px");
             obj.set_textAlign("center");
-            obj.set_font("bold 23px 맑은 고딕");
+            obj.set_font("bold 17px 맑은 고딕");
             obj.set_color("black");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("ed_id","416","247","300","40",null,null,null,null,null,null,this);
+            obj = new Edit("ed_id","420","330","300","35",null,null,null,null,null,null,this);
             obj.set_taborder("2");
             obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
-            obj = new Edit("ed_pw","416","329","300","40",null,null,null,null,null,null,this);
+            obj = new Edit("ed_pw","420","379","300","35",null,null,null,null,null,null,this);
             obj.set_taborder("3");
             obj.set_password("true");
             obj.set_border("1px solid black");
             this.addChild(obj.name, obj);
 
-            obj = new Button("Button00","440","430","145","50",null,null,null,null,null,null,this);
+            obj = new Button("Button00","475","432","100","30",null,null,null,null,null,null,this);
             obj.set_taborder("4");
             obj.set_text("로그인");
-            obj.set_borderRadius("12px");
-            obj.set_font("bold 23px 맑은 고딕");
+            obj.set_borderRadius("5px");
+            obj.set_font("bold 17px 맑은 고딕");
             obj.set_color("navy");
             obj.set_background("white");
             obj.set_border("1px solid gray");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
-            obj = new Static("Static01","280","520","522","67",null,null,null,null,null,null,this);
+            obj = new Static("Static01","279","473","522","67",null,null,null,null,null,null,this);
             obj.set_taborder("5");
             obj.set_text("(주) 에이치씨엔씨에 오신걸 환영 합니다.");
-            obj.set_font("bold 16pt \"돋움\"");
+            obj.set_font("bold 17px 맑은 고딕");
             obj.set_textAlign("center");
+            obj.set_color("black");
+            this.addChild(obj.name, obj);
+
+            obj = new Static("Static01_00","279","271","522","67",null,null,null,null,null,null,this);
+            obj.set_taborder("7");
+            obj.set_text("로그인을 해주세요");
+            obj.set_font("bold 20px 맑은 고딕");
+            obj.set_textAlign("center");
+            obj.set_color("black");
             this.addChild(obj.name, obj);
             // Layout Functions
             //-- Default Layout : this

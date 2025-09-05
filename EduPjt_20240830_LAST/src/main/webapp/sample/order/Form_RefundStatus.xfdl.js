@@ -68,6 +68,7 @@
             obj.set_text("엑셀");
             obj.set_borderRadius("5px");
             obj.set_font("bold 13pt \"굴림\"");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Button("Button00_00","1102","40","80","40",null,null,null,null,null,null,this);
@@ -75,6 +76,7 @@
             obj.set_text("조회");
             obj.set_borderRadius("5px");
             obj.set_font("bold 13pt \"굴림\"");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Button("Button00_00_01","1190","40","80","40",null,null,null,null,null,null,this);
@@ -82,6 +84,7 @@
             obj.set_text("저장");
             obj.set_borderRadius("5px");
             obj.set_font("bold 13pt \"굴림\"");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Grid("Grid00","10","180",null,null,"10","20",null,null,null,null,this);

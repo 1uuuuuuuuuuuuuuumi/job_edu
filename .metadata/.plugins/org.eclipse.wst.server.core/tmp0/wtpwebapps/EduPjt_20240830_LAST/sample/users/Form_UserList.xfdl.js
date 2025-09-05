@@ -246,9 +246,6 @@
         //조회
         this.Div00_Button02_onclick = function(obj,e)
         {
-
-
-
         	var strSvcID = "searchUserList";
         	var strURL = "svc::searchUserList.do";
         	var strInDatasets = "ds_search=ds_search"; //내가 던질 데이터셋

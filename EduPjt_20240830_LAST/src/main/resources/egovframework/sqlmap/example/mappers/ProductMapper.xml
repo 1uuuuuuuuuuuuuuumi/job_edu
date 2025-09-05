@@ -8,17 +8,17 @@
 	</select>
 	
 	<select id="productList" parameterType="String" resultType="java.util.HashMap">
-		SELECT P.PRODUCT_CODE
-			, P.PRODUCT_NAME
-			, P.CATE_CODE
-			, C.CATE_NAME
-			, P.PRODUCT_PRICE
-			, P.PRODUCT_SALE_RATE
-			, P.PRODUCT_STOCK
-			, P.PRODUCT_CONTENT
-		FROM PRODUCT P
-		JOIN CATEGORY C 
-		ON P.CATE_CODE = C.CATE_CODE
+		SELECT SC.CATE_CODE,
+		    SC.SUB_CATE_CODE,
+		    SC.SUB_CATE_NAME,
+		    P.STOCK,
+		    P.PROD_NAME,
+		    P.PRICE,
+		    P.DISCOUNT_YN,
+		    P.DISCOUNT_PRICE
+		FROM PRODUCTS P
+		JOIN SUB_CATEGORY SC 
+		ON P.SUB_CATE_CODE = SC.SUB_CATE_CODE
 	</select>
 	
 	<select id="getProduct" parameterType="java.util.Map" resultType="java.util.HashMap">
@@ -36,6 +36,7 @@
 		WHERE PRODUCT_CODE = #{PRODUCT_CODE}
 	</select>
 	
+	<!-- 기존의  saveProduct !
 	<update id="saveProduct" parameterType="java.util.Map">
 		UPDATE PRODUCT
 			SET PRODUCT_NAME = #{PRODUCT_NAME}
@@ -44,5 +45,28 @@
 				, PRODUCT_CONTENT = #{PRODUCT_CONTENT}
 			WHERE PRODUCT_CODE = #{PRODUCT_CODE}
 	</update>
+	-->
+	 
+	 <!-- 평가의 saveProduct ! -->
+	 <insert id="saveProduct" parameterType="java.util.Map">
+    INSERT INTO PRODUCTS (
+        PROD_CODE,
+        CATE_CODE,
+        CATE_NAME,
+        PROD_NAME,
+        PRICE,
+        DISCOUNT_YN,
+        DISCOUNT_PRICE
+    )
+    VALUES (
+        #{PROD_CODE},
+        #{CATE_CODE},
+        #{CATE_NAME},
+        #{PROD_NAME},
+        #{PRICE},
+        #{DISCOUNT_YN},
+        #{DISCOUNT_PRICE}
+    )
+</insert>
 	
 </mapper>

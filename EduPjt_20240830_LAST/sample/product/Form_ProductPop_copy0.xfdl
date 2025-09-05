@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Form_ProductPop" width="1280" height="720" titletext="New Form" onload="Form_ProductPop_onload">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Div id="Div00" taborder="0" left="335" top="30" width="611" height="660" background="white" border="3px solid black">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="• 카테고리코드" left="78" top="94" width="150" height="51" font="bold 20px 맑은 고딕" textAlign="left" color="black"/>
+              <Static id="Static01" taborder="1" text="• 카테고리명" left="78" top="157" width="150" height="51" font="bold 20px 맑은 고딕" textAlign="left" color="black"/>
+              <Static id="Static02" taborder="2" text="• 상품명" left="78" top="218" width="150" height="51" font="bold 20px 맑은 고딕" textAlign="left" color="black"/>
+              <Static id="Static03" taborder="3" text="• 금액" left="78" top="278" width="150" height="51" font="bold 20px 맑은 고딕" textAlign="left" color="black"/>
+              <Button id="Button00" taborder="4" text="저장" left="240" top="538" width="110" height="50" font="bold 18px &quot;굴림&quot;" borderRadius="5px" color="navy" border="1px solid black" background="white"/>
+              <Static id="Static04" taborder="5" text="• 할인여부" left="78" top="338" width="155" height="51" font="bold 20px 맑은 고딕" color="black"/>
+              <Static id="Static05" taborder="6" text="• 할인금액" left="78" top="402" width="120" height="51" font="bold 20px 맑은 고딕" color="black"/>
+              <Edit id="Edit03" taborder="7" left="244" top="284" width="300" height="40"/>
+              <Combo id="Combo00" taborder="8" text="Combo00" left="244" top="344" width="300" height="40"/>
+              <Combo id="Combo01" taborder="9" text="Combo01" left="244" top="408" width="300" height="40"/>
+              <Combo id="Combo02" taborder="10" text="Combo02" left="244" top="101" width="300" height="40"/>
+              <Combo id="Combo03" taborder="11" text="Combo03" left="244" top="162" width="300" height="40"/>
+              <Combo id="Combo04" taborder="12" text="Combo04" left="244" top="225" width="300" height="40"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Form_ProductPop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.categoryList();
+	var strSvcID = "productList";
+	var strURL = "svc::productList.do";
+	var strInDatasets = "";
+	var strOutDatasets = "ds_product=ds_product";
+	var strArg = "CATE_CODE=" + cate_code; //파라미터 추가
+	var callBack = "fn_callBack";
+	var inAsync = true;
+
+	this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync);
+};
+
+this.fn_callBack = function(svcId, errCD, errMSG){
+	
+	switch(svcId) {
+	case "productList":
+		break;
+	case "categoryList" :
+
+		var addRow = this.ds_combo.insertRow(0);
+		this.ds_combo.setColumn(addRow, "CATE_NAME", "-전체-");
+		this.ds_combo.setColumn(addRow, "CATE_CODE", "-전체-");
+
+		this.Div00.form.Combo00.set_value("-전체-");
+		
+		var newRow = this.ds_category.insertRow(0);
+		this.ds_category.setColumn(newRow, "CATE_CODE", "-전체-");
+		this.ds_category.setColumn(newRow, "CATE_NAME", "-전체-");
+		
+		this.Combo00.set_value("-전체-");
+		
+		break;
+	case "searchProductList" :
+	
+	default:
+	}
+};
+
+this.fn_categoryList = function(){
+		var strSvcID = "categoryList";
+		var strURL = "svc::categoryList.do";
+		var strInDatasets = "";
+		var strOutDatasets = "ds_category=ds_category ds_combo=ds_category";
+		var strArg = "";
+		var callBack = "fn_callBack";
+		var inAsync = true;
+
+		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync);
+}]]></Script>
+    <Objects>
+      <Dataset id="ds_product">
+        <ColumnInfo>
+          <Column id="PROD_CODE" type="STRING" size="256"/>
+          <Column id="CATE_CODE" type="STRING" size="256"/>
+          <Column id="SUB_CATE_CODE" type="STRING" size="256"/>
+          <Column id="SUB_CATE_NAME" type="STRING" size="256"/>
+          <Column id="STOCK" type="STRING" size="256"/>
+          <Column id="PROD_NAME" type="STRING" size="256"/>
+          <Column id="PRICE" type="STRING" size="256"/>
+          <Column id="DISCOUNT_YN" type="STRING" size="256"/>
+          <Column id="DISCOUNT_PRICE" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

@@ -80,6 +80,7 @@
             obj.set_color("navy");
             obj.set_background("white");
             obj.set_border("1px solid gray");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static01","279","473","522","67",null,null,null,null,null,null,this);

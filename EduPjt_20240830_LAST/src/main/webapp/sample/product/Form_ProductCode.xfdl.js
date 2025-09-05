@@ -58,7 +58,8 @@
 
             obj = new Grid("Grid00","10","180","335",null,null,"20",null,null,null,null,this);
             obj.set_taborder("4");
-            obj._setContents("");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"103\"/><Column size=\"126\"/><Column size=\"248\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"No\"/><Cell col=\"1\" text=\"대분류코드\"/><Cell col=\"2\" text=\"설명\"/></Band><Band id=\"body\"><Cell text=\"expr:currow - 1\"/><Cell col=\"1\"/><Cell col=\"2\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static00_00","20","144","95","36",null,null,null,null,null,null,this);
@@ -70,14 +71,15 @@
 
             obj = new Static("Static01","125","144","171","36",null,null,null,null,null,null,this);
             obj.set_taborder("6");
-            obj.set_text("ㅇㅇㅇㅇ");
+            obj.set_text("| 총 0건");
             obj.set_font("bold 15pt \"돋움\"");
             obj.set_color("#7ec0e3");
             this.addChild(obj.name, obj);
 
             obj = new Grid("Grid01","388","180",null,null,"10","20",null,null,null,null,this);
             obj.set_taborder("7");
-            obj._setContents("");
+            obj.set_autofittype("col");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"215\"/><Column size=\"215\"/><Column size=\"333\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"중분류\"/><Cell col=\"1\" text=\"소분류\"/><Cell col=\"2\" text=\"설명\"/></Band><Band id=\"body\"><Cell/><Cell col=\"1\"/><Cell col=\"2\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Button("Button02","1170","123","45","45",null,null,null,null,null,null,this);
@@ -121,7 +123,7 @@
         // Regist UI Components Event
         this.on_initEvent = function()
         {
-
+            this.Button02.addEventHandler("onclick",this.Button02_onclick,this);
         };
         this.loadIncludeScript("Form_ProductCode.xfdl");
         this.loadPreloadList();

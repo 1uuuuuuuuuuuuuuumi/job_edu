@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sample.mapper.OrderMapper">
+	<select id="orderList" resultType="java.util.HashMap">
+		SELECT
+		    u.USER_ID,
+		    u.NAME AS USER_NAME,
+		    s.SUB_CATE_NAME AS CATEGORY_NAME,
+		    p.PROD_NAME AS PRODUCT_NAME,
+		    o.ORDER_CNT,
+		    o.ORDER_STATUS,
+		    o.SHIP_STATUS,
+		    o.REFUND_STATUS,
+		    o.REFUND_CONTENT
+		FROM ORDERS o
+		JOIN USERS u ON o.USER_ID = u.USER_ID
+		JOIN PRODUCTS p ON o.PROD_CODE = p.PROD_CODE
+		JOIN SUB_CATEGORY s ON p.SUB_CATE_CODE = s.SUB_CATE_CODE
+	</select>
+</mapper>

@@ -17,8 +17,8 @@
             }
             
             // Object(Dataset, ExcelExportObject) Initialize
-            obj = new Dataset("ds_order", this);
-            obj._setContents("<ColumnInfo><Column id=\"ORDER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"PROD_CODE\" type=\"STRING\" size=\"256\"/><Column id=\"ORDER_CNT\" type=\"STRING\" size=\"256\"/><Column id=\"ORDER_STATUS\" type=\"STRING\" size=\"256\"/><Column id=\"SHIP_STATUS\" type=\"STRING\" size=\"256\"/><Column id=\"REFUND_STATUS\" type=\"STRING\" size=\"256\"/><Column id=\"REFUND_CONTENT\" type=\"STRING\" size=\"256\"/><Column id=\"ORDER_DATE\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
+            obj = new Dataset("ds_list", this);
+            obj._setContents("<ColumnInfo><Column id=\"USER_ID\" type=\"STRING\" size=\"256\"/><Column id=\"NAME\" type=\"STRING\" size=\"256\"/><Column id=\"SUB_CATE_CODE\" type=\"STRING\" size=\"256\"/><Column id=\"SUB_CATE_NAME\" type=\"STRING\" size=\"256\"/><Column id=\"ORDER_CNT\" type=\"STRING\" size=\"256\"/><Column id=\"ORDER_STATUS\" type=\"STRING\" size=\"256\"/><Column id=\"SHIP_STATUS\" type=\"STRING\" size=\"256\"/><Column id=\"REFUND_STATUS\" type=\"STRING\" size=\"256\"/><Column id=\"REFUND_CONTENT\" type=\"STRING\" size=\"256\"/></ColumnInfo>");
             this.addChild(obj.name, obj);
 
 
@@ -51,6 +51,9 @@
             obj = new Combo("Combo00","704","18","200","40",null,null,null,null,null,null,this.Div00.form);
             obj.set_taborder("2");
             obj.set_borderRadius("5px");
+            obj.set_innerdataset("ds_search");
+            obj.set_codecolumn("ORDER_STATUS");
+            obj.set_datacolumn("ORDER_STATUS");
             obj.set_text("Combo00");
             this.Div00.addChild(obj.name, obj);
 
@@ -80,6 +83,7 @@
             obj.set_text("엑셀");
             obj.set_borderRadius("5px");
             obj.set_font("bold 13pt \"굴림\"");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Button("Button00_00","1102","40","80","40",null,null,null,null,null,null,this);
@@ -94,13 +98,14 @@
             obj.set_text("저장");
             obj.set_borderRadius("5px");
             obj.set_font("bold 13pt \"굴림\"");
+            obj.set_cursor("pointer");
             this.addChild(obj.name, obj);
 
             obj = new Grid("Grid00","10","180",null,null,"10","20",null,null,null,null,this);
             obj.set_taborder("7");
-            obj.set_binddataset("ds_search");
+            obj.set_binddataset("ds_list");
             obj.set_autofittype("col");
-            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"84\"/><Column size=\"125\"/><Column size=\"125\"/><Column size=\"126\"/><Column size=\"234\"/><Column size=\"129\"/><Column size=\"111\"/><Column size=\"97\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"No\"/><Cell col=\"1\" text=\"회원ID\"/><Cell col=\"2\" text=\"이름\"/><Cell col=\"3\" text=\"생년월일\"/><Cell col=\"4\" text=\"주소\"/><Cell col=\"5\" text=\"등급\"/><Cell col=\"6\" text=\"포인트\"/><Cell col=\"7\" text=\"휴면유무\"/></Band><Band id=\"body\"><Cell expr=\"currow + 1\" textAlign=\"center\"/><Cell col=\"1\" text=\"bind:USER_ID\" edittype=\"normal\" textAlign=\"center\"/><Cell col=\"2\" text=\"bind:NAME\" edittype=\"normal\" textAlign=\"center\"/><Cell col=\"3\" text=\"bind:BIRTH_DAY\" edittype=\"normal\" textAlign=\"center\"/><Cell col=\"4\" text=\"bind:ADDRESS\" edittype=\"normal\" textAlign=\"center\"/><Cell col=\"5\" text=\"bind:LEVEL\" edittype=\"normal\" textAlign=\"center\"/><Cell col=\"6\" text=\"bind:POINT\" edittype=\"normal\" textAlign=\"center\"/><Cell col=\"7\" text=\"bind:IS_USE\" edittype=\"normal\" textAlign=\"center\"/></Band></Format></Formats>");
+            obj._setContents("<Formats><Format id=\"default\"><Columns><Column size=\"48\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"80\"/><Column size=\"56\"/><Column size=\"56\"/><Column size=\"189\"/></Columns><Rows><Row size=\"24\" band=\"head\"/><Row size=\"24\"/></Rows><Band id=\"head\"><Cell text=\"No\"/><Cell col=\"1\" text=\"회원ID\"/><Cell col=\"2\" text=\"회원명\"/><Cell col=\"3\" text=\"카테고리명\"/><Cell col=\"4\" text=\"상품명\"/><Cell col=\"5\" text=\"구매수량\"/><Cell col=\"6\" text=\"주문상태\"/><Cell col=\"7\" text=\"배송여부\"/><Cell col=\"8\" text=\"환불여부\"/><Cell col=\"9\" text=\"환불사유\"/></Band><Band id=\"body\"><Cell textAlign=\"center\" expr=\"currow + 1\"/><Cell col=\"1\" text=\"bind:USER_ID\" textAlign=\"center\"/><Cell col=\"2\" text=\"bind:NAME\" textAlign=\"center\"/><Cell col=\"3\" text=\"bind:SUB_CATE_CODE\" textAlign=\"center\"/><Cell col=\"4\" text=\"bind:SUB_CATE_NAME\" textAlign=\"center\"/><Cell col=\"5\" text=\"bind:ORDER_CNT\" textAlign=\"center\"/><Cell col=\"6\" text=\"bind:ORDER_STATUS\" textAlign=\"center\"/><Cell col=\"7\" text=\"bind:SHIP_STATUS\" textAlign=\"center\"/><Cell col=\"8\" text=\"bind:REFUND_STATUS\" textAlign=\"center\"/><Cell col=\"9\" text=\"bind:REFUND_CONTENT\" textAlign=\"center\"/></Band></Format></Formats>");
             this.addChild(obj.name, obj);
 
             obj = new Static("Static00_00_01","20","142","95","36",null,null,null,null,null,null,this);
@@ -149,11 +154,60 @@
         };
         
         // User Script
+        this.registerScript("Form_Order.xfdl", function() {
 
+        this.Form_Order_onload = function(obj,e)
+        {
+        	this.orderList();
+        };
+
+        this.orderList = function(){
+        		var strSvcID = "orderList";		//트랜잭션 아이디
+        		var strURL = "svc::orderList.do";	//url controller에서 받을 주소
+        		var strInDatasets = ""; //내가 던질 데이터셋
+        		var strOutDatasets = "ds_list=ds_list"; //내가 받을 데이터셋
+        		var strArg = "";					//매개변수로 뭐가 들어가는지
+        		var callBack = "fn_callBack";		//콜백기능으로 뭘할건지(콜백:내가 이 함수를 실행했을때 되돌아와서 실행할 함수)
+        		var inAsync = true;					//동기 비동기 설정하는거 (Async:비동기 /sync:비동기)
+
+        		this.transaction(strSvcID,strURL,strInDatasets,strOutDatasets,strArg,callBack,inAsync); //this.transaction() -> 함수 / 위의내용들을 전부 담기
+        };
+
+        this.fn_callBack = function(svcID, errorCode, errorMsg)
+        {
+            if(svcID === "orderList" && errorCode === 0) {
+                this.calculateTotalCount();
+
+        		var newRow = this.ds_search.insertRow(0);
+        		this.ds_search.setColumn(newRow, "LEVEL_CODE", "00");
+        		this.ds_search.setColumn(newRow, "LEVEL", "-전체-");
+
+        		this.Div00.form.Combo00.set_value("00");
+            }
+
+        	trace("fn_callBack: " + svcID + " / errorCode: " + errorCode);
+
+            if (svcID === "searchOrderList" && errorCode === 0) {
+
+
+            }
+
+        };
+
+        this.calculateTotalCount = function() {
+            var rowCount = this.ds_users.getRowCount();
+            if(this.st_total) {
+                this.st_total.set_text(" | 총 " + rowCount + "건");
+            } else {
+                trace("sta_total is undefined");
+            }
+        };
+        });
         
         // Regist UI Components Event
         this.on_initEvent = function()
         {
+            this.addEventHandler("onload",this.Form_Order_onload,this);
             this.Button00_00_00_00.addEventHandler("onclick",this.Div00_Button00_00_00_00_onclick,this);
             this.Button00_00.addEventHandler("onclick",this.Div00_Button00_onclick,this);
             this.Static00_00_01.addEventHandler("onclick",this.Static00_00_01_onclick,this);

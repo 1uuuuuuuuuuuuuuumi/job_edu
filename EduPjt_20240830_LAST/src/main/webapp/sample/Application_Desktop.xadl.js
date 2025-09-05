@@ -116,7 +116,7 @@
         this.checkLicense("");
         
         this.loadPreloadList();
-
+        this.loadCss("xcssrc::TopMenuStyle.xcss");
         this.loadIncludeScript("Application_Desktop.xadl");
     };
 }

@@ -13,13 +13,62 @@
         <Static id="Static00" taborder="1" text="•대분류" left="33" top="39" width="95" height="36" textAlign="center" font="bold 15pt &quot;돋움&quot;"/>
         <Button id="Button00" taborder="2" text="조회" left="1102" top="36" width="80" height="40" font="bold 14pt &quot;굴림&quot;" borderRadius="5px" background="white"/>
         <Button id="Button01" taborder="3" text="저장" left="1190" top="36" width="80" height="40" borderRadius="5px" background="white" font="bold 14pt &quot;굴림&quot;"/>
-        <Grid id="Grid00" taborder="4" left="10" top="180" width="335" bottom="20"/>
+        <Grid id="Grid00" taborder="4" left="10" top="180" width="335" bottom="20" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="103"/>
+                <Column size="126"/>
+                <Column size="248"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="No"/>
+                <Cell col="1" text="대분류코드"/>
+                <Cell col="2" text="설명"/>
+              </Band>
+              <Band id="body">
+                <Cell text="expr:currow - 1"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
         <Static id="Static00_00" taborder="5" text="대분류" left="20" top="144" width="95" height="36" textAlign="center" font="bold 15pt &quot;돋움&quot;"/>
-        <Static id="Static01" taborder="6" text="ㅇㅇㅇㅇ" left="125" top="144" width="171" height="36" font="bold 15pt &quot;돋움&quot;" color="#7ec0e3"/>
-        <Grid id="Grid01" taborder="7" left="388" top="180" right="10" bottom="20"/>
-        <Button id="Button02" taborder="8" text="+" left="1170" top="123" width="45" height="45" background="white" border="1px solid black" font="bold 20pt &quot;돋움&quot;" textAlign="center"/>
+        <Static id="Static01" taborder="6" text="| 총 0건" left="125" top="144" width="171" height="36" font="bold 15pt &quot;돋움&quot;" color="#7ec0e3"/>
+        <Grid id="Grid01" taborder="7" left="388" top="180" right="10" bottom="20" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="215"/>
+                <Column size="215"/>
+                <Column size="333"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="중분류"/>
+                <Cell col="1" text="소분류"/>
+                <Cell col="2" text="설명"/>
+              </Band>
+              <Band id="body">
+                <Cell/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button02" taborder="8" text="+" left="1170" top="123" width="45" height="45" background="white" border="1px solid black" font="bold 20pt &quot;돋움&quot;" textAlign="center" onclick="Button02_onclick"/>
         <Button id="Button03" taborder="9" text="-" left="1225" top="123" width="45" height="45" font="bold 20pt &quot;돋움&quot;" textAlign="center" background="white" border="1px solid black"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[]]></Script>
   </Form>
 </FDL>
