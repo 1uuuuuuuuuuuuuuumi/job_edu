@@ -58,7 +58,7 @@
 
             obj = new Static("Static00","129","85","433","66",null,null,null,null,null,null,this);
             obj.set_taborder("3");
-            obj.set_text("ദ്ദി(｡•̀ ᗜ<) 부서");
+            obj.set_text("ദ്ദി(｡•̀ ᗜ<) 부서 !");
             obj.set_font("bold 25pt/normal \"맑은 고딕\"");
             this.addChild(obj.name, obj);
 

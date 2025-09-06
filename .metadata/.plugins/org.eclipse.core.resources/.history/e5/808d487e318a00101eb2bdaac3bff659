@@ -9,24 +9,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.nexacro.uiadapter17.spring.core.data.NexacroResult;
 
-import sample.service.ProductService;
-
+import sample.service.OrderService;
 @Controller
-public class ProductController {
+
+public class OrderController {
 	
 	@Autowired
-	private ProductService productService;
+	private OrderService orderService;
 
-	@RequestMapping(value="/categoryList.do")
-	public NexacroResult categoryList() {
-		
+	//주문목록조회
+	@RequestMapping(value="/orderList.do")
+	public NexacroResult orderList() {
 		NexacroResult result = new NexacroResult();
 		
-		List<HashMap<String, Object>> resultData = productService.categoryList();
+		List<HashMap<String, Object>> getList = orderService.orderList();
 		
-		if(resultData != null) {
-			result.addDataSet("ds_category", resultData);
-		}
+		result.addDataSet("ds_list", getList);
 		
 		return result;
 	}
